@@ -1,0 +1,116 @@
+{
+  "project_name": "Lotus USA Inc. Corporate Website",
+  "theme_strategy": "Hybrid Luxury Enterprise (Dark mode for impact sections like Hero/Cybersecurity, Light mode for readability in About/Services)",
+  "typography": {
+    "headings": {
+      "family": "Cabinet Grotesk",
+      "weights": ["Medium", "Bold", "Extrabold"],
+      "styling": "tracking-tight, leading-none, maximum text-6xl on desktop. Do NOT use Inter.",
+      "usage": "Hero headlines, section titles, bento card titles."
+    },
+    "body": {
+      "family": "Manrope",
+      "weights": ["Regular", "Medium"],
+      "styling": "leading-relaxed, tracking-normal, text-base to text-lg.",
+      "usage": "Paragraphs, descriptions, standard UI text."
+    },
+    "mono": {
+      "family": "JetBrains Mono",
+      "weights": ["Regular"],
+      "styling": "uppercase, tracking-[0.2em], text-xs to text-sm.",
+      "usage": "Overlines, stat counters, tech specs, tags, editorial marquee."
+    }
+  },
+  "colors": {
+    "brand_primary": "#0B1F4D",
+    "brand_secondary": "#0F62FE",
+    "neutral_light": "#FFFFFF",
+    "neutral_gray": "#F8F9FA",
+    "accent_gray": "#E5E7EB",
+    "text_dark": "#0A0A0A",
+    "text_muted": "#4B5563",
+    "text_light": "#FFFFFF",
+    "text_muted_light": "#9CA3AF"
+  },
+  "visual_enhancers": {
+    "glassmorphism": {
+      "light_mode": "backdrop-blur-xl bg-white/70 border border-white/40 shadow-sm",
+      "dark_mode": "backdrop-blur-xl bg-[#0B1F4D]/80 border border-white/10 shadow-lg",
+      "rules": "MUST use for sticky headers, dropdowns, and overlays. NEVER leave background completely transparent."
+    },
+    "shadows": {
+      "subtle": "shadow-[0_4px_20px_rgba(11,31,77,0.05)]",
+      "hover": "shadow-[0_8px_32px_rgba(11,31,77,0.12)]"
+    },
+    "borders": {
+      "standard": "1px solid border-border/40",
+      "radius": "rounded-2xl for main cards, rounded-full for pills/buttons."
+    }
+  },
+  "components_and_layouts": {
+    "hero": "Deep Blue (#0B1F4D) background. Kinetic typography with line-by-line reveal (Framer Motion). Contains a subtle 3D parallax element or abstract data network image. Overlay MUST be dark enough to read text.",
+    "bento_grids": "Use grid-cols-1 md:grid-cols-8 lg:grid-cols-12 with wide gaps (gap-6 or gap-8). Mix span sizes (e.g., col-span-8, col-span-4). Items must be direct children.",
+    "header": "Sticky navigation, z-50. Glassmorphism background. Must include Logo, Mega Menu, and CTA button. Not hidden behind hamburger on desktop.",
+    "marquee": "Slow, smooth drift using react-fast-marquee. Use JetBrains Mono for a highly technical, editorial feel. Used for Certifications (CMMC, WOSB, etc.).",
+    "dashboard": "High-density grid (gap-4). Cardless or 1px subtle border styles. Use Shadcn components heavily customized to match the brand."
+  },
+  "motion_and_interaction": {
+    "scrolling": "MANDATORY: Use '@studio-freight/lenis' for smooth scrolling.",
+    "page_load": "Masked line-by-line reveal for hero text. Staggered fade-up (y: 20, opacity: 0 -> 1) for grids.",
+    "hover_states": "Cards lift slightly (-translate-y-1). Buttons must change background color and remain readable. NO universal 'transition: all' - target specific properties."
+  },
+  "accessibility": {
+    "contrast": "Strict adherence to WCAG AA. Text over images must have a gradient overlay or text-shadow.",
+    "reduced_motion": "Respect prefers-reduced-motion media query.",
+    "testing": "CRITICAL: Every interactive element MUST have a 'data-testid' attribute in kebab-case (e.g., data-testid='hero-cta-button')."
+  },
+  "media": {
+    "image_urls": {
+      "hero_skyscraper": {
+        "url": "https://images.unsplash.com/photo-1617761141732-d481912af1a9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBza3lzY3JhcGVyJTIwYmx1ZSUyMHNreXxlbnwwfHx8fDE3ODU5NjQ1NTV8MA&ixlib=rb-4.1.0&q=85",
+        "category": "Hero Section",
+        "description": "Premium corporate skyscraper for the main enterprise feel"
+      },
+      "cybersecurity": {
+        "url": "https://images.pexels.com/photos/37730211/pexels-photo-37730211.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "Compliance / Digital Solutions",
+        "description": "Modern server rack for CMMC and Zero Trust sections"
+      },
+      "professionals": {
+        "url": "https://images.pexels.com/photos/12903168/pexels-photo-12903168.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "About Us / Staffing",
+        "description": "High-end corporate meeting for staffing solutions"
+      },
+      "abstract_network": {
+        "url": "https://images.unsplash.com/photo-1644088379091-d574269d422f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhdGElMjBuZXR3b3JrfGVufDB8fHx8MTc4NTk2NDU1NXww&ixlib=rb-4.1.0&q=85",
+        "category": "Backgrounds",
+        "description": "Abstract data lines for tech backgrounds or parallax hero elements"
+      }
+    }
+  },
+  "instructions_to_main_agent": [
+    "You are building a $50k+ luxury enterprise website. Avoid generic templates, standard centered layouts, and basic Bootstrap-like columns.",
+    "Implement a bold, kinetic hero section with line-by-line reveal using framer-motion.",
+    "Do NOT use Inter for headings. Apply Cabinet Grotesk or a similar premium geometric font.",
+    "Use lenis for momentum scrolling to make the site feel premium.",
+    "All cards must have generous padding (p-8 or p-12) and follow the bento grid protocol (asymmetrical spanning).",
+    "Integrate Shadcn UI for complex interactive components (forms, dashboard, selects) but style them without the 'Vercel default' look.",
+    "Ensure all testing attributes (data-testid) are present on buttons, links, and form elements.",
+    "Never apply a fully transparent background to the header or overlays. Always use a backdrop-blur + semi-transparent color.",
+    "Do not use dark colors for full-screen gradients. Keep backgrounds solid with subtle textures or grain.",
+    "Do not center-align the main App text. Use precise left-alignment with generous whitespace."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not converge toward generic outputs. Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "MUST NOT apply universal transition (transition: all). Add transitions for specific interactive elements only.",
+    "MUST NOT center align the app container (.App { text-align: center; } is FORBIDDEN).",
+    "Always use modern button styles with interaction animations.",
+    "NEVER use AI assistant Emoji characters (🤖🧠💡).",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Prioritize using pre-existing components from src/components/ui.",
+    "Use 'sonner' for toasts.",
+    "DO NOT use transparent backgrounds for headers over images."
+  ]
+}
