@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShieldCheck, Cloud, Landmark, Cpu, ArrowRight } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { IMG, STATS, SERVICES, WHY, INDUSTRIES, CERTIFICATIONS, REGISTRATION, COMPANY } from "@/data/site";
+import { IMG, STATS, SERVICES, WHY, INDUSTRIES, CERTIFICATIONS, REGISTRATION, AGENCIES, CAP_STATEMENT_URL, COMPANY } from "@/data/site";
 import { Reveal, Overline, Counter, PrimaryButton, GhostButton, SectionHeading, Icon } from "@/components/common";
 import { CertMarquee, CTABanner, FeatureCard } from "@/components/sections";
 import { api } from "@/lib/api";
@@ -183,8 +183,28 @@ export default function Home() {
                     </div>
                   ))}
                 </dl>
+                <a href={CAP_STATEMENT_URL} download className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-royal px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-royal-light" data-testid="download-capability-home">
+                  <Icon name="Download" className="h-4 w-4" /> Download Capability Statement
+                </a>
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted By */}
+      <section className="bg-slate-50 py-24 lg:py-32" data-testid="trusted-by">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <SectionHeading center overline="Trusted By" title="Serving agencies at every level of government" sub="A selection of the federal, state, and local organizations Lotus USA has supported. Detailed past-performance references are available to contracting officers on request." />
+          <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {AGENCIES.map((a, i) => (
+              <Reveal key={a} delay={(i % 4) * 0.05}>
+                <div className="flex h-full items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 transition-colors duration-300 hover:border-royal/30">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-navy/5 text-royal"><Icon name="Building2" className="h-4 w-4" /></span>
+                  <span className="text-sm font-medium leading-tight text-navy">{a}</span>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

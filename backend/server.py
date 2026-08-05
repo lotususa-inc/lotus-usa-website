@@ -63,6 +63,32 @@ async def send_lead_email(lead: dict):
     except Exception as e:
         logger.error(f"Lead email failed: {e}")
 
+
+async def send_newsletter_email(email: str):
+    if not EMAIL_KEY:
+        return
+    html = f"""
+    <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Arial,sans-serif;color:#0B1F4D">
+      <tr><td style="padding:16px 0"><h2 style="margin:0;color:#0B1F4D">New Newsletter Subscriber</h2></td></tr>
+      <tr><td style="font-size:14px">A new subscriber joined the Lotus USA newsletter:</td></tr>
+      <tr><td style="padding-top:8px;font-size:16px"><strong>{email}</strong></td></tr>
+      <tr><td style="padding-top:16px;color:#9CA3AF;font-size:12px">Submitted via lotususainc.com</td></tr>
+    </table>"""
+    payload = {
+        "to": [LEAD_NOTIFY_EMAIL],
+        "subject": "New Newsletter Subscriber",
+        "html": html,
+        "from_name": EMAIL_FROM_NAME,
+        "contact_email": email,
+    }
+    try:
+        async with httpx.AsyncClient(timeout=30) as client:
+            resp = await client.post(f"{EMAIL_BASE_URL}/api/v1/email/send",
+                                     headers={"X-Email-Key": EMAIL_KEY}, json=payload)
+        resp.raise_for_status()
+    except Exception as e:
+        logger.error(f"Newsletter email failed: {e}")
+
 app = FastAPI(title="Lotus USA Inc. API")
 api_router = APIRouter(prefix="/api")
 
@@ -207,6 +233,7 @@ async def subscribe(payload: NewsletterCreate):
     if existing:
         return {"ok": True, "already": True}
     await db.newsletter.insert_one({"email": email, "created_at": now_iso()})
+    await send_newsletter_email(email)
     return {"ok": True}
 
 

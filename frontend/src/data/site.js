@@ -127,6 +127,58 @@ export const FAQS = [
   { q: "How quickly can an engagement begin?", a: "After an initial consultation and scoping conversation, most engagements can mobilize rapidly. Contact us to discuss your timeline and requirements." },
 ];
 
+export const CAP_STATEMENT_URL = "/assets/Lotus-USA-Capability-Statement.pdf";
+
+export const NAICS_CODES = [
+  { code: "541512", desc: "Computer Systems Design Services" },
+  { code: "541513", desc: "Computer Facilities Management Services" },
+  { code: "541611", desc: "Administrative Management & General Management Consulting Services" },
+  { code: "541618", desc: "Other Management Consulting Services" },
+  { code: "541690", desc: "Other Scientific & Technical Consulting Services" },
+  { code: "541930", desc: "Translation & Interpretation Services" },
+  { code: "561110", desc: "Office Administrative Services" },
+  { code: "561612", desc: "Security Guards & Patrol Services" },
+  { code: "561710", desc: "Exterminating & Pest Control Services" },
+  { code: "561720", desc: "Janitorial Services" },
+  { code: "423430", desc: "Computer & Computer Peripheral Equipment & Software (Wholesale)" },
+  { code: "423450", desc: "Medical, Dental & Hospital Equipment & Supplies (Wholesale)" },
+  { code: "517911", desc: "Telecommunications Resellers" },
+  { code: "518111", desc: "Internet Service Providers" },
+  { code: "532412", desc: "Construction, Mining & Forestry Machinery & Equipment Rental & Leasing" },
+  { code: "532490", desc: "Other Commercial & Industrial Machinery & Equipment Rental & Leasing" },
+  { code: "621111", desc: "Offices of Physicians (except Mental Health Specialists)" },
+  { code: "621399", desc: "Offices of All Other Miscellaneous Health Practitioners" },
+  { code: "621512", desc: "Diagnostic Imaging Centers" },
+];
+
+export const AGENCIES = [
+  "Department of Defense",
+  "The Pentagon",
+  "Department of the Army",
+  "Department of the Navy (NSWC PCD)",
+  "Department of the Air Force",
+  "Space Base Delta",
+  "DLA Land and Maritime",
+  "U.S. Army Engineer District, Detroit",
+  "U.S. Army Sergeants Major Academy",
+  "U.S. Army Soldier Support Institute (USASSI)",
+  "MICC – Fort Buchanan",
+  "MICC – Fort Carson",
+  "NASA",
+  "National Institute of Standards and Technology (NIST)",
+  "Internal Revenue Service (U.S. Treasury)",
+  "Social Security Administration",
+  "U.S. Department of Transportation",
+  "Bureau of Land Management (Lakeview, OR)",
+  "Western Area Power Administration (WAPA)",
+  "California Department of General Services (OHR)",
+  "California Department of Veterans Affairs",
+  "County of Los Angeles",
+  "City of Los Angeles",
+  "Los Angeles Department of Water and Power (LADWP)",
+  "Long Beach Transit",
+];
+
 export const NAV = [
   { label: "Home", to: "/" },
   {

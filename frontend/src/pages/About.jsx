@@ -1,7 +1,8 @@
 import { useSEO } from "@/hooks/useSEO";
-import { IMG, WHY, CAPABILITIES, COMPANY } from "@/data/site";
+import { IMG, WHY, CAPABILITIES, CAP_STATEMENT_URL, COMPANY } from "@/data/site";
 import { Reveal, Overline, SectionHeading, Icon, PrimaryButton } from "@/components/common";
 import { CTABanner, FeatureCard } from "@/components/sections";
+import { NaicsSearch } from "@/components/NaicsSearch";
 
 const VALUES = [
   { icon: "Target", t: "Mission First", d: "Every decision is measured against the outcomes our clients are accountable for delivering." },
@@ -21,6 +22,11 @@ export default function About() {
           <Reveal><Overline light>About Lotus USA Inc.</Overline></Reveal>
           <Reveal delay={0.06}><h1 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.03] tracking-tight sm:text-5xl lg:text-6xl">A diverse small business built for secure, compliant delivery</h1></Reveal>
           <Reveal delay={0.12}><p className="mt-6 max-w-2xl text-lg text-white/70">Lotus USA Inc. partners with government and commercial organizations to accelerate digital transformation, strengthen cybersecurity, modernize the cloud, and achieve CMMC compliance — with the agility of a small business and the discipline of an enterprise.</p></Reveal>
+          <Reveal delay={0.18}>
+            <a href={CAP_STATEMENT_URL} download className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-navy transition-colors duration-300 hover:bg-royal hover:text-white" data-testid="download-capability-about">
+              <Icon name="Download" className="h-4 w-4" /> Download Capability Statement
+            </a>
+          </Reveal>
         </div>
       </section>
 
@@ -89,6 +95,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <NaicsSearch />
 
       <CTABanner title="Partner with a team that owns the outcome." />
     </>
