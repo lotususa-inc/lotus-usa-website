@@ -1,54 +1,39 @@
-import { useEffect } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { HOME } from "@/constants/testIds";
+import { AuthProvider } from "@/context/AuthContext";
+import { Layout } from "@/components/Layout";
+import Home from "@/pages/Home";
+import ServicePage from "@/pages/ServicePage";
+import Industries from "@/pages/Industries";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import Insights from "@/pages/Insights";
+import BlogPost from "@/pages/BlogPost";
+import Login from "@/pages/Login";
+import Admin from "@/pages/Admin";
+import NotFound from "@/pages/NotFound";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          data-testid={HOME.emergentLink}
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+const Site = ({ children }) => <Layout>{children}</Layout>;
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Site><Home /></Site>} />
+            <Route path="/services/:slug" element={<Site><ServicePage /></Site>} />
+            <Route path="/industries" element={<Site><Industries /></Site>} />
+            <Route path="/about" element={<Site><About /></Site>} />
+            <Route path="/contact" element={<Site><Contact /></Site>} />
+            <Route path="/insights" element={<Site><Insights /></Site>} />
+            <Route path="/insights/:slug" element={<Site><BlogPost /></Site>} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="*" element={<Site><NotFound /></Site>} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }
