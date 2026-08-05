@@ -4,16 +4,18 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 import os
-import logging
+import io
 import re
+import logging
 from datetime import datetime, timezone, timedelta
 from typing import List, Optional, Annotated
 
 import bcrypt
 import jwt
 import httpx
+from pypdf import PdfReader
 from bson import ObjectId
-from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, Depends
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, Depends, UploadFile, File
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, Field, EmailStr, BeforeValidator
@@ -301,6 +303,149 @@ async def delete_blog(bid: str, user: dict = Depends(get_current_user)):
 @api_router.get("/")
 async def root():
     return {"message": "Lotus USA Inc. API"}
+
+
+# ---------------- Capability Statement (auto-refresh) ----------------
+ASSETS_DIR = ROOT_DIR.parent / "frontend" / "public" / "assets"
+CAP_PDF_NAME = "Lotus-USA-Capability-Statement.pdf"
+
+NAICS_TITLES = {
+    "541512": "Computer Systems Design Services",
+    "541513": "Computer Facilities Management Services",
+    "541511": "Custom Computer Programming Services",
+    "541519": "Other Computer Related Services",
+    "541611": "Administrative Management & General Management Consulting Services",
+    "541618": "Other Management Consulting Services",
+    "541690": "Other Scientific & Technical Consulting Services",
+    "541990": "All Other Professional, Scientific & Technical Services",
+    "541930": "Translation & Interpretation Services",
+    "561110": "Office Administrative Services",
+    "561612": "Security Guards & Patrol Services",
+    "561710": "Exterminating & Pest Control Services",
+    "561720": "Janitorial Services",
+    "561210": "Facilities Support Services",
+    "423430": "Computer & Computer Peripheral Equipment & Software (Wholesale)",
+    "423450": "Medical, Dental & Hospital Equipment & Supplies (Wholesale)",
+    "517911": "Telecommunications Resellers",
+    "518111": "Internet Service Providers",
+    "518210": "Data Processing, Hosting & Related Services",
+    "532412": "Construction, Mining & Forestry Machinery & Equipment Rental & Leasing",
+    "532490": "Other Commercial & Industrial Machinery & Equipment Rental & Leasing",
+    "621111": "Offices of Physicians (except Mental Health Specialists)",
+    "621399": "Offices of All Other Miscellaneous Health Practitioners",
+    "621512": "Diagnostic Imaging Centers",
+}
+VALID_NAICS_SECTORS = {"11", "21", "22", "23", "31", "32", "33", "42", "44", "45",
+                       "48", "49", "51", "52", "53", "54", "55", "56", "61", "62",
+                       "71", "72", "81", "92"}
+
+DEFAULT_NAICS = [{"code": c, "desc": NAICS_TITLES.get(c, f"NAICS {c}")} for c in [
+    "541512", "541513", "541611", "541618", "541690", "541930", "561110", "561612",
+    "561710", "561720", "423430", "423450", "517911", "518111", "532412", "532490",
+    "621111", "621399", "621512"]]
+
+DEFAULT_REGISTRATION = [
+    {"label": "UEI", "value": "JBKGG25MLPM9"},
+    {"label": "CAGE Code", "value": "771V6"},
+    {"label": "DUNS", "value": "079599348"},
+    {"label": "Federal Tax ID", "value": "47-1943686"},
+    {"label": "SAM", "value": "Active / Registered"},
+    {"label": "CMMC", "value": "Level 2 Self-Assessment · S200046896"},
+]
+
+DEFAULT_AGENCIES = [
+    "Department of Defense", "The Pentagon", "Department of the Army",
+    "Department of the Navy (NSWC PCD)", "Department of the Air Force", "Space Base Delta",
+    "DLA Land and Maritime", "U.S. Army Engineer District, Detroit",
+    "U.S. Army Sergeants Major Academy", "U.S. Army Soldier Support Institute (USASSI)",
+    "MICC – Fort Buchanan", "MICC – Fort Carson", "NASA",
+    "National Institute of Standards and Technology (NIST)",
+    "Internal Revenue Service (U.S. Treasury)", "Social Security Administration",
+    "U.S. Department of Transportation", "Bureau of Land Management (Lakeview, OR)",
+    "Western Area Power Administration (WAPA)",
+    "California Department of General Services (OHR)",
+    "California Department of Veterans Affairs", "County of Los Angeles",
+    "City of Los Angeles", "Los Angeles Department of Water and Power (LADWP)",
+    "Long Beach Transit",
+]
+
+
+def parse_capability_pdf(data: bytes) -> dict:
+    reader = PdfReader(io.BytesIO(data))
+    text = "\n".join((page.extract_text() or "") for page in reader.pages)
+    upper = text.upper()
+
+    # NAICS
+    found = []
+    for m in re.findall(r"\b(\d{6})\b", text):
+        if m[:2] in VALID_NAICS_SECTORS and m not in found:
+            found.append(m)
+    naics = [{"code": c, "desc": NAICS_TITLES.get(c, f"NAICS {c}")} for c in found]
+
+    # Registration identifiers (fallback to defaults when not found)
+    reg = {r["label"]: r["value"] for r in DEFAULT_REGISTRATION}
+
+    def grab(pattern):
+        m = re.search(pattern, upper)
+        return m.group(1).strip() if m else None
+
+    uei = grab(r"(?:UEI|UNIQUE ENTITY(?:\s*ID| IDENTIFIER)?)[:\s#]*([A-Z0-9]{12})")
+    cage = grab(r"CAGE\s*(?:CODE)?[:\s#]*([A-Z0-9]{5})")
+    duns = grab(r"DUNS[:\s#]*([0-9]{9})")
+    tax = grab(r"(?:FEDERAL TAX ID|TAX ID|TIN|EIN)[:\s#A-Z]*([0-9]{2}-[0-9]{7})")
+    if uei:
+        reg["UEI"] = uei
+    if cage:
+        reg["CAGE Code"] = cage
+    if duns:
+        reg["DUNS"] = duns
+    if tax:
+        reg["Federal Tax ID"] = tax
+
+    registration = [{"label": r["label"], "value": reg[r["label"]]} for r in DEFAULT_REGISTRATION]
+    return {"naics": naics or DEFAULT_NAICS, "registration": registration}
+
+
+async def get_capability_doc():
+    doc = await db.capability.find_one({"_id": "current"})
+    if not doc:
+        doc = {"_id": "current", "naics": DEFAULT_NAICS, "registration": DEFAULT_REGISTRATION,
+               "agencies": DEFAULT_AGENCIES, "pdf": f"/assets/{CAP_PDF_NAME}",
+               "updated_at": now_iso()}
+        await db.capability.insert_one(doc)
+    return doc
+
+
+@api_router.get("/capability")
+async def capability():
+    doc = await get_capability_doc()
+    doc.pop("_id", None)
+    return doc
+
+
+@api_router.post("/capability/upload")
+async def upload_capability(file: UploadFile = File(...), user: dict = Depends(get_current_user)):
+    if not (file.filename or "").lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Please upload a PDF file.")
+    data = await file.read()
+    try:
+        parsed = parse_capability_pdf(data)
+    except Exception as e:
+        logger.error(f"PDF parse failed: {e}")
+        raise HTTPException(status_code=422, detail="Could not read the PDF. Please try another file.")
+    try:
+        ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+        (ASSETS_DIR / CAP_PDF_NAME).write_bytes(data)
+    except Exception as e:
+        logger.error(f"PDF save failed: {e}")
+        raise HTTPException(status_code=500, detail="Could not save the PDF.")
+    update = {"naics": parsed["naics"], "registration": parsed["registration"],
+              "pdf": f"/assets/{CAP_PDF_NAME}", "updated_at": now_iso()}
+    await db.capability.update_one({"_id": "current"}, {"$set": update}, upsert=True)
+    doc = await get_capability_doc()
+    doc.pop("_id", None)
+    return {"ok": True, "extracted": {"naics": len(parsed["naics"]),
+            "registration": len(parsed["registration"])}, "capability": doc}
 
 
 app.include_router(api_router)

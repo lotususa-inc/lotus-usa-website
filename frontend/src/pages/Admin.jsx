@@ -1,22 +1,25 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { LogOut, Users, Mail, FileText, Trash2, Plus, Pencil, X } from "lucide-react";
+import { LogOut, Users, Mail, FileText, Trash2, Plus, Pencil, X, Upload, FileCheck2 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
+import { useCapability } from "@/context/CapabilityContext";
 import { api, formatApiError } from "@/lib/api";
 import { IMG } from "@/data/site";
 
-const TABS = [["leads", "Leads", Users], ["subscribers", "Subscribers", Mail], ["blog", "Blog", FileText]];
+const TABS = [["leads", "Leads", Users], ["subscribers", "Subscribers", Mail], ["blog", "Blog", FileText], ["capability", "Capability", FileCheck2]];
 const emptyPost = { title: "", excerpt: "", content: "", category: "Insights", cover_image: "", author: "Lotus USA Inc.", published: true };
 
 export default function Admin() {
   const { user, logout } = useAuth();
+  const cap = useCapability();
   const nav = useNavigate();
   const [tab, setTab] = useState("leads");
   const [leads, setLeads] = useState([]);
   const [subs, setSubs] = useState([]);
   const [posts, setPosts] = useState([]);
   const [editing, setEditing] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => { if (user === false) nav("/login"); }, [user, nav]);
 
@@ -31,6 +34,23 @@ export default function Admin() {
   const doLogout = async () => { await logout(); nav("/login"); };
   const delLead = async (id) => { await api.delete(`/contacts/${id}`); setLeads((x) => x.filter((i) => i.id !== id)); toast.success("Lead removed"); };
   const delPost = async (id) => { await api.delete(`/blog/${id}`); setPosts((x) => x.filter((i) => i.id !== id)); toast.success("Post deleted"); };
+
+  const uploadCapability = async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    if (!file.name.toLowerCase().endsWith(".pdf")) { toast.error("Please upload a PDF file."); return; }
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const { data } = await api.post("/capability/upload", fd);
+      await cap.refresh();
+      toast.success(`Capability updated — ${data.extracted.naics} NAICS codes extracted.`);
+    } catch (err) {
+      toast.error(formatApiError(err.response?.data?.detail));
+    } finally { setUploading(false); }
+  };
 
   const savePost = async (e) => {
     e.preventDefault();
@@ -108,6 +128,37 @@ export default function Admin() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          )}
+          {tab === "capability" && (
+            <div data-testid="admin-capability">
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 lg:p-8">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <h3 className="font-display text-lg font-bold text-navy">Capability Statement</h3>
+                    <p className="mt-1 text-sm text-slate-500">Upload a new PDF to auto-refresh the site's NAICS codes and federal registration data. The download link stays the same.</p>
+                  </div>
+                  <label className={`inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full bg-royal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy ${uploading ? "opacity-60 pointer-events-none" : ""}`} data-testid="capability-upload-label">
+                    <Upload className="h-4 w-4" />{uploading ? "Processing…" : "Upload PDF"}
+                    <input type="file" accept="application/pdf,.pdf" className="hidden" onChange={uploadCapability} data-testid="capability-upload-input" />
+                  </label>
+                </div>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                    <p className="overline text-slate-400">NAICS Codes ({cap.naics.length})</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {cap.naics.map((n) => (<span key={n.code} className="rounded-md bg-navy px-2.5 py-1 font-mono text-xs font-semibold text-white" title={n.desc}>{n.code}</span>))}
+                    </div>
+                  </div>
+                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                    <p className="overline text-slate-400">Federal Registration</p>
+                    <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-3">
+                      {cap.registration.map((r) => (<div key={r.label}><dt className="font-mono text-[10px] uppercase tracking-widest text-slate-400">{r.label}</dt><dd className="text-sm font-semibold text-navy">{r.value}</dd></div>))}
+                    </dl>
+                  </div>
+                </div>
+                <a href={cap.pdf} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-royal hover:underline" data-testid="capability-current-pdf"><FileText className="h-4 w-4" />View current PDF</a>
               </div>
             </div>
           )}

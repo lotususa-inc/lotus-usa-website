@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShieldCheck, Cloud, Landmark, Cpu, ArrowRight } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { IMG, STATS, SERVICES, WHY, INDUSTRIES, CERTIFICATIONS, REGISTRATION, AGENCIES, CAP_STATEMENT_URL, COMPANY } from "@/data/site";
+import { IMG, STATS, SERVICES, WHY, INDUSTRIES, CERTIFICATIONS, PARTNERS, COMPANY } from "@/data/site";
 import { Reveal, Overline, Counter, PrimaryButton, GhostButton, SectionHeading, Icon } from "@/components/common";
 import { CertMarquee, CTABanner, FeatureCard } from "@/components/sections";
+import { useCapability } from "@/context/CapabilityContext";
 import { api } from "@/lib/api";
 
 const HERO_LINES = ["Secure.", "Compliant.", "Mission Ready."];
@@ -137,6 +138,7 @@ function Insights() {
 }
 
 export default function Home() {
+  const { registration, agencies, pdf } = useCapability();
   useSEO({ title: "Secure. Compliant. Mission Ready.", description: "Lotus USA Inc. helps government and commercial organizations accelerate digital transformation, cybersecurity, cloud modernization, and CMMC Level 2 compliance.", image: IMG.heroNetwork, path: "/" });
   return (
     <>
@@ -176,14 +178,14 @@ export default function Home() {
                 <span className="overline text-royal-light">Federal Registration</span>
                 <p className="mt-3 text-sm text-white/60">Everything a contracting officer needs to verify and award with confidence.</p>
                 <dl className="mt-7 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
-                  {REGISTRATION.map((r) => (
+                  {registration.map((r) => (
                     <div key={r.label}>
                       <dt className="font-mono text-xs uppercase tracking-widest text-white/40">{r.label}</dt>
                       <dd className="mt-1 font-display text-base font-bold">{r.value}</dd>
                     </div>
                   ))}
                 </dl>
-                <a href={CAP_STATEMENT_URL} download className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-royal px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-royal-light" data-testid="download-capability-home">
+                <a href={pdf} download className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-royal px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-royal-light" data-testid="download-capability-home">
                   <Icon name="Download" className="h-4 w-4" /> Download Capability Statement
                 </a>
               </div>
@@ -197,7 +199,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading center overline="Trusted By" title="Serving agencies at every level of government" sub="A selection of the federal, state, and local organizations Lotus USA has supported. Detailed past-performance references are available to contracting officers on request." />
           <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {AGENCIES.map((a, i) => (
+            {agencies.map((a, i) => (
               <Reveal key={a} delay={(i % 4) * 0.05}>
                 <div className="flex h-full items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 transition-colors duration-300 hover:border-royal/30">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-navy/5 text-royal"><Icon name="Building2" className="h-4 w-4" /></span>
@@ -205,6 +207,31 @@ export default function Home() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partnerships */}
+      <section className="border-y border-slate-200 bg-white py-16" data-testid="partnerships">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
+            <div className="text-center lg:text-left">
+              <Overline>Partnerships & Alliances</Overline>
+              <p className="mt-3 max-w-md font-display text-lg font-bold text-navy">Certified across the platforms that power the enterprise</p>
+            </div>
+            <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-3 lg:w-auto">
+              {PARTNERS.map((p, i) => (
+                <Reveal key={p.name} delay={i * 0.06}>
+                  <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 transition-colors duration-300 hover:border-royal/30 hover:bg-white">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-navy text-white"><Icon name={p.icon} className="h-5 w-5" /></span>
+                    <div>
+                      <div className="font-display text-sm font-bold text-navy">{p.name}</div>
+                      <div className="text-xs text-slate-500">{p.credential}</div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>

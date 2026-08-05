@@ -179,6 +179,12 @@ export const AGENCIES = [
   "Long Beach Transit",
 ];
 
+export const PARTNERS = [
+  { name: "Cisco Systems", credential: "Select Partner", icon: "Network" },
+  { name: "Oracle", credential: "Oracle Partner Network (OPN)", icon: "Database" },
+  { name: "SAP", credential: "Certified Consultants", icon: "Boxes" },
+];
+
 export const NAV = [
   { label: "Home", to: "/" },
   {

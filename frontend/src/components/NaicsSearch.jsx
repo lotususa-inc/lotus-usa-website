@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { NAICS_CODES } from "@/data/site";
+import { useCapability } from "@/context/CapabilityContext";
 import { Reveal, Overline } from "@/components/common";
 
 export function NaicsSearch() {
+  const { naics } = useCapability();
   const [q, setQ] = useState("");
   const term = q.trim().toLowerCase();
   const filtered = term
-    ? NAICS_CODES.filter((n) => n.code.includes(term) || n.desc.toLowerCase().includes(term))
-    : NAICS_CODES;
+    ? naics.filter((n) => n.code.includes(term) || n.desc.toLowerCase().includes(term))
+    : naics;
 
   return (
     <section className="bg-white py-24 lg:py-32" data-testid="naics-section">

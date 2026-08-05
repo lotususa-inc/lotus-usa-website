@@ -2,7 +2,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Phone, Printer, Mail, MapPin, Clock, Linkedin, Download } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { COMPANY, SERVICES, REGISTRATION, CAP_STATEMENT_URL } from "@/data/site";
+import { COMPANY, SERVICES } from "@/data/site";
+import { useCapability } from "@/context/CapabilityContext";
 import { Reveal, Overline, SectionHeading } from "@/components/common";
 import { api, formatApiError } from "@/lib/api";
 
@@ -10,6 +11,7 @@ const empty = { name: "", email: "", phone: "", company: "", service: "", messag
 
 export default function Contact() {
   useSEO({ title: "Contact", description: "Contact Lotus USA Inc. — request a consultation for government contracting, staffing, CMMC compliance, or digital solutions.", path: "/contact" });
+  const { registration, pdf } = useCapability();
   const [form, setForm] = useState(empty);
   const [busy, setBusy] = useState(false);
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -86,14 +88,14 @@ export default function Contact() {
               <div className="mt-6 rounded-3xl border border-slate-200 bg-slate-50 p-6" data-testid="contact-registration">
                 <span className="overline text-slate-500">Federal Registration</span>
                 <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4">
-                  {REGISTRATION.map((r) => (
+                  {registration.map((r) => (
                     <div key={r.label}>
                       <dt className="font-mono text-xs uppercase tracking-widest text-slate-400">{r.label}</dt>
                       <dd className="mt-0.5 text-sm font-semibold text-navy">{r.value}</dd>
                     </div>
                   ))}
                 </dl>
-                <a href={CAP_STATEMENT_URL} download className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-royal" data-testid="download-capability-contact">
+                <a href={pdf} download className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-royal" data-testid="download-capability-contact">
                   <Download className="h-4 w-4" /> Download Capability Statement
                 </a>
               </div>
