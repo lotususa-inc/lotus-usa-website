@@ -39,6 +39,12 @@ Build a world-class, enterprise-grade premium corporate website for Lotus USA In
 - Verified by testing_agent: backend 100% (12/12), frontend 100% (35/35). deployment_agent: PASS/deployable.
 - PENDING client uploads: past-performance agency names sheet; final one-page Capabilities PDF for download.
 
+## Capability Statement Iteration (2026-06)
+- Hosted PDF at /assets/Lotus-USA-Capability-Statement.pdf; "Download Capability Statement" button on Home, About, Contact.
+- Searchable NAICS section on About (19 codes from statement). "Trusted By" text-card section on Home (25 real agencies from statement — no logos).
+- Newsletter subscriptions now also email info@lotususainc.com (Resend proxy, verified 202); contact form already did.
+- Cleaned all test data (0 leads / 0 subscribers at launch). testing_agent iteration_2: backend 100%, frontend 100%. Services healthy, deployment config unchanged (prior deployment_agent = PASS).
+
 ## Admin Credentials
 See `/app/memory/test_credentials.md` (admin@lotususainc.com).
 
