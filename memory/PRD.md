@@ -30,6 +30,15 @@ Build a world-class, enterprise-grade premium corporate website for Lotus USA In
 - Backend endpoints via curl: auth login/me, contacts POST+GET(auth), newsletter, blog list. All pass.
 - Full homepage render (all sections) via crawl. Contact / service / compliance / industries / login pages via screenshots.
 
+## Refinement Iteration (2026-06)
+- Company data corrected; homepage "Why Lotus USA" now 6 items (2,300+ contracts, Fed/State/Local, Procurement & SI, Secure Cloud & Compliance, Staffing, Modernization).
+- Added Past Performance section + Federal Registration (UEI JBKGG25MLPM9, CAGE 771V6, DUNS 079599348, Tax ID 47-1943686, SAM, CMMC L2 Self-Assessment S200046896) on Home + Contact.
+- Certifications updated to real set incl. SAM Registered, CMMC Level 2 Ready, BBB Accredited (removed "Small Business Concern").
+- Email notifications ENABLED: new contact lead → Resend (Emergent-managed) email to info@lotususainc.com. Verified 202 Accepted.
+- Silenced guest 401 console noise (session probe only on /admin,/login). Cleared all test leads/subscribers.
+- Verified by testing_agent: backend 100% (12/12), frontend 100% (35/35). deployment_agent: PASS/deployable.
+- PENDING client uploads: past-performance agency names sheet; final one-page Capabilities PDF for download.
+
 ## Admin Credentials
 See `/app/memory/test_credentials.md` (admin@lotususainc.com).
 
