@@ -15,7 +15,7 @@ export const COMPANY = {
   name: "Lotus USA Inc.",
   tagline: "Secure. Compliant. Mission Ready.",
   address1: "355 S Grand Ave, Suite 2450",
-  address2: "Los Angeles, CA 90071-9500",
+  address2: "Los Angeles, CA 90071",
   phone: "707-765-3969",
   fax: "213-371-3059",
   email: "info@lotususainc.com",
@@ -23,11 +23,20 @@ export const COMPANY = {
   linkedin: "https://www.linkedin.com/in/lotususainc/",
 };
 
+export const REGISTRATION = [
+  { label: "UEI", value: "JBKGG25MLPM9" },
+  { label: "CAGE Code", value: "771V6" },
+  { label: "DUNS", value: "079599348" },
+  { label: "Federal Tax ID", value: "47-1943686" },
+  { label: "SAM", value: "Active / Registered" },
+  { label: "CMMC", value: "Level 2 Self-Assessment · S200046896" },
+];
+
 export const STATS = [
-  { value: 110, suffix: "", label: "NIST SP 800-171 controls we implement" },
+  { value: 2300, suffix: "+", label: "Contracts completed" },
+  { value: 110, suffix: "", label: "NIST SP 800-171 controls implemented" },
+  { value: 14, suffix: "", label: "Certifications & designations" },
   { value: 24, suffix: "/7", label: "Continuous compliance monitoring" },
-  { value: 13, suffix: "+", label: "Certifications & designations" },
-  { value: 100, suffix: "%", label: "Mission-focused delivery" },
 ];
 
 export const SERVICES = [
@@ -72,20 +81,20 @@ export const CAPABILITIES = [
 ];
 
 export const CERTIFICATIONS = [
-  { code: "SBC", name: "Small Business Concern" },
-  { code: "WOSB", name: "Women-Owned Small Business" },
   { code: "HUBZone", name: "HUBZone Certified" },
+  { code: "WOSB", name: "Women-Owned Small Business" },
   { code: "CA SB", name: "California Small Business" },
   { code: "CMAS", name: "CA Multiple Award Schedule" },
   { code: "DBE", name: "Disadvantaged Business Enterprise" },
   { code: "SBE", name: "Small Business Enterprise" },
   { code: "LSBE", name: "Local Small Business Enterprise" },
   { code: "LBE", name: "Local Business Enterprise" },
-  { code: "WBE", name: "Women's Business Enterprise" },
   { code: "MBE", name: "Minority Business Enterprise" },
-  { code: "CMMC L2", name: "CMMC Level 2 Compliant" },
+  { code: "WBE", name: "Women's Business Enterprise" },
+  { code: "CMMC L2", name: "CMMC Level 2 Ready" },
   { code: "NIST 800-171", name: "NIST SP 800-171" },
-  { code: "BBB", name: "Better Business Bureau" },
+  { code: "SAM", name: "SAM Registered" },
+  { code: "BBB", name: "BBB Accredited" },
 ];
 
 export const INDUSTRIES = [
@@ -102,10 +111,12 @@ export const INDUSTRIES = [
 ];
 
 export const WHY = [
-  { icon: "ShieldCheck", title: "Security-First by Design", desc: "Every engagement is built on Zero Trust principles and defense-grade controls, from the first line of code to continuous monitoring." },
-  { icon: "BadgeCheck", title: "Compliance Built In", desc: "CMMC Level 2, NIST SP 800-171, and DFARS alignment are embedded into how we deliver, not bolted on afterward." },
-  { icon: "Users", title: "Cleared, Specialized Talent", desc: "A vetted bench of engineers, program managers, and analysts ready to mobilize on mission-critical timelines." },
-  { icon: "Award", title: "Diverse Small Business", desc: "A WOSB, HUBZone, and minority-owned partner that helps agencies meet socioeconomic goals with confidence." },
+  { icon: "Award", title: "2,300+ Completed Contracts", desc: "A proven delivery record across a broad range of government and commercial engagements." },
+  { icon: "Landmark", title: "Federal, State & Local Experience", desc: "Trusted partner to agencies at every tier of government, with the compliance posture each demands." },
+  { icon: "Network", title: "Procurement & System Integration", desc: "End-to-end federal procurement support and complex system integration delivered with discipline." },
+  { icon: "ShieldCheck", title: "Secure Cloud & Compliance", desc: "CMMC Level 2 readiness, NIST SP 800-171, and Zero Trust cloud built in from day one." },
+  { icon: "Users", title: "Staffing & Professional Services", desc: "Cleared, specialized talent across IT, engineering, healthcare, and administration." },
+  { icon: "Rocket", title: "Technology Modernization", desc: "Cloud migration, application development, AI, and analytics that move the mission forward." },
 ];
 
 export const FAQS = [

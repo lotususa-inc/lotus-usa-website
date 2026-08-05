@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ShieldCheck, Cloud, Landmark, Cpu, ArrowRight } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { IMG, STATS, SERVICES, WHY, INDUSTRIES, CERTIFICATIONS, COMPANY } from "@/data/site";
+import { IMG, STATS, SERVICES, WHY, INDUSTRIES, CERTIFICATIONS, REGISTRATION, COMPANY } from "@/data/site";
 import { Reveal, Overline, Counter, PrimaryButton, GhostButton, SectionHeading, Icon } from "@/components/common";
 import { CertMarquee, CTABanner, FeatureCard } from "@/components/sections";
 import { api } from "@/lib/api";
@@ -148,10 +148,43 @@ export default function Home() {
       <section className="bg-slate-50 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading overline="Why Lotus USA" title="A partner built for the mission" sub="We combine defense-grade security, deep compliance expertise, and specialized talent to help organizations deliver with confidence." />
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {WHY.map((w, i) => (
               <Reveal key={w.title} delay={i * 0.08}><FeatureCard icon={w.icon} title={w.title} desc={w.desc} /></Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Past Performance */}
+      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <SectionHeading overline="Past Performance" title="A proven record of trusted delivery" sub="With more than 2,300 completed contracts, Lotus USA delivers secure, compliant outcomes across Federal, State, and Local government as well as commercial enterprises. Detailed past-performance references are available to contracting officers on request." />
+              <Reveal delay={0.15}>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {["Federal Government", "State Government", "Local Government", "Commercial Enterprises"].map((t) => (
+                    <span key={t} className="rounded-full border border-slate-200 bg-slate-50 px-5 py-2.5 text-sm font-medium text-navy">{t}</span>
+                  ))}
+                </div>
+              </Reveal>
+              <Reveal delay={0.2}><div className="mt-8"><GhostButton to="/contact" data-testid="past-performance-cta">Request references</GhostButton></div></Reveal>
+            </div>
+            <Reveal delay={0.1}>
+              <div className="rounded-3xl border border-slate-200 bg-navy p-8 text-white lg:p-10">
+                <span className="overline text-royal-light">Federal Registration</span>
+                <p className="mt-3 text-sm text-white/60">Everything a contracting officer needs to verify and award with confidence.</p>
+                <dl className="mt-7 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
+                  {REGISTRATION.map((r) => (
+                    <div key={r.label}>
+                      <dt className="font-mono text-xs uppercase tracking-widest text-white/40">{r.label}</dt>
+                      <dd className="mt-1 font-display text-base font-bold">{r.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

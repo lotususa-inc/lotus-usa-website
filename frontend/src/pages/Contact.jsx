@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Phone, Printer, Mail, MapPin, Clock, Linkedin } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { COMPANY, SERVICES } from "@/data/site";
+import { COMPANY, SERVICES, REGISTRATION } from "@/data/site";
 import { Reveal, Overline, SectionHeading } from "@/components/common";
 import { api, formatApiError } from "@/lib/api";
 
@@ -82,6 +82,17 @@ export default function Contact() {
               <div className="mt-6 overflow-hidden rounded-3xl border border-slate-200">
                 <iframe title="Lotus USA Inc. location" width="100%" height="280" loading="lazy" style={{ border: 0 }}
                   src="https://www.google.com/maps?q=355+S+Grand+Ave+Suite+2450+Los+Angeles+CA+90071&output=embed" data-testid="contact-map" />
+              </div>
+              <div className="mt-6 rounded-3xl border border-slate-200 bg-slate-50 p-6" data-testid="contact-registration">
+                <span className="overline text-slate-500">Federal Registration</span>
+                <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4">
+                  {REGISTRATION.map((r) => (
+                    <div key={r.label}>
+                      <dt className="font-mono text-xs uppercase tracking-widest text-slate-400">{r.label}</dt>
+                      <dd className="mt-0.5 text-sm font-semibold text-navy">{r.value}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             </Reveal>
           </div>

@@ -11,6 +11,7 @@ from typing import List, Optional, Annotated
 
 import bcrypt
 import jwt
+import httpx
 from bson import ObjectId
 from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, Depends
 from starlette.middleware.cors import CORSMiddleware
@@ -24,6 +25,43 @@ db = client[os.environ['DB_NAME']]
 
 JWT_SECRET = os.environ['JWT_SECRET']
 JWT_ALGORITHM = "HS256"
+
+EMAIL_BASE_URL = "https://integrations.emergentagent.com"
+EMAIL_KEY = os.environ.get("EMERGENT_EMAIL_KEY", "")
+EMAIL_FROM_NAME = os.environ.get("EMAIL_FROM_NAME", "Lotus USA Inc.")
+LEAD_NOTIFY_EMAIL = os.environ.get("LEAD_NOTIFY_EMAIL", "info@lotususainc.com")
+
+
+async def send_lead_email(lead: dict):
+    if not EMAIL_KEY:
+        return
+    html = f"""
+    <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Arial,sans-serif;color:#0B1F4D">
+      <tr><td style="padding:16px 0"><h2 style="margin:0;color:#0B1F4D">New Consultation Request</h2></td></tr>
+      <tr><td><table cellpadding="6" style="font-size:14px">
+        <tr><td style="color:#4B5563">Name</td><td><strong>{lead.get('name','')}</strong></td></tr>
+        <tr><td style="color:#4B5563">Email</td><td>{lead.get('email','')}</td></tr>
+        <tr><td style="color:#4B5563">Phone</td><td>{lead.get('phone','') or '—'}</td></tr>
+        <tr><td style="color:#4B5563">Organization</td><td>{lead.get('company','') or '—'}</td></tr>
+        <tr><td style="color:#4B5563">Service</td><td>{lead.get('service','') or '—'}</td></tr>
+        <tr><td style="color:#4B5563;vertical-align:top">Message</td><td>{lead.get('message','')}</td></tr>
+      </table></td></tr>
+      <tr><td style="padding-top:16px;color:#9CA3AF;font-size:12px">Submitted via lotususainc.com</td></tr>
+    </table>"""
+    payload = {
+        "to": [LEAD_NOTIFY_EMAIL],
+        "subject": f"New Lead: {lead.get('name','')} — {lead.get('service') or 'General Inquiry'}",
+        "html": html,
+        "from_name": EMAIL_FROM_NAME,
+        "contact_email": lead.get("email"),
+    }
+    try:
+        async with httpx.AsyncClient(timeout=30) as client:
+            resp = await client.post(f"{EMAIL_BASE_URL}/api/v1/email/send",
+                                     headers={"X-Email-Key": EMAIL_KEY}, json=payload)
+        resp.raise_for_status()
+    except Exception as e:
+        logger.error(f"Lead email failed: {e}")
 
 app = FastAPI(title="Lotus USA Inc. API")
 api_router = APIRouter(prefix="/api")
@@ -143,6 +181,7 @@ async def create_contact(payload: ContactCreate):
     res = await db.contacts.insert_one(doc)
     doc["id"] = str(res.inserted_id)
     doc.pop("_id", None)
+    await send_lead_email(doc)
     return {"ok": True, "id": doc["id"]}
 
 
