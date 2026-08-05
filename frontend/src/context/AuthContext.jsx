@@ -7,6 +7,8 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null); // null=checking, false=guest, obj=auth
 
   useEffect(() => {
+    const p = window.location.pathname;
+    if (!p.startsWith("/admin") && !p.startsWith("/login")) { setUser(false); return; }
     api.get("/auth/me").then((r) => setUser(r.data)).catch(() => setUser(false));
   }, []);
 
