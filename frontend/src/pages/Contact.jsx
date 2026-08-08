@@ -75,7 +75,6 @@ export default function Contact() {
                 <ul className="mt-7 space-y-5 text-sm">
                   <li className="flex gap-4"><MapPin className="h-5 w-5 shrink-0 text-royal-light" /><span>{COMPANY.address1}<br />{COMPANY.address2}</span></li>
                   <li className="flex gap-4"><Phone className="h-5 w-5 shrink-0 text-royal-light" /><a href={`tel:${COMPANY.phone}`} className="hover:text-royal-light">{COMPANY.phone}</a></li>
-                  <li className="flex gap-4"><Printer className="h-5 w-5 shrink-0 text-royal-light" /><span>Fax {COMPANY.fax}</span></li>
                   <li className="flex gap-4"><Mail className="h-5 w-5 shrink-0 text-royal-light" /><a href={`mailto:${COMPANY.email}`} className="hover:text-royal-light">{COMPANY.email}</a></li>
                   <li className="flex gap-4"><Clock className="h-5 w-5 shrink-0 text-royal-light" /><span>Mon–Fri · 8:00 AM – 6:00 PM PT</span></li>
                   <li className="flex gap-4"><Linkedin className="h-5 w-5 shrink-0 text-royal-light" /><a href={COMPANY.linkedin} target="_blank" rel="noreferrer" className="hover:text-royal-light">linkedin.com/in/lotususainc</a></li>

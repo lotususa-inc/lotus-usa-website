@@ -63,7 +63,6 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-sm text-white/70">
               <li className="flex gap-3"><MapPin className="h-4 w-4 shrink-0 text-royal-light mt-0.5" /><span>{COMPANY.address1}<br />{COMPANY.address2}</span></li>
               <li className="flex gap-3"><Phone className="h-4 w-4 shrink-0 text-royal-light" /><a href={`tel:${COMPANY.phone}`} className="hover:text-white">{COMPANY.phone}</a></li>
-              <li className="flex gap-3"><Printer className="h-4 w-4 shrink-0 text-royal-light" /><span>Fax {COMPANY.fax}</span></li>
               <li className="flex gap-3"><Mail className="h-4 w-4 shrink-0 text-royal-light" /><a href={`mailto:${COMPANY.email}`} className="hover:text-white">{COMPANY.email}</a></li>
             </ul>
             <form onSubmit={subscribe} className="mt-6" data-testid="footer-newsletter-form">

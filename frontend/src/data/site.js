@@ -18,7 +18,6 @@ export const COMPANY = {
   address1: "355 S Grand Ave, Suite 2450",
   address2: "Los Angeles, CA 90071",
   phone: "707-765-3969",
-  fax: "213-371-3059",
   email: "info@lotususainc.com",
   website: "https://www.lotususainc.com",
   linkedin: "https://www.linkedin.com/in/lotususainc/",
