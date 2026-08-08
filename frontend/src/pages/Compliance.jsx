@@ -26,7 +26,7 @@ const LIFECYCLE = [
 ];
 
 export default function Compliance() {
-  useSEO({ title: "Compliance as a Service (CMMC)", description: "CMMC Level 2, NIST SP 800-171, DFARS, and Microsoft GCC High compliance delivered as a managed program by Lotus USA Inc.", image: IMG.cmmcShield, path: "/services/compliance-as-a-service" });
+  useSEO({ title: "CMMC as a Service", description: "CMMC Level 1 & 2, NIST SP 800-171, Microsoft GCC High, policies, assessments, and training — delivered as a managed service by Lotus USA, Inc.", image: IMG.cmmcShield, path: "/services/cmmc-as-a-service" });
   return (
     <>
       {/* Hero */}
@@ -37,7 +37,7 @@ export default function Compliance() {
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-royal/40 bg-royal/10 px-4 py-2">
               <span className="h-2 w-2 rounded-full bg-royal-light animate-pulse" />
-              <span className="font-mono text-xs uppercase tracking-widest text-royal-light">Flagship Program</span>
+              <span className="font-mono text-xs uppercase tracking-widest text-royal-light">One of Our Six Service Areas</span>
             </div>
           </Reveal>
           <Reveal delay={0.06}><h1 className="mt-7 max-w-4xl font-display text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl lg:text-7xl">Compliance as a <span className="text-gradient">Service</span></h1></Reveal>

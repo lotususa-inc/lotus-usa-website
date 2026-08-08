@@ -29,7 +29,7 @@ export default function Login() {
       <div className="absolute -left-20 top-20 h-96 w-96 rounded-full bg-royal/25 blur-[130px]" />
       <div className="relative w-full max-w-md">
         <div className="glass-dark rounded-3xl p-8 lg:p-10" data-testid="login-card">
-          <img src="/assets/lotus-logo-white.png" alt="Lotus USA Inc." className="h-8" />
+          <div className="inline-flex rounded-xl bg-white px-4 py-3"><img src="/assets/lotus-logo.png" alt="Lotus USA, Inc." className="h-9" /></div>
           <div className="mt-8 flex items-center gap-3 text-white"><span className="flex h-10 w-10 items-center justify-center rounded-lg bg-royal"><Lock className="h-5 w-5" /></span><div><h1 className="font-display text-xl font-bold">Admin Portal</h1><p className="text-xs text-white/50">Secure access for authorized personnel</p></div></div>
           <form onSubmit={submit} className="mt-8 space-y-4" data-testid="login-form">
             <div><label className="overline text-white/50">Email</label><input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-royal-light" data-testid="login-email" /></div>

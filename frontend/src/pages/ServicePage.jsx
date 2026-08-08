@@ -10,7 +10,7 @@ import NotFound from "@/pages/NotFound";
 
 export default function ServicePage() {
   const { slug } = useParams();
-  if (slug === "compliance-as-a-service") return <Compliance />;
+  if (slug === "cmmc-as-a-service") return <Compliance />;
   const s = SERVICE_PAGES[slug];
   if (!s) return <NotFound />;
   return <GenericService s={s} slug={slug} />;

@@ -20,6 +20,10 @@ module.exports = {
           DEFAULT: '#0F62FE',
           light: '#4589FF',
         },
+        gold: {
+          DEFAULT: '#C4A24C',
+          light: '#E3C878',
+        },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

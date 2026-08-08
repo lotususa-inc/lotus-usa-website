@@ -25,7 +25,7 @@ function FloatingWidgets() {
             <p className="mt-1 text-sm text-white/70">Reach our team directly or request a consultation.</p>
             <a href={`tel:${COMPANY.phone}`} className="mt-4 flex items-center gap-3 rounded-lg bg-white/5 px-3 py-2.5 text-sm hover:bg-white/10 transition-colors"><Phone className="h-4 w-4 text-royal-light" />{COMPANY.phone}</a>
             <a href={`mailto:${COMPANY.email}`} className="mt-2 flex items-center gap-3 rounded-lg bg-white/5 px-3 py-2.5 text-sm hover:bg-white/10 transition-colors"><Mail className="h-4 w-4 text-royal-light" />{COMPANY.email}</a>
-            <PrimaryButton to="/contact" className="mt-4 w-full py-2.5">Request Consultation</PrimaryButton>
+            <PrimaryButton to="/contact" className="mt-4 w-full py-2.5">Request a Quote</PrimaryButton>
           </motion.div>
         )}
       </AnimatePresence>

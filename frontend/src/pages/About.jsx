@@ -20,8 +20,8 @@ export default function About() {
         <div className="absolute -right-20 top-10 h-96 w-96 rounded-full bg-royal/25 blur-[130px]" />
         <div className="relative mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
           <Reveal><Overline light>About Lotus USA Inc.</Overline></Reveal>
-          <Reveal delay={0.06}><h1 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.03] tracking-tight sm:text-5xl lg:text-6xl">A diverse small business built for secure, compliant delivery</h1></Reveal>
-          <Reveal delay={0.12}><p className="mt-6 max-w-2xl text-lg text-white/70">Lotus USA Inc. partners with government and commercial organizations to accelerate digital transformation, strengthen cybersecurity, modernize the cloud, and achieve CMMC compliance — with the agility of a small business and the discipline of an enterprise.</p></Reveal>
+          <Reveal delay={0.06}><h1 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.03] tracking-tight sm:text-5xl lg:text-6xl">A diversified Government & Enterprise Solutions partner since 2014</h1></Reveal>
+          <Reveal delay={0.12}><p className="mt-6 max-w-2xl text-lg text-white/70">Lotus USA, Inc. helps Federal, State, Local Government, and commercial organizations with procurement, enterprise technology, professional services, staffing, CMMC compliance, and digital solutions — with the agility of a small business and the discipline of an enterprise.</p></Reveal>
           <Reveal delay={0.18}>
             <a href={CAP_STATEMENT_URL} download className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-navy transition-colors duration-300 hover:bg-royal hover:text-white" data-testid="download-capability-about">
               <Icon name="Download" className="h-4 w-4" /> Download Capability Statement
@@ -33,8 +33,8 @@ export default function About() {
       {/* Mission / Vision */}
       <section className="bg-white py-24 lg:py-32">
         <div className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-2 lg:px-8">
-          {[["Our Mission", "To help government and commercial organizations operate securely and compliantly while accelerating their most important digital and workforce initiatives."],
-            ["Our Vision", "To be the trusted small-business partner agencies and enterprises turn to for secure modernization, specialized talent, and defense-grade compliance."]].map(([t, d], i) => (
+          {[["Our Mission", "To help government and commercial organizations succeed by delivering trusted procurement, enterprise technology, professional services, staffing, and digital solutions with integrity and excellence."],
+            ["Our Vision", "To be the diversified small-business partner that Federal, State, Local Government, and enterprise clients rely on for dependable, end-to-end solutions."]].map(([t, d], i) => (
             <Reveal key={t} delay={i * 0.08}>
               <div className="h-full rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-10">
                 <Overline>{t}</Overline>
@@ -42,6 +42,21 @@ export default function About() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* Company History */}
+      <section className="bg-white py-24 lg:py-32">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2 lg:px-8">
+          <Reveal><div className="overflow-hidden rounded-3xl border border-slate-200 shadow-hover"><img src={IMG.handshake} alt="Lotus USA partnership" className="h-full w-full object-cover" loading="lazy" /></div></Reveal>
+          <div>
+            <SectionHeading overline="Company History" title="Built on trust since September 2014" sub="Founded in 2014, Lotus USA, Inc. has grown into a diversified Government & Enterprise Solutions company with 2,300+ government contracts executed. From procurement and systems integration to staffing and digital solutions, we have earned the trust of agencies and enterprises through dependable, mission-focused delivery nationwide." />
+            <Reveal delay={0.15}><div className="mt-8 grid grid-cols-3 gap-4">
+              {[["2014", "Founded"], ["2,300+", "Contracts"], ["Nationwide", "Operations"]].map(([b, l]) => (
+                <div key={l} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center"><div className="font-display text-xl font-extrabold text-navy">{b}</div><div className="mt-1 text-xs text-slate-500">{l}</div></div>
+              ))}
+            </div></Reveal>
+          </div>
         </div>
       </section>
 
@@ -79,6 +94,15 @@ export default function About() {
           <Reveal delay={0.06}><h2 className="mt-5 font-display text-3xl font-extrabold text-navy lg:text-4xl">Leadership information coming soon</h2></Reveal>
           <Reveal delay={0.1}><p className="mt-5 text-slate-600">We're preparing detailed profiles of the leaders driving Lotus USA Inc. In the meantime, our team is ready to discuss how our capabilities and certifications can support your mission.</p></Reveal>
           <Reveal delay={0.14}><div className="mt-8 flex justify-center"><PrimaryButton to="/contact">Connect with our team</PrimaryButton></div></Reveal>
+        </div>
+      </section>
+
+      {/* Community Involvement */}
+      <section className="bg-slate-50 py-24 lg:py-32">
+        <div className="mx-auto max-w-3xl px-5 text-center lg:px-8">
+          <Reveal><Overline className="justify-center">Community Involvement</Overline></Reveal>
+          <Reveal delay={0.06}><h2 className="mt-5 font-display text-3xl font-extrabold text-navy lg:text-4xl">Committed to the communities we serve</h2></Reveal>
+          <Reveal delay={0.1}><p className="mt-5 text-slate-600">As a HUBZone and diverse small business, Lotus USA is invested in the communities and public institutions we support. Details of our community programs and partnerships will be shared here as they are finalized.</p></Reveal>
         </div>
       </section>
 

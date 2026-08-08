@@ -10,6 +10,7 @@ import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Insights from "@/pages/Insights";
 import BlogPost from "@/pages/BlogPost";
+import Contracts from "@/pages/Contracts";
 import Login from "@/pages/Login";
 import Admin from "@/pages/Admin";
 import NotFound from "@/pages/NotFound";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<Site><Home /></Site>} />
             <Route path="/services/:slug" element={<Site><ServicePage /></Site>} />
             <Route path="/industries" element={<Site><Industries /></Site>} />
+            <Route path="/contracts" element={<Site><Contracts /></Site>} />
             <Route path="/about" element={<Site><About /></Site>} />
             <Route path="/contact" element={<Site><Contact /></Site>} />
             <Route path="/insights" element={<Site><Insights /></Site>} />

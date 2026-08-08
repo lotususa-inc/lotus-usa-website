@@ -27,12 +27,14 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-12 py-16 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-4">
-            <img src="/assets/lotus-logo-white.png" alt="Lotus USA Inc." className="h-8 w-auto" />
+            <div className="inline-flex rounded-xl bg-white px-4 py-3">
+              <img src="/assets/lotus-logo.png" alt="Lotus USA, Inc." className="h-9 w-auto" />
+            </div>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/60">
-              A diverse small business delivering secure, compliant technology, staffing, and CMMC compliance to government and commercial organizations.
+              A diversified Government & Enterprise Solutions company delivering procurement, enterprise technology, professional services, staffing, CMMC compliance, and digital solutions since 2014.
             </p>
-            <div className="mt-6 flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-xs font-mono uppercase tracking-widest text-royal-light w-fit">
-              <span className="h-2 w-2 rounded-full bg-royal-light animate-pulse" /> {COMPANY.tagline}
+            <div className="mt-6 flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-xs font-mono uppercase tracking-widest text-gold-light w-fit">
+              <span className="h-2 w-2 rounded-full bg-gold-light animate-pulse" /> Trusted Since 2014
             </div>
           </div>
 
@@ -50,7 +52,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <h4 className="overline text-white/40">Company</h4>
             <ul className="mt-5 space-y-3">
-              {[["Industries", "/industries"], ["About Us", "/about"], ["Insights", "/insights"], ["Contact", "/contact"], ["Admin", "/admin"]].map(([l, p]) => (
+              {[["Contracts & Past Performance", "/contracts"], ["Industries", "/industries"], ["About Us", "/about"], ["Insights", "/insights"], ["Contact", "/contact"], ["Admin", "/admin"]].map(([l, p]) => (
                 <li key={p}><Link to={p} className="text-sm text-white/70 transition-colors hover:text-white">{l}</Link></li>
               ))}
             </ul>
@@ -78,7 +80,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-7 sm:flex-row">
-          <p className="text-xs text-white/50">© 2026 Lotus USA Inc. All Rights Reserved.</p>
+          <p className="text-xs text-white/50">© 2026 Lotus USA, Inc. All Rights Reserved.</p>
           <a href={COMPANY.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-white/60 hover:text-white" data-testid="footer-linkedin">
             <Linkedin className="h-4 w-4" /> LinkedIn
           </a>

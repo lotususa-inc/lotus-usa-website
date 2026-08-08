@@ -32,8 +32,8 @@ export function CTABanner({ title, sub, primary = "Request Consultation", primar
         {sub && <Reveal delay={0.1}><p className="mx-auto mt-6 max-w-2xl text-base sm:text-lg text-white/70">{sub}</p></Reveal>}
         <Reveal delay={0.15}>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
-            <PrimaryButton to={primaryTo} data-testid="cta-banner-primary">{primary}</PrimaryButton>
-            <GhostButton to="/services/compliance-as-a-service" light data-testid="cta-banner-secondary">Explore Compliance</GhostButton>
+            <PrimaryButton to="/contact" data-testid="cta-banner-primary">{primary}</PrimaryButton>
+            <GhostButton to="/contact" light data-testid="cta-banner-secondary">Contact Us</GhostButton>
           </div>
         </Reveal>
       </div>

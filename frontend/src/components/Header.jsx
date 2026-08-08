@@ -70,7 +70,7 @@ export function Header() {
             <a href={`tel:${COMPANY.phone}`} className="flex items-center gap-2 text-sm font-medium text-navy/70 hover:text-royal transition-colors" data-testid="header-phone">
               <Phone className="h-4 w-4" />{COMPANY.phone}
             </a>
-            <PrimaryButton to="/contact" className="px-5 py-2.5" data-testid="header-cta">Request Consultation</PrimaryButton>
+            <PrimaryButton to="/contact" className="px-5 py-2.5" data-testid="header-cta">Request a Quote</PrimaryButton>
           </div>
 
           <button className="lg:hidden text-navy" onClick={() => setMobile(true)} data-testid="mobile-menu-open" aria-label="Open menu">
@@ -95,11 +95,11 @@ export function Header() {
                 {NAV[1].items.map((s) => (
                   <Link key={s.to} to={s.to} className="rounded-lg px-3 py-2.5 text-navy/80 font-medium">{s.label}</Link>
                 ))}
-                {["/industries", "/about", "/insights", "/contact"].map((p, i) => (
-                  <Link key={p} to={p} className="rounded-lg px-3 py-3 text-lg font-semibold text-navy">{["Industries", "About", "Insights", "Contact"][i]}</Link>
+                {[["Contracts", "/contracts"], ["Industries", "/industries"], ["About", "/about"], ["Contact", "/contact"]].map(([label, p]) => (
+                  <Link key={p} to={p} className="rounded-lg px-3 py-3 text-lg font-semibold text-navy">{label}</Link>
                 ))}
               </nav>
-              <PrimaryButton to="/contact" className="mt-6 w-full">Request Consultation</PrimaryButton>
+              <PrimaryButton to="/contact" className="mt-6 w-full">Request a Quote</PrimaryButton>
             </motion.div>
           </motion.div>
         )}

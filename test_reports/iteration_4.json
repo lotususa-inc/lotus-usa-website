@@ -1,0 +1,31 @@
+{
+  "summary": "Iteration 4 validates the client-directed revamp of Lotus USA, Inc. — repositioning from CMMC-dominant to a diversified Government & Enterprise Solutions Partner Since 2014. Backend: 16/16 pytest tests pass (root/health, auth login+me+invalid, contacts CRUD + persistence + Emergent email proxy 202 in supervisor logs, newsletter create + dedupe + admin list, blog list/create/update/delete + auth guard, capability GET defaults with 19 NAICS + 6 registration + >=25 agencies + pdf path, /api/capability/upload requires auth, admin upload extracts 19 NAICS and correct UEI/CAGE/DUNS/Tax ID, non-PDF returns 400). PDF asset served with HTTP 200 application/pdf (936KB) from public URL. Frontend (Playwright, domcontentloaded): Homepage shows correct hero headline 'Your Trusted Government & Enterprise Solutions Partner Since 2014', six-pillar eyebrow, hero-quote -> /contact and hero-capability -> /assets/Lotus-USA-Capability-Statement.pdf; Stats row shows all 5 (Est.2014, 2,300+, Fed·State·Local, Enterprise, Nationwide); Certifications section renders exactly 16 badges including HUBZone, WOSB, EDWOSB, GSA MAS, VA Schedule, JCP, CMMC L2; no legacy 'Secure. Compliant. Mission Ready.' tagline present. All 6 service cards render with correct data-testid=service-card-<slug> and each /services/<slug> route loads a valid H1 (cmmc-as-a-service correctly loads the Compliance.jsx page with 'Compliance as a Service' title — no 'Flagship' label). Nav shows Home/Services/Contracts/Industries/About/Contact + header Request a Quote. Header logo /assets/lotus-logo.png present; no chatgpt logo string in page content. /contracts renders Federal Registration (UEI JBKGG25MLPM9) and a download-capability button pointing at the PDF. Contact form (data-testid contact-name/email/message/submit) submits successfully; NAICS search on About filters to exactly 1 result for '541512'. Footer newsletter subscribe posts successfully. Admin login via data-testid login-email/password/submit reaches /admin; all 4 tabs (Leads/Subscribers/Blog/Capability) clickable; Capability tab shows NAICS chips (19) and Federal Registration card with UEI JBKGG25MLPM9, CAGE 771V6, DUNS 079599348, Federal Tax ID 47-1943686. TEST_ leads created during the run were deleted via API (2 removed).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/backend_test.py",
+    "/app/backend/tests/test_capability.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "site.js is the single source of truth for content (HERO/STATS/SERVICES/CERTIFICATIONS/NAV) — good separation from JSX; consider TS/typedef for the shape as it grows.",
+    "servicesData.js: cmmc-as-a-service slug intentionally routes to Compliance.jsx via ServicePage.jsx — verified visually. Keep an eye on divergence between the generic SERVICE_PAGES entries and the Compliance page.",
+    "Home.jsx hero uses per-word motion.span animations; text_content() collapses spaces in automated readouts but visually correct — not a bug.",
+    "Header logo path /assets/lotus-logo.png is used consistently in Header/Footer/Login/Admin (verified in DOM/screenshots).",
+    "server.py Emergent email proxy call verified via supervisor log grep (202 Accepted). Production must retain the Emergent-managed key.",
+    "Capability PDF is served from CRA public/assets (dev server). For production, ensure CDN/static layer serves /assets/*.pdf with application/pdf and no-cache appropriately."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "admin@lotususainc.com / LotusAdmin2026! (from /app/memory/test_credentials.md)",
+  "seed_data_creation": "Created TEST_PW Lead + TEST_EmailProbe contacts and a TEST newsletter subscriber during the run. Contacts cleaned up via API DELETE at end (2 removed). Newsletter subscriber left as-is (idempotent, prefixed test_news_pw_/test_news_).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All data-testids in use: hero-quote, hero-capability, stats, certifications, service-card-<slug> (6 slugs), partnerships, past-performance-cta, download-capability-home/about/contact, contact-form/name/email/phone/company/service/message/submit, contact-registration, contact-map, footer-newsletter-form, newsletter-email, newsletter-submit, login-card/form/email/password/submit, admin-tab-leads/subscribers/blog/capability, capability-upload-input, naics-search-input, naics-results, naics-empty. For headline assertions do NOT use text_content strict equality — per-word motion spans strip inter-word spaces; assert via inner_html or per-word inclusion instead. Login uses labels not placeholders — target data-testid=login-email / login-password directly.",
+  "rca of the issue": "N/A — no product bugs found. Only harness note: initial Playwright pass used get_by_placeholder for Contact/Login inputs which use <label> text instead of placeholder text; switched to data-testid selectors and all flows passed."
+}
