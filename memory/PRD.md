@@ -45,6 +45,13 @@ Build a world-class, enterprise-grade premium corporate website for Lotus USA In
 - Newsletter subscriptions now also email info@lotususainc.com (Resend proxy, verified 202); contact form already did.
 - Cleaned all test data (0 leads / 0 subscribers at launch). testing_agent iteration_2: backend 100%, frontend 100%. Services healthy, deployment config unchanged (prior deployment_agent = PASS).
 
+## Client-Directed Revamp (2026-06)
+- Repositioned from CMMC/cyber to diversified "Government & Enterprise Solutions Partner Since 2014". Official client logo (teal lotus) now used site-wide (Header/Footer/Login/Admin/favicon); removed the previously generated logo.
+- New light, non-cyber hero (headline + six-pillar eyebrow + Request a Quote / Download Capability Statement). 5 credibility stats. Prominent 16-cert wall (CMMC = one badge). Blue/white palette + subtle gold accents.
+- SIX services: Government Procurement, Enterprise Solutions, Professional Services, Staffing, CMMC as a Service, Digital Solutions (slugs updated; ServicePage routes cmmc-as-a-service -> Compliance page, de-flagshipped).
+- New nav (Home, Services mega, Contracts, Industries, About, Contact). New /contracts (Contracts & Past Performance) page. Industries expanded to 12; About adds Company History + Community Involvement.
+- Preserved ALL backend/admin: contact+newsletter (email 202 to info@), capability upload/parse, blog CRUD, JWT auth. testing_agent iteration_4: backend 16/16, frontend 100%, zero issues. Clean launch data.
+
 ## Admin Credentials
 See `/app/memory/test_credentials.md` (admin@lotususainc.com).
 
