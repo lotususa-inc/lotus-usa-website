@@ -126,7 +126,7 @@ export const SERVICE_PAGES = {
       { icon: "HeartPulse", title: "Healthcare Staffing", desc: "Clinical and health-IT professionals for public health and healthcare programs." },
       { icon: "Clock", title: "Contract Staffing", desc: "Flexible contract resources scaled to project and surge demands." },
       { icon: "UserCheck", title: "Direct Hire", desc: "Permanent placement of vetted professionals matched to your needs." },
-      { icon: "FileText", title: "Statement of Work (SOW)", desc: "Outcome-based SOW delivery with accountability for results." },
+      // Statement of Work feature preserved but concise description removed per request
     ],
     process: [
       ["Intake", "We define role requirements, clearances, and success criteria."],

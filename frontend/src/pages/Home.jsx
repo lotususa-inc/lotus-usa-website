@@ -131,12 +131,22 @@ export default function Home() {
       <section className="bg-slate-50 py-24 lg:py-32" data-testid="certifications">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading center overline="Certifications & Designations" title="A trusted, diverse government contractor" sub="Lotus USA holds the certifications and schedules agencies rely on to award with confidence and meet socioeconomic goals." />
-          <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
-            {CERTIFICATIONS.map((c, i) => (
-              <Reveal key={c.code} delay={(i % 8) * 0.04}>
-                <div className="group flex h-full flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-5 text-center transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-soft">
-                  <span className="font-display text-sm font-extrabold text-navy">{c.code}</span>
-                  <span className="mt-2 text-[11px] leading-tight text-slate-500">{c.name}</span>
+          <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {CERTIFICATIONS.map((cert, i) => (
+              <Reveal key={cert.title} delay={(i % 4) * 0.04}>
+                <div className="group h-full overflow-hidden rounded-3xl border border-slate-200 bg-white transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-soft">
+                  <div className="flex h-28 items-center justify-center border-b border-slate-200 bg-slate-50 p-5">
+                    <img
+                      src={cert.logo}
+                      alt={cert.title}
+                      className="h-16 w-full object-contain"
+                      onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/assets/logos/placeholder.svg"; }}
+                    />
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3 className="text-sm uppercase tracking-[0.18em] text-slate-500">{cert.title}</h3>
+                    <p className="mt-3 text-base font-display font-semibold text-navy">{cert.description}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}

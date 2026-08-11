@@ -26,7 +26,7 @@ export const COMPANY = {
 export const HERO = {
   eyebrow: "Government Procurement • Enterprise Solutions • Professional Services • IT & Healthcare Staffing • CMMC as a Service • Website Development & Digital Transformation",
   headline: "Your Trusted Government & Enterprise Solutions Partner Since 2014",
-  sub: "Lotus USA, Inc. delivers procurement, professional services, IT & healthcare staffing, CMMC compliance, website redesign, custom application development, enterprise technology, and systems integration for Federal, State, Local Government, and Commercial organizations.",
+  sub: "Lotus USA, Inc. delivers procurement, professional services, IT & healthcare staffing, CMMC compliance, website redesign, custom application development, enterprise technology, and systems integration for Federal, State, and Commercial organizations.",
 };
 
 export const STATS = [
@@ -63,29 +63,26 @@ export const CAPABILITIES = [
 ];
 
 export const CERTIFICATIONS = [
-  { code: "HUBZone", name: "HUBZone Certified" },
-  { code: "WOSB", name: "Women-Owned Small Business" },
-  { code: "EDWOSB", name: "Economically Disadvantaged WOSB" },
-  { code: "Small Business", name: "Small Business Concern" },
-  { code: "GSA MAS", name: "GSA Multiple Award Schedule" },
-  { code: "VA Schedule", name: "VA Federal Supply Schedule" },
-  { code: "CMAS", name: "CA Multiple Award Schedule" },
-  { code: "California SB", name: "California Small Business" },
-  { code: "DBE", name: "Disadvantaged Business Enterprise" },
-  { code: "LSBE", name: "Local Small Business Enterprise" },
-  { code: "LBE", name: "Local Business Enterprise" },
-  { code: "MBE", name: "Minority Business Enterprise" },
-  { code: "WBE", name: "Women's Business Enterprise" },
-  { code: "SAM", name: "SAM Registered" },
-  { code: "JCP", name: "Joint Certification Program" },
-  { code: "CMMC L2", name: "CMMC Level 2 Ready" },
+  { title: "HUBZone", description: "HUBZone Certified", logo: "/assets/logos/hubzone.svg" },
+  { title: "WOSB", description: "Women-Owned Small Business", logo: "/assets/logos/wosb.svg" },
+  { title: "EDWOSB", description: "Economically Disadvantaged WOSB", logo: "/assets/logos/edwosb.svg" },
+  { title: "Small Business", description: "Small Business Concern", logo: "/assets/logos/small-business.svg" },
+  { title: "GSA MAS", description: "GSA Multiple Award Schedule", logo: "/assets/logos/gsa-mas.svg" },
+  { title: "CMAS", description: "CA Multiple Award Schedule", logo: "/assets/logos/cmas.svg" },
+  { title: "California SB", description: "California Small Business", logo: "/assets/logos/california-sb.svg" },
+  { title: "DBE", description: "Disadvantaged Business Enterprise", logo: "/assets/logos/dbe.svg" },
+  { title: "LSBE", description: "Local Small Business Enterprise", logo: "/assets/logos/lsbe.svg" },
+  { title: "LBE", description: "Local Business Enterprise", logo: "/assets/logos/lbe.svg" },
+  { title: "MBE", description: "Minority Business Enterprise", logo: "/assets/logos/mbe.svg" },
+  { title: "WBE", description: "Women's Business Enterprise", logo: "/assets/logos/wbe.svg" },
+  { title: "SAM", description: "SAM Registered", logo: "/assets/logos/sam.svg" },
+  { title: "JCP", description: "Joint Certification Program", logo: "/assets/logos/jcp.svg" },
+  { title: "CMMC L2", description: "CMMC Level 2 Ready", logo: "/assets/logos/cmmc-l2.svg" },
 ];
 
 export const INDUSTRIES = [
   { icon: "Landmark", name: "Federal Government", desc: "Procurement, enterprise IT, and professional services for federal agencies." },
   { icon: "Building2", name: "State Government", desc: "Modernization, staffing, and systems integration for statewide programs." },
-  { icon: "MapPin", name: "Local Government", desc: "Technology and procurement support for cities, counties, and districts." },
-  { icon: "Shield", name: "Defense", desc: "Defense procurement, integration, and mission support capabilities." },
   { icon: "HeartPulse", name: "Healthcare", desc: "Healthcare staffing, medical equipment, and secure health-IT solutions." },
   { icon: "Truck", name: "Transportation", desc: "Resilient infrastructure and technology for mobility and transit networks." },
   { icon: "Zap", name: "Utilities", desc: "Modernization and integration for critical utility operations." },
@@ -187,6 +184,7 @@ export const PAST_PERFORMANCE = [
 
 export const NAV = [
   { label: "Home", to: "/" },
+  { label: "Procurement", to: "/services/government-procurement" },
   {
     label: "Services", mega: true,
     items: SERVICES.map((s) => ({ label: s.title, to: `/services/${s.slug}`, desc: s.short, icon: s.icon })),

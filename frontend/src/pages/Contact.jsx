@@ -40,7 +40,7 @@ export default function Contact() {
         <div className="absolute -left-20 top-10 h-96 w-96 rounded-full bg-royal/25 blur-[130px]" />
         <div className="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
           <Reveal><Overline light>Get in touch</Overline></Reveal>
-          <Reveal delay={0.06}><h1 className="mt-6 max-w-3xl font-display text-4xl font-extrabold leading-[1.03] tracking-tight sm:text-5xl lg:text-6xl">Let's talk about your mission</h1></Reveal>
+          <Reveal delay={0.06}><h1 className="mt-6 max-w-3xl font-display text-4xl font-extrabold leading-[1.03] tracking-tight sm:text-5xl lg:text-6xl">Thank you for visiting us. Still have questions? Please fill the contact form or call us on 213-298-7100 or email us on info@lotususainc.com</h1></Reveal>
           <Reveal delay={0.12}><p className="mt-6 max-w-2xl text-lg text-white/70">Request a consultation and our team will respond within one business day.</p></Reveal>
         </div>
       </section>

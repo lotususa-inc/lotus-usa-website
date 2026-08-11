@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" role="img" aria-labelledby="title" preserveAspectRatio="xMidYMid meet">
+  <title>Placeholder logo</title>
+  <rect width="300" height="120" rx="16" ry="16" fill="#f3f4f6" stroke="#cbd5e1" stroke-width="4" />
+  <path d="M80 55h140" stroke="#94a3b8" stroke-width="8" stroke-linecap="round" />
+  <path d="M80 75h140" stroke="#94a3b8" stroke-width="8" stroke-linecap="round" />
+</svg>

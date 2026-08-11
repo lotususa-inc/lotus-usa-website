@@ -92,7 +92,7 @@ export function Header() {
               <nav className="mt-8 flex flex-col gap-1">
                 <Link to="/" className="rounded-lg px-3 py-3 text-lg font-semibold text-navy">Home</Link>
                 <div className="mt-2 px-3 overline text-slate-400">Services</div>
-                {NAV[1].items.map((s) => (
+                {NAV.find((item) => item.mega)?.items?.map((s) => (
                   <Link key={s.to} to={s.to} className="rounded-lg px-3 py-2.5 text-navy/80 font-medium">{s.label}</Link>
                 ))}
                 {[["Contracts", "/contracts"], ["Industries", "/industries"], ["About", "/about"], ["Contact", "/contact"]].map(([label, p]) => (

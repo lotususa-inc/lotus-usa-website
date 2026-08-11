@@ -1,27 +1,10 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "sonner";
-import { Phone, Mail, MapPin, Linkedin, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin } from "lucide-react";
 import { COMPANY, IMG, SERVICES } from "@/data/site";
 import { useConsent } from "@/context/ConsentContext";
-import { api, formatApiError } from "@/lib/api";
 
 export function Footer() {
-  const [email, setEmail] = useState("");
-  const [busy, setBusy] = useState(false);
   const { openPreferences } = useConsent();
-  const subscribe = async (e) => {
-    e.preventDefault();
-    if (!email) return;
-    setBusy(true);
-    try {
-      await api.post("/newsletter", { email });
-      toast.success("You're subscribed. Watch for Lotus USA insights.");
-      setEmail("");
-    } catch (err) {
-      toast.error(formatApiError(err.response?.data?.detail));
-    } finally { setBusy(false); }
-  };
 
   return (
     <footer className="relative overflow-hidden bg-navy text-white grain" data-testid="site-footer">
@@ -67,16 +50,7 @@ export function Footer() {
               <li className="flex gap-3"><Phone className="h-4 w-4 shrink-0 text-royal-light" /><a href={`tel:${COMPANY.phone}`} className="hover:text-white">{COMPANY.phone}</a></li>
               <li className="flex gap-3"><Mail className="h-4 w-4 shrink-0 text-royal-light" /><a href={`mailto:${COMPANY.email}`} className="hover:text-white">{COMPANY.email}</a></li>
             </ul>
-            <form onSubmit={subscribe} className="mt-6" data-testid="footer-newsletter-form">
-              <label className="overline text-white/40">Newsletter</label>
-              <div className="mt-3 flex gap-2">
-                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@agency.gov"
-                  className="w-full rounded-full border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-royal-light" data-testid="newsletter-email" />
-                <button disabled={busy} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-royal transition-colors hover:bg-royal-light disabled:opacity-60" data-testid="newsletter-submit" aria-label="Subscribe">
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-            </form>
+            {/* Newsletter removed per design direction */}
           </div>
         </div>
 
