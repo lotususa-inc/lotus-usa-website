@@ -58,4 +58,17 @@ See `/app/memory/test_credentials.md` (admin@lotususainc.com).
 ## Backlog / Remaining (P1/P2)
 - P1: Real testimonials & client logos (left as optional per client instruction — populate from real references).
 - P1: Real leadership bios (currently "coming soon" per client instruction).
-- P2: Email notifications on new leads (Resend), reCAPTCHA on forms, blog categories/pagination, staffing job-board.
+- P1: Spam/bot protection on public forms — no CAPTCHA/honeypot/rate-limiting yet (server-side Pydantic validation only). Recommend reCAPTCHA v3 or honeypot + rate limit.
+- P2: Email notifications on new leads (Resend) [DONE], blog categories/pagination, staffing job-board.
+
+## V3 Final QA + Correction Pass (2026-07)
+- Phone number updated site-wide to **213-298-7100** (header, footer, contact, floating widget, schema.org, input placeholder). Old 707 number fully removed. Fax remains absent.
+- **Cookie Consent (real enforcement)**: new `ConsentContext` + `CookieConsent` banner/modal. Categories detected & implemented: Strictly Necessary (always on), Analytics/Performance (PostHog), Functional (Google Maps embed). No advertising/marketing tech exists → category omitted. PostHog init changed to `opt_out_capturing_by_default`, `opt_out_persistence_by_default`, `disable_session_recording`; ConsentContext opts in only on Analytics consent. Verified via clean-session Playwright: before consent optedIn=false/0 cookies; Reject keeps blocked & persists; Accept All → optedIn=true/1 cookie. Google Maps only loads with Functional consent (placeholder otherwise). Footer "Cookie Preferences" reopens modal.
+- **Legal pages**: `/privacy-policy` + `/cookie-policy` created; linked from banner, footer, and forms. Legacy `/cookies-policy` → `/cookie-policy`.
+- **Contact form**: privacy notice added below submit with working Privacy Policy link. Area of Interest dropdown retained (6 services + Other). Backend delivery verified (POST /api/contacts → ok:true, Resend email).
+- **Staffing split**: dedicated IT/Technical vs Healthcare sections with full V3 role categories on `/services/staffing`.
+- **Admin exposure removed**: footer Admin link deleted; no public admin links in header/nav/footer. `/admin` + `/login` still functional and disallowed in robots.txt.
+- **Legacy URL redirects** (App.js): /services→/, /procurement & /services/government-contracting→/services/government-procurement, /services/staffing-solutions→/services/staffing, /services/compliance-as-a-service & /cmmc-compliance→/services/cmmc-as-a-service, /shop-all→/, /cmas→/contracts, /cookies-policy→/cookie-policy; trailing-slash normalizer for legacy WP URLs.
+- **SEO**: sitemap.xml corrected to current slugs + new legal pages; 404 page now emits `noindex,nofollow`; canonical + robots meta per page via useSEO.
+- Platform limitations (not app-controllable): true HTTP 404 status (SPA serves 200 + client 404), security response headers (CSP/HSTS), separate staging environment, hosting/DNS/backups — all managed by Emergent platform/deployment layer.
+

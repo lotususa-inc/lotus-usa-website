@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
-import { Phone, Printer, Mail, MapPin, Linkedin, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin, ArrowRight } from "lucide-react";
 import { COMPANY, IMG, SERVICES } from "@/data/site";
+import { useConsent } from "@/context/ConsentContext";
 import { api, formatApiError } from "@/lib/api";
 
 export function Footer() {
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
+  const { openPreferences } = useConsent();
   const subscribe = async (e) => {
     e.preventDefault();
     if (!email) return;
@@ -52,7 +54,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <h4 className="overline text-white/40">Company</h4>
             <ul className="mt-5 space-y-3">
-              {[["Contracts & Past Performance", "/contracts"], ["Industries", "/industries"], ["About Us", "/about"], ["Insights", "/insights"], ["Contact", "/contact"], ["Admin", "/admin"]].map(([l, p]) => (
+              {[["Contracts & Past Performance", "/contracts"], ["Industries", "/industries"], ["About Us", "/about"], ["Insights", "/insights"], ["Contact", "/contact"]].map(([l, p]) => (
                 <li key={p}><Link to={p} className="text-sm text-white/70 transition-colors hover:text-white">{l}</Link></li>
               ))}
             </ul>
@@ -80,9 +82,14 @@ export function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-7 sm:flex-row">
           <p className="text-xs text-white/50">© 2026 Lotus USA, Inc. All Rights Reserved.</p>
-          <a href={COMPANY.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-white/60 hover:text-white" data-testid="footer-linkedin">
-            <Linkedin className="h-4 w-4" /> LinkedIn
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <Link to="/privacy-policy" className="text-xs text-white/60 hover:text-white transition-colors" data-testid="footer-privacy">Privacy Policy</Link>
+            <Link to="/cookie-policy" className="text-xs text-white/60 hover:text-white transition-colors" data-testid="footer-cookie-policy">Cookie Policy</Link>
+            <button type="button" onClick={openPreferences} className="text-xs text-white/60 hover:text-white transition-colors" data-testid="footer-cookie-preferences">Cookie Preferences</button>
+            <a href={COMPANY.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-white/60 hover:text-white" data-testid="footer-linkedin">
+              <Linkedin className="h-4 w-4" /> LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </footer>

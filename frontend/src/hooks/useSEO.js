@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export function useSEO({ title, description, image, path }) {
+export function useSEO({ title, description, image, path, noindex = false }) {
   useEffect(() => {
     const full = title ? `${title} | Lotus USA Inc.` : "Lotus USA Inc. | Secure. Compliant. Mission Ready.";
     document.title = full;
@@ -11,6 +11,7 @@ export function useSEO({ title, description, image, path }) {
     };
     const url = `https://www.lotususainc.com${path || ""}`;
     if (description) set("name", "description", description);
+    set("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
     set("property", "og:title", full);
     set("property", "og:type", "website");
     set("property", "og:url", url);
@@ -23,5 +24,5 @@ export function useSEO({ title, description, image, path }) {
     let link = document.head.querySelector('link[rel="canonical"]');
     if (!link) { link = document.createElement("link"); link.setAttribute("rel", "canonical"); document.head.appendChild(link); }
     link.setAttribute("href", url);
-  }, [title, description, image, path]);
+  }, [title, description, image, path, noindex]);
 }

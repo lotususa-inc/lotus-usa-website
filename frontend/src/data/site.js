@@ -17,7 +17,7 @@ export const COMPANY = {
   founded: "September 2014",
   address1: "355 S Grand Ave, Suite 2450",
   address2: "Los Angeles, CA 90071",
-  phone: "707-765-3969",
+  phone: "213-298-7100",
   email: "info@lotususainc.com",
   website: "https://www.lotususainc.com",
   linkedin: "https://www.linkedin.com/in/lotususainc/",
@@ -167,6 +167,23 @@ export const NAICS_CODES = [
 ];
 
 export const CAP_STATEMENT_URL = "/assets/Lotus-USA-Capability-Statement.pdf";
+
+export const AWARD_CATEGORIES = ["Government Procurement", "Professional Services / Staffing", "Enterprise Technology", "Digital Solutions"];
+
+// V3-approved representative past performance (source: V3 Developer Brief / Capability Statement)
+export const PAST_PERFORMANCE = [
+  { agency: "NIST", project: "Whole Body Contamination Monitors", value: "$705,601.32", category: "Government Procurement", desc: "Procurement and delivery of specialized contamination monitoring equipment." },
+  { agency: "Department of Defense", project: "Motorola VESTA R7 Emergency System Upgrade", value: "$669,599.00", category: "Government Procurement", desc: "Emergency communications system upgrade and integration." },
+  { agency: "Defense Logistics Agency", project: "Defense-Related Hardware", value: "$1,100,789.41", category: "Government Procurement", desc: "Sourcing and delivery of defense-related hardware." },
+  { agency: "Department of Defense", project: "Transformers / Stainless Steel", value: "$507,683.23", category: "Government Procurement", desc: "Industrial electrical and material procurement." },
+  { agency: "NASA", project: "Rockwell Collins Radios 721S", value: "$137,457.00", category: "Government Procurement", desc: "Communications equipment procurement." },
+  { agency: "Social Security Administration — Richmond", project: "Medical Consultant Services", value: "$2,224,604.00", category: "Professional Services / Staffing", desc: "Medical consultant professional services." },
+  { agency: "Social Security Administration — Denver", project: "Regional Medical Consultant", value: "$1,280,562.00", category: "Professional Services / Staffing", desc: "Regional medical consultant services." },
+  { agency: "Department of the Army", project: "CYS Bus Services — Fort McCoy", value: "$512,249.04", category: "Professional Services / Staffing", desc: "Program and support services." },
+  { agency: "California Department of Veterans Affairs", project: "Skilled Nursing Administrator", value: "$228,758.40", category: "Professional Services / Staffing", desc: "Healthcare staffing / administration." },
+  { agency: "LA Metro / LADWP / LA City / LA County", project: "Hardware / Software / Services", value: "$1,815,221.20", category: "Enterprise Technology", desc: "Enterprise technology hardware, software, and services." },
+  { agency: "Other States / Counties / Cities", project: "Hardware / Software / Services", value: "$798,219.30", category: "Enterprise Technology", desc: "Enterprise technology hardware, software, and services." },
+];
 
 export const NAV = [
   { label: "Home", to: "/" },

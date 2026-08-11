@@ -39,6 +39,34 @@ function GenericService({ s, slug }) {
         </div>
       </section>
 
+      {s.split && (
+        <section className="bg-slate-50 py-24 lg:py-32" data-testid="staffing-split">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <SectionHeading overline={s.split.overline} title={s.split.title} sub={s.split.sub} />
+            <div className="mt-14 grid gap-8 lg:grid-cols-2">
+              {s.split.groups.map((g, gi) => (
+                <Reveal key={g.name} delay={gi * 0.1}>
+                  <div className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-8 lg:p-10" data-testid={`staffing-group-${gi}`}>
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy text-white"><Icon name={g.icon} className="h-6 w-6" /></span>
+                      <h3 className="font-display text-xl font-bold text-navy">{g.name}</h3>
+                    </div>
+                    <ul className="mt-7 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+                      {g.roles.map((r) => (
+                        <li key={r} className="flex items-start gap-2 text-sm text-slate-600">
+                          <Icon name="Check" className="mt-0.5 h-4 w-4 shrink-0 text-royal" />
+                          <span>{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="bg-slate-50 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <SectionHeading overline="How we engage" title="A proven, transparent process" />

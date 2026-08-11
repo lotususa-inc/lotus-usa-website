@@ -2,7 +2,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { PrimaryButton } from "@/components/common";
 
 export default function NotFound() {
-  useSEO({ title: "Page Not Found", path: "/404" });
+  useSEO({ title: "Page Not Found", path: "/404", noindex: true });
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-navy text-white grain">
       <div className="absolute inset-0 grid-lines opacity-40" />

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, MessageSquare, X, Phone, Mail } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { CookieConsent } from "@/components/CookieConsent";
 import { COMPANY } from "@/data/site";
 import { PrimaryButton } from "@/components/common";
 
@@ -56,6 +57,7 @@ export function Layout({ children }) {
       <main>{children}</main>
       <Footer />
       <FloatingWidgets />
+      <CookieConsent />
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
-import { Phone, Printer, Mail, MapPin, Clock, Linkedin, Download } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Linkedin, Download } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { COMPANY, SERVICES } from "@/data/site";
 import { useCapability } from "@/context/CapabilityContext";
+import { useConsent } from "@/context/ConsentContext";
 import { Reveal, Overline, SectionHeading } from "@/components/common";
 import { api, formatApiError } from "@/lib/api";
 
@@ -12,6 +14,7 @@ const empty = { name: "", email: "", phone: "", company: "", service: "", messag
 export default function Contact() {
   useSEO({ title: "Contact", description: "Contact Lotus USA Inc. — request a consultation for government contracting, staffing, CMMC compliance, or digital solutions.", path: "/contact" });
   const { registration, pdf } = useCapability();
+  const { functional, openPreferences } = useConsent();
   const [form, setForm] = useState(empty);
   const [busy, setBusy] = useState(false);
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -50,7 +53,7 @@ export default function Contact() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div><label className="overline text-slate-500">Full Name *</label><input required value={form.name} onChange={set("name")} className={`mt-2 ${inputCls}`} placeholder="Jane Doe" data-testid="contact-name" /></div>
                   <div><label className="overline text-slate-500">Email *</label><input required type="email" value={form.email} onChange={set("email")} className={`mt-2 ${inputCls}`} placeholder="jane@agency.gov" data-testid="contact-email" /></div>
-                  <div><label className="overline text-slate-500">Phone</label><input value={form.phone} onChange={set("phone")} className={`mt-2 ${inputCls}`} placeholder="(707) 000-0000" data-testid="contact-phone" /></div>
+                  <div><label className="overline text-slate-500">Phone</label><input value={form.phone} onChange={set("phone")} className={`mt-2 ${inputCls}`} placeholder="(213) 000-0000" data-testid="contact-phone" /></div>
                   <div><label className="overline text-slate-500">Organization</label><input value={form.company} onChange={set("company")} className={`mt-2 ${inputCls}`} placeholder="Your organization" data-testid="contact-company" /></div>
                 </div>
                 <div className="mt-5"><label className="overline text-slate-500">Area of Interest</label>
@@ -64,6 +67,10 @@ export default function Contact() {
                 <button disabled={busy} className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-royal px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-navy disabled:opacity-60 sm:w-auto" data-testid="contact-submit">
                   {busy ? "Sending…" : "Request Consultation"}
                 </button>
+                <p className="mt-4 text-xs leading-relaxed text-slate-500" data-testid="contact-privacy-notice">
+                  By submitting this form, you acknowledge that Lotus USA, Inc. will use the information provided to respond to your request. See our{" "}
+                  <Link to="/privacy-policy" className="font-medium text-royal underline hover:text-navy">Privacy Policy</Link> for more information.
+                </p>
               </form>
             </Reveal>
           </div>
@@ -81,8 +88,17 @@ export default function Contact() {
                 </ul>
               </div>
               <div className="mt-6 overflow-hidden rounded-3xl border border-slate-200">
-                <iframe title="Lotus USA Inc. location" width="100%" height="280" loading="lazy" style={{ border: 0 }}
-                  src="https://www.google.com/maps?q=355+S+Grand+Ave+Suite+2450+Los+Angeles+CA+90071&output=embed" data-testid="contact-map" />
+                {functional ? (
+                  <iframe title="Lotus USA Inc. location" width="100%" height="280" loading="lazy" style={{ border: 0 }}
+                    src="https://www.google.com/maps?q=355+S+Grand+Ave+Suite+2450+Los+Angeles+CA+90071&output=embed" data-testid="contact-map" />
+                ) : (
+                  <div className="flex h-[280px] flex-col items-center justify-center gap-3 bg-slate-50 px-6 text-center" data-testid="contact-map-placeholder">
+                    <MapPin className="h-7 w-7 text-royal" />
+                    <p className="text-sm font-semibold text-navy">{COMPANY.address1}, {COMPANY.address2}</p>
+                    <p className="max-w-xs text-xs text-slate-500">The interactive map uses Google Maps (a functional cookie). Enable functional cookies to load it.</p>
+                    <button type="button" onClick={openPreferences} className="rounded-full bg-navy px-5 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-royal" data-testid="contact-map-enable">Enable map</button>
+                  </div>
+                )}
               </div>
               <div className="mt-6 rounded-3xl border border-slate-200 bg-slate-50 p-6" data-testid="contact-registration">
                 <span className="overline text-slate-500">Federal Registration</span>
