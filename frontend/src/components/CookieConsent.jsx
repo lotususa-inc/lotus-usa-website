@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cookie, ShieldCheck, BarChart3, MapPin } from "lucide-react";
@@ -9,7 +9,7 @@ const CATEGORIES = [
     key: "necessary",
     icon: ShieldCheck,
     title: "Strictly Necessary",
-    desc: "Required for the site to function — page routing, security, and remembering your cookie choice. Always active.",
+    desc: "Required for the site to function â€” page routing, security, and remembering your cookie choice. Always active.",
     always: true,
   },
   {
@@ -162,3 +162,4 @@ export function CookieConsent() {
     </>
   );
 }
+

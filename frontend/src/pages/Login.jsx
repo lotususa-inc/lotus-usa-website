@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Lock } from "lucide-react";
@@ -34,10 +34,11 @@ export default function Login() {
           <form onSubmit={submit} className="mt-8 space-y-4" data-testid="login-form">
             <div><label className="overline text-white/50">Email</label><input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-royal-light" data-testid="login-email" /></div>
             <div><label className="overline text-white/50">Password</label><input required type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white outline-none focus:border-royal-light" data-testid="login-password" /></div>
-            <button disabled={busy} className="w-full rounded-full bg-royal px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-royal-light disabled:opacity-60" data-testid="login-submit">{busy ? "Signing in…" : "Sign In"}</button>
+            <button disabled={busy} className="w-full rounded-full bg-royal px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-royal-light disabled:opacity-60" data-testid="login-submit">{busy ? "Signing inâ€¦" : "Sign In"}</button>
           </form>
         </div>
       </div>
     </div>
   );
 }
+

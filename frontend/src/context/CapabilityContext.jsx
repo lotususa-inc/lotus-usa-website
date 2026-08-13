@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+﻿import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { api } from "@/lib/api";
 import { NAICS_CODES, REGISTRATION, AGENCIES, CAP_STATEMENT_URL } from "@/data/site";
 
@@ -34,3 +34,4 @@ export function CapabilityProvider({ children }) {
 }
 
 export const useCapability = () => useContext(CapabilityContext) || FALLBACK;
+

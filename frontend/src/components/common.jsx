@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+﻿import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as Icons from "lucide-react";
@@ -51,7 +51,7 @@ export function Counter({ value, suffix = "", duration = 1800 }) {
 }
 
 export function PrimaryButton({ to, href, children, className = "", ...props }) {
-  const cls = `group inline-flex items-center justify-center gap-2 rounded-full bg-royal px-7 py-3.5 text-sm font-semibold text-white transition-[background-color,transform,box-shadow] duration-300 hover:bg-navy hover:-translate-y-0.5 shadow-[0_8px_24px_rgba(15,98,254,0.35)] ${className}`;
+  const cls = `group inline-flex items-center justify-center gap-2 rounded-full bg-royal px-7 py-3.5 text-sm font-semibold text-white transition-[background-color,transform,box-shadow] duration-300 hover:bg-navy hover:-translate-y-0.5 shadow-[0_8px_24px_rgba(21,94,239,0.35)] ${className}`;
   const inner = <>{children}<Icons.ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" /></>;
   if (to) return <Link to={to} className={cls} {...props}>{inner}</Link>;
   return <a href={href} className={cls} {...props}>{inner}</a>;
@@ -77,3 +77,4 @@ export function SectionHeading({ overline, title, sub, light = false, center = f
     </div>
   );
 }
+

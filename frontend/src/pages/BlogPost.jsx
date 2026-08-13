@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
@@ -14,7 +14,7 @@ export default function BlogPost() {
   useSEO({ title: post?.title, description: post?.excerpt, image: post?.cover_image, path: `/insights/${slug}` });
 
   if (err) return <div className="pt-40 pb-40 text-center"><p className="text-navy font-display text-2xl">Article not found.</p><Link to="/insights" className="mt-4 inline-block text-royal">Back to Insights</Link></div>;
-  if (!post) return <div className="pt-40 pb-40 text-center text-slate-400">Loading…</div>;
+  if (!post) return <div className="pt-40 pb-40 text-center text-slate-400">Loadingâ€¦</div>;
 
   const date = new Date(post.created_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   return (
@@ -47,3 +47,4 @@ export default function BlogPost() {
     </>
   );
 }
+

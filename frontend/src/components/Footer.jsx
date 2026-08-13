@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Linkedin } from "lucide-react";
 import { COMPANY, IMG, SERVICES } from "@/data/site";
 import { useConsent } from "@/context/ConsentContext";
@@ -55,7 +55,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-7 sm:flex-row">
-          <p className="text-xs text-white/50">© 2026 Lotus USA, Inc. All Rights Reserved.</p>
+          <p className="text-xs text-white/50">Â© 2026 Lotus USA, Inc. All Rights Reserved.</p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link to="/privacy-policy" className="text-xs text-white/60 hover:text-white transition-colors" data-testid="footer-privacy">Privacy Policy</Link>
             <Link to="/cookie-policy" className="text-xs text-white/60 hover:text-white transition-colors" data-testid="footer-cookie-policy">Cookie Policy</Link>
@@ -69,3 +69,4 @@ export function Footer() {
     </footer>
   );
 }
+

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80">
+  <rect width="360" height="80" fill="#FFFFFF"/>
+  <text x="180" y="40" fill="#071B33" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle">CMMC</text>
+  <text x="180" y="62" fill="#071B33" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Level 2 Audit Ready</text>
+</svg>

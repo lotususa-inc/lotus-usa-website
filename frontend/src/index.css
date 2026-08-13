@@ -5,33 +5,34 @@
 @tailwind utilities;
 
 :root {
-  --navy: #0B1F4D;
-  --royal: #0F62FE;
-  --royal-light: #4589FF;
-  --gold: #C4A24C;
-  --gold-light: #E3C878;
-  --gray-bg: #F8F9FA;
-  --accent-gray: #E5E7EB;
+  --navy: #0B1F3A;
+  --royal: #155EEF;
+  --royal-light: #2F80C9;
+  --steel: #425B72;
+  --gold: #C9A227;
+  --gold-light: #DDBB55;
+  --gray-bg: #F5F7F9;
+  --accent-gray: #D9E2EC;
   --radius: 0.5rem;
-  --background: 0 0% 100%;
-  --foreground: 222 47% 11%;
+  --background: 214 18% 96%;
+  --foreground: 210 22% 18%;
   --card: 0 0% 100%;
   --card-foreground: 222 47% 11%;
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
-  --primary: 222 74% 17%;
+  --primary: 212 83% 57%;
   --primary-foreground: 0 0% 100%;
   --secondary: 210 20% 98%;
   --secondary-foreground: 222 47% 11%;
-  --muted: 210 20% 96%;
+  --muted: 214 20% 96%;
   --muted-foreground: 215 16% 40%;
   --accent: 219 100% 53%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --border: 214 20% 90%;
+  --border: 216 20% 90%;
   --input: 214 20% 90%;
-  --ring: 219 100% 53%;
+  --ring: 212 83% 57%;
 }
 
 * {
@@ -47,7 +48,7 @@ body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #ffffff;
+  background: hsl(var(--background));
   color: hsl(var(--foreground));
 }
 
@@ -73,12 +74,12 @@ h1, h2, h3, h4, h5, .font-display {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #0B1F4D; }
-::-webkit-scrollbar-thumb { background: #1e3a72; border-radius: 6px; }
-::-webkit-scrollbar-thumb:hover { background: #0F62FE; }
+::-webkit-scrollbar-track { background: #0B1F3A; }
+::-webkit-scrollbar-thumb { background: #2F80C9; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #155EEF; }
 
 .text-gradient {
-  background: linear-gradient(100deg, #0F62FE 0%, #4589FF 60%, #82b1ff 100%);
+  background: linear-gradient(100deg, #155EEF 0%, #2F80C9 60%, #AEDDE7 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -127,8 +128,8 @@ h1, h2, h3, h4, h5, .font-display {
 
 .grid-lines {
   background-image:
-    linear-gradient(rgba(15,98,254,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15,98,254,0.06) 1px, transparent 1px);
+    linear-gradient(rgba(21,94,239,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,94,239,0.06) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 

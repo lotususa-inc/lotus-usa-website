@@ -1,4 +1,4 @@
-import { useSEO } from "@/hooks/useSEO";
+﻿import { useSEO } from "@/hooks/useSEO";
 import { INDUSTRIES, IMG } from "@/data/site";
 import { Reveal, Overline, SectionHeading, Icon, PrimaryButton, GhostButton } from "@/components/common";
 import { CTABanner } from "@/components/sections";
@@ -32,7 +32,8 @@ export default function Industries() {
         </div>
       </section>
 
-      <CTABanner title="Let's align our capabilities to your mission." sub="Tell us about your sector and objectives — we'll bring the right team and the right compliance posture." />
+      <CTABanner title="Let's align our capabilities to your mission." sub="Tell us about your sector and objectives â€” we'll bring the right team and the right compliance posture." />
     </>
   );
 }
+

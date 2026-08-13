@@ -1,4 +1,4 @@
-import { useSEO } from "@/hooks/useSEO";
+﻿import { useSEO } from "@/hooks/useSEO";
 import { IMG, WHY, CAPABILITIES, CAP_STATEMENT_URL, COMPANY } from "@/data/site";
 import { Reveal, Overline, SectionHeading, Icon, PrimaryButton } from "@/components/common";
 import { CTABanner, FeatureCard } from "@/components/sections";
@@ -126,3 +126,4 @@ export default function About() {
     </>
   );
 }
+

@@ -1,4 +1,4 @@
-import axios from "axios";
+﻿import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export const API = `${BACKEND_URL}/api`;
@@ -16,3 +16,4 @@ export function formatApiError(detail) {
   if (detail && typeof detail.msg === "string") return detail.msg;
   return String(detail);
 }
+

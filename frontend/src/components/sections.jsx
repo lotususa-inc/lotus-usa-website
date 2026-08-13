@@ -1,4 +1,4 @@
-import { CERTIFICATIONS } from "@/data/site";
+﻿import { CERTIFICATIONS } from "@/data/site";
 import { Reveal, Overline, PrimaryButton, GhostButton, Icon } from "@/components/common";
 
 export function CertMarquee() {
@@ -53,3 +53,4 @@ export function FeatureCard({ icon, title, desc, index }) {
     </div>
   );
 }
+

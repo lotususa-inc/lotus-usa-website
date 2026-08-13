@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 
 export function useSEO({ title, description, image, path, noindex = false }) {
   useEffect(() => {
@@ -26,3 +26,4 @@ export function useSEO({ title, description, image, path, noindex = false }) {
     link.setAttribute("href", url);
   }, [title, description, image, path, noindex]);
 }
+

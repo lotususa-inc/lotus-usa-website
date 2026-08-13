@@ -1,118 +1,321 @@
-// Central content + assets for Lotus USA, Inc. (approved Revamp Requirements)
+﻿// Central content + assets for Lotus USA, Inc. (approved Revamp Requirements)
 export const IMG = {
   logo: "/assets/lotus-logo.png",
-  heroBuilding: "https://images.unsplash.com/photo-1764476751207-c20099cf625e?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
-  capitol: "https://images.unsplash.com/photo-1557160854-e1e89fdd3286?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
-  capitolAlt: "https://images.unsplash.com/photo-1520525003249-2b9cdda513bc?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
-  handshake: "https://images.unsplash.com/photo-1758518730384-be3d205838e8?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
-  team: "https://images.unsplash.com/photo-1758691736975-9f7f643d178e?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
-  teamMeeting: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
-  serverRack: "https://images.pexels.com/photos/37730211/pexels-photo-37730211.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1400",
-  cmmcShield: "https://static.prod-images.emergentagent.com/jobs/a2d8cb3e-4a12-4862-a7b8-6b2e309ad286/images/1b869add842f1770095d4d2cf730e1ee687251d52d2935870ff0512a435a1f99.jpeg",
+  heroBuilding:
+    "https://images.unsplash.com/photo-1764476751207-c20099cf625e?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
+  capitol:
+    "https://images.unsplash.com/photo-1557160854-e1e89fdd3286?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
+  capitolAlt:
+    "https://images.unsplash.com/photo-1520525003249-2b9cdda513bc?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
+  handshake:
+    "https://images.unsplash.com/photo-1758518730384-be3d205838e8?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
+  team:
+    "https://images.unsplash.com/photo-1758691736975-9f7f643d178e?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
+  teamMeeting:
+    "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?crop=entropy&cs=srgb&fm=jpg&q=85&w=1600",
+  serverRack:
+    "https://images.pexels.com/photos/37730211/pexels-photo-37730211.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=1400",
+  cmmcShield:
+    "https://static.prod-images.emergentagent.com/jobs/a2d8cb3e-4a12-4862-a7b8-6b2e309ad286/images/1b869add842f1770095d4d2cf730e1ee687251d52d2935870ff0512a435a1f99.jpeg",
 };
 
 export const COMPANY = {
   name: "Lotus USA, Inc.",
-  tagline: "Your Trusted Government & Enterprise Solutions Partner Since 2014",
+  tagline: "Your Trusted Government & Enterprise Solutions Partner",
   founded: "September 2014",
   address1: "355 S Grand Ave, Suite 2450",
   address2: "Los Angeles, CA 90071",
-  phone: "213-298-7100",
+  phone: "707-765-3969",
   email: "info@lotususainc.com",
   website: "https://www.lotususainc.com",
   linkedin: "https://www.linkedin.com/in/lotususainc/",
 };
 
 export const HERO = {
-  eyebrow: "Government Procurement • Enterprise Solutions • Professional Services • IT & Healthcare Staffing • CMMC as a Service • Website Development & Digital Transformation",
-  headline: "Your Trusted Government & Enterprise Solutions Partner Since 2014",
-  sub: "Lotus USA, Inc. delivers procurement, professional services, IT & healthcare staffing, CMMC compliance, website redesign, custom application development, enterprise technology, and systems integration for Federal, State, and Commercial organizations.",
+  eyebrow: "",
+  headline: "Your Trusted Government & Enterprise Solutions Partner",
+  sub: "",
 };
 
 export const STATS = [
-  { big: "Est. 2014", label: "Established September 2014", icon: "CalendarCheck" },
-  { big: "2,300+", label: "Government Contracts Executed", icon: "FileCheck2" },
-  { big: "Fed · State · Local", label: "Government Experience", icon: "Landmark" },
-  { big: "Enterprise", label: "& Commercial Solutions", icon: "Building2" },
-  { big: "Nationwide", label: "Operations", icon: "Map" },
+  {
+    big: "Est. 2014",
+    label: "Established September 2014",
+    icon: "CalendarCheck",
+  },
+  {
+    big: "2,300+",
+    label: "Government Contracts Executed",
+    icon: "FileCheck2",
+  },
+  {
+    big: "Fed Â· State Â· Local",
+    label: "Government Experience",
+    icon: "Landmark",
+  },
+  {
+    big: "Enterprise",
+    label: "& Commercial Solutions",
+    icon: "Building2",
+  },
+  {
+    big: "Nationwide",
+    label: "Operations",
+    icon: "Map",
+  },
 ];
 
 export const SERVICES = [
-  { slug: "government-procurement", icon: "PackageSearch", title: "Government Procurement",
-    short: "IT, medical, industrial, and defense procurement with full system integration and rental options." },
-  { slug: "enterprise-solutions", icon: "Server", title: "Enterprise Solutions",
-    short: "Cloud, networking, data center, unified communications, and digital transformation at scale." },
-  { slug: "professional-services", icon: "Briefcase", title: "Professional Services",
-    short: "Management consulting, engineering, program management, and technology & calibration services." },
-  { slug: "staffing", icon: "Users", title: "Staffing",
-    short: "IT and healthcare staffing, contract, direct hire, and Statement of Work (SOW) delivery." },
-  { slug: "cmmc-as-a-service", icon: "ShieldCheck", title: "CMMC as a Service",
-    short: "CMMC Level 1 & 2, NIST SP 800-171, GCC High, policies, assessments, and training." },
-  { slug: "digital-solutions", icon: "MonitorSmartphone", title: "Digital Solutions",
-    short: "Website design & revamp, custom web & mobile apps, AI, workflow automation, and cloud apps." },
+  {
+    slug: "enterprise-solutions",
+    icon: "Server",
+    title: "Enterprise Solutions",
+    short:
+      "Cloud, networking, data center, unified communications, and digital transformation at scale.",
+  },
+  {
+    slug: "professional-services",
+    icon: "Briefcase",
+    title: "Professional Services",
+    short:
+      "Management consulting, engineering, program management, and technology & calibration services.",
+  },
+  {
+    slug: "staffing",
+    icon: "Users",
+    title: "Staffing",
+    short:
+      "IT and healthcare staffing, contract, direct hire, and Statement of Work (SOW) delivery.",
+  },
+  {
+    slug: "cmmc-as-a-service",
+    icon: "ShieldCheck",
+    title: "CMMC as a Service",
+    short:
+      "CMMC Level 1 & 2, NIST SP 800-171, GCC High, policies, assessments, and training.",
+  },
+  {
+    slug: "digital-solutions",
+    icon: "MonitorSmartphone",
+    title: "Digital Solutions",
+    short:
+      "Website design & revamp, custom web & mobile apps, AI, workflow automation, and cloud apps.",
+  },
 ];
 
 export const CAPABILITIES = [
-  "IT Hardware & Software", "Medical Equipment", "Industrial Equipment", "Defense Procurement",
-  "System Integration", "Rental Equipment", "Cloud Infrastructure", "Networking", "Cybersecurity",
-  "Data Center", "Unified Communications", "Digital Transformation", "Management Consulting",
-  "Engineering", "Program Management", "Technology Consulting", "Calibration Services",
-  "IT Staffing", "Healthcare Staffing", "Contract Staffing", "Direct Hire", "Statement of Work (SOW)",
-  "NIST SP 800-171", "Microsoft GCC High", "Website Design & Revamp", "Custom Web Applications",
-  "Mobile App Development", "AI Solutions", "Workflow Automation", "Cloud Applications",
+  "IT Hardware & Software",
+  "Medical Equipment",
+  "Industrial Equipment",
+  "Defense Procurement",
+  "System Integration",
+  "Rental Equipment",
+  "Cloud Infrastructure",
+  "Networking",
+  "Cybersecurity",
+  "Data Center",
+  "Unified Communications",
+  "Digital Transformation",
+  "Management Consulting",
+  "Engineering",
+  "Program Management",
+  "Technology Consulting",
+  "Calibration Services",
+  "IT Staffing",
+  "Healthcare Staffing",
+  "Contract Staffing",
+  "Direct Hire",
+  "Statement of Work (SOW)",
+  "NIST SP 800-171",
+  "Microsoft GCC High",
+  "Website Design & Revamp",
+  "Custom Web Applications",
+  "Mobile App Development",
+  "AI Solutions",
+  "Workflow Automation",
+  "Cloud Applications",
 ];
 
 export const CERTIFICATIONS = [
-  { title: "HUBZone", description: "HUBZone Certified", logo: "/assets/logos/hubzone.svg" },
-  { title: "WOSB", description: "Women-Owned Small Business", logo: "/assets/logos/wosb.svg" },
-  { title: "EDWOSB", description: "Economically Disadvantaged WOSB", logo: "/assets/logos/edwosb.svg" },
-  { title: "Small Business", description: "Small Business Concern", logo: "/assets/logos/small-business.svg" },
-  { title: "GSA MAS", description: "GSA Multiple Award Schedule", logo: "/assets/logos/gsa-mas.svg" },
-  { title: "CMAS", description: "CA Multiple Award Schedule", logo: "/assets/logos/cmas.svg" },
-  { title: "California SB", description: "California Small Business", logo: "/assets/logos/california-sb.svg" },
-  { title: "DBE", description: "Disadvantaged Business Enterprise", logo: "/assets/logos/dbe.svg" },
-  { title: "LSBE", description: "Local Small Business Enterprise", logo: "/assets/logos/lsbe.svg" },
-  { title: "LBE", description: "Local Business Enterprise", logo: "/assets/logos/lbe.svg" },
-  { title: "MBE", description: "Minority Business Enterprise", logo: "/assets/logos/mbe.svg" },
-  { title: "WBE", description: "Women's Business Enterprise", logo: "/assets/logos/wbe.svg" },
-  { title: "SAM", description: "SAM Registered", logo: "/assets/logos/sam.svg" },
-  { title: "JCP", description: "Joint Certification Program", logo: "/assets/logos/jcp.svg" },
-  { title: "CMMC L2", description: "CMMC Level 2 Ready", logo: "/assets/logos/cmmc-l2.svg" },
+  {
+    title: "HUBZone",
+    description: "HUBZone Certified",
+    logo: "/assets/HUBZone Certified.jpg",
+  },
+  {
+    title: "WOSB",
+    description: "Women-Owned Small Business",
+    logo: "/assets/WOSB Certified.jpg",
+  },
+  {
+    title: "EDWOSB",
+    description: "Economically Disadvantaged WOSB",
+    logo: "/assets/EDWOSB Certified.jpg",
+  },
+  {
+    title: "Small Business",
+    description: "Small Business Certified",
+    logo: "/assets/Small Business Certified.jpg",
+  },
+  {
+    title: "GSA MAS",
+    description: "GSA Multiple Award Schedule",
+    logo: "/assets/logos/gsa-mas.svg",
+  },
+  {
+    title: "CMAS",
+    description: "CA Multiple Award Schedule",
+    logo: "/assets/logos/cmas.svg",
+  },
+  {
+    title: "JCP",
+    description: "Joint Certification Program",
+    logo: "/assets/logos/jcp.svg",
+  },
+  {
+    title: "CMMC L2",
+    description: "CMMC Level 2 Audit Ready",
+    logo: "/assets/logos/cmmc-l2.svg",
+  },
 ];
 
 export const INDUSTRIES = [
-  { icon: "Landmark", name: "Federal Government", desc: "Procurement, enterprise IT, and professional services for federal agencies." },
-  { icon: "Building2", name: "State Government", desc: "Modernization, staffing, and systems integration for statewide programs." },
-  { icon: "HeartPulse", name: "Healthcare", desc: "Healthcare staffing, medical equipment, and secure health-IT solutions." },
-  { icon: "Truck", name: "Transportation", desc: "Resilient infrastructure and technology for mobility and transit networks." },
-  { icon: "Zap", name: "Utilities", desc: "Modernization and integration for critical utility operations." },
-  { icon: "GraduationCap", name: "Education", desc: "Technology, procurement, and services for educational institutions." },
-  { icon: "Briefcase", name: "Commercial Enterprise", desc: "Enterprise technology and professional services at commercial scale." },
-  { icon: "Factory", name: "Manufacturing", desc: "Industrial equipment, integration, and operational technology support." },
-  { icon: "Cpu", name: "Technology", desc: "Cloud, applications, and digital transformation for technology firms." },
-  { icon: "Fuel", name: "Energy", desc: "Procurement and enterprise solutions for the energy sector." },
+  {
+    icon: "Landmark",
+    name: "Federal Government",
+    desc: "Procurement, enterprise IT, and professional services for federal agencies.",
+  },
+  {
+    icon: "Building2",
+    name: "State Government",
+    desc: "Modernization, staffing, and systems integration for statewide programs.",
+  },
+  {
+    icon: "HeartPulse",
+    name: "Healthcare",
+    desc: "Healthcare staffing, medical equipment, and secure health-IT solutions.",
+  },
+  {
+    icon: "Truck",
+    name: "Transportation",
+    desc: "Resilient infrastructure and technology for mobility and transit networks.",
+  },
+  {
+    icon: "Zap",
+    name: "Utilities",
+    desc: "Modernization and integration for critical utility operations.",
+  },
+  {
+    icon: "GraduationCap",
+    name: "Education",
+    desc: "Technology, procurement, and services for educational institutions.",
+  },
+  {
+    icon: "Briefcase",
+    name: "Commercial Enterprise",
+    desc: "Enterprise technology and professional services at commercial scale.",
+  },
+  {
+    icon: "Factory",
+    name: "Manufacturing",
+    desc: "Industrial equipment, integration, and operational technology support.",
+  },
+  {
+    icon: "Cpu",
+    name: "Technology",
+    desc: "Cloud, applications, and digital transformation for technology firms.",
+  },
+  {
+    icon: "Fuel",
+    name: "Energy",
+    desc: "Procurement and enterprise solutions for the energy sector.",
+  },
 ];
 
 export const WHY = [
-  { icon: "Award", title: "2,300+ Contracts Executed", desc: "A proven delivery record across federal, state, local government, and commercial engagements since 2014." },
-  { icon: "PackageSearch", title: "Procurement & Integration", desc: "End-to-end procurement of IT, medical, industrial, and defense equipment with full systems integration." },
-  { icon: "Server", title: "Enterprise Technology", desc: "Cloud, networking, data center, and unified communications delivered at enterprise scale." },
-  { icon: "Users", title: "Specialized Staffing", desc: "IT and healthcare talent for contract, direct hire, and Statement of Work delivery." },
-  { icon: "BadgeCheck", title: "Diverse Small Business", desc: "HUBZone, WOSB/EDWOSB, GSA MAS, VA Schedule, and more — helping agencies meet their goals." },
-  { icon: "Map", title: "Nationwide Operations", desc: "Responsive delivery across the country for government and commercial clients." },
+  {
+    icon: "Award",
+    title: "2,300+ Contracts Executed",
+    desc: "A proven delivery record across federal, state, local government, and commercial engagements since 2014.",
+  },
+  {
+    icon: "PackageSearch",
+    title: "Procurement & Integration",
+    desc: "End-to-end procurement of IT, medical, industrial, and defense equipment with full systems integration.",
+  },
+  {
+    icon: "Server",
+    title: "Enterprise Technology",
+    desc: "Cloud, networking, data center, and unified communications delivered at enterprise scale.",
+  },
+  {
+    icon: "Users",
+    title: "Specialized Staffing",
+    desc: "IT and healthcare talent for contract, direct hire, and Statement of Work delivery.",
+  },
+  {
+    icon: "BadgeCheck",
+    title: "Diverse Small Business",
+    desc: "HUBZone, WOSB/EDWOSB, GSA MAS, VA Schedule, and more â€” helping agencies meet their goals.",
+  },
+  {
+    icon: "Map",
+    title: "Nationwide Operations",
+    desc: "Responsive delivery across the country for government and commercial clients.",
+  },
 ];
 
 export const PARTNERS = [
-  { name: "Cisco Systems", credential: "Select Partner", icon: "Network" },
-  { name: "Oracle", credential: "Oracle Partner Network (OPN)", icon: "Database" },
-  { name: "SAP", credential: "Certified Consultants", icon: "Boxes" },
+  {
+    name: "Cisco Systems",
+    credential: "Select Partner",
+    logo: "/assets/logos/cisco.svg",
+  },
+  {
+    name: "Oracle",
+    credential: "Oracle Partner Network (OPN)",
+    logo: "/assets/logos/oracle.svg",
+  },
+  {
+    name: "SAP",
+    credential: "Certified Consultants",
+    logo: "/assets/logos/sap.svg",
+  },
+  {
+    name: "Dell",
+    logo: "/assets/logos/dell.svg",
+  },
+  {
+    name: "HPE",
+    logo: "/assets/logos/hpe.svg",
+  },
+  {
+    name: "Lenovo",
+    logo: "/assets/logos/lenovo.svg",
+  },
+  {
+    name: "Amazon / AWS",
+    logo: "/assets/logos/aws.svg",
+  },
 ];
 
 export const FAQS = [
-  { q: "What does Lotus USA do?", a: "Lotus USA, Inc. is a diversified Government & Enterprise Solutions company delivering government procurement, enterprise technology, professional services, staffing, CMMC compliance, and digital solutions for public sector and commercial organizations." },
-  { q: "Which contract vehicles and certifications do you hold?", a: "We are a HUBZone, WOSB/EDWOSB, and minority-owned small business, SAM registered, with GSA MAS, VA Schedule, CMAS, and additional state and local designations." },
-  { q: "Do you provide both government and commercial services?", a: "Yes. We serve Federal, State, and Local Government as well as commercial and enterprise organizations nationwide." },
-  { q: "How can I request a quote?", a: "Use the Request a Quote button or the Contact page to reach our team. We respond within one business day." },
+  {
+    q: "What does Lotus USA do?",
+    a: "Lotus USA, Inc. is a diversified Government & Enterprise Solutions company delivering government procurement, enterprise technology, professional services, staffing, CMMC compliance, and digital solutions for public sector and commercial organizations.",
+  },
+  {
+    q: "Which contract vehicles and certifications do you hold?",
+    a: "We are a HUBZone, WOSB/EDWOSB, and minority-owned small business, SAM registered, with GSA MAS, VA Schedule, CMAS, and additional state and local designations.",
+  },
+  {
+    q: "Do you provide both government and commercial services?",
+    a: "Yes. We serve Federal, State, and Local Government as well as commercial and enterprise organizations nationwide.",
+  },
+  {
+    q: "How can I request a quote?",
+    a: "Use the Request a Quote button or the Contact page to reach our team. We respond within one business day.",
+  },
 ];
 
 // Federal registration + capability data (fallbacks; refreshed from /api/capability)
@@ -126,25 +329,40 @@ export const REGISTRATION = [
 ];
 
 export const AGENCIES = [
-  "Department of Defense", "The Pentagon", "Department of the Army",
-  "Department of the Navy (NSWC PCD)", "Department of the Air Force", "Space Base Delta",
-  "DLA Land and Maritime", "U.S. Army Engineer District, Detroit",
-  "U.S. Army Sergeants Major Academy", "U.S. Army Soldier Support Institute (USASSI)",
-  "MICC – Fort Buchanan", "MICC – Fort Carson", "NASA",
+  "Department of Defense",
+  "The Pentagon",
+  "Department of the Army",
+  "Department of the Navy (NSWC PCD)",
+  "Department of the Air Force",
+  "Space Base Delta",
+  "DLA Land and Maritime",
+  "U.S. Army Engineer District, Detroit",
+  "U.S. Army Sergeants Major Academy",
+  "U.S. Army Soldier Support Institute (USASSI)",
+  "MICC â€“ Fort Buchanan",
+  "MICC â€“ Fort Carson",
+  "NASA",
   "National Institute of Standards and Technology (NIST)",
-  "Internal Revenue Service (U.S. Treasury)", "Social Security Administration",
-  "U.S. Department of Transportation", "Bureau of Land Management (Lakeview, OR)",
+  "Internal Revenue Service (U.S. Treasury)",
+  "Social Security Administration",
+  "U.S. Department of Transportation",
+  "Bureau of Land Management (Lakeview, OR)",
   "Western Area Power Administration (WAPA)",
   "California Department of General Services (OHR)",
-  "California Department of Veterans Affairs", "County of Los Angeles",
-  "City of Los Angeles", "Los Angeles Department of Water and Power (LADWP)",
+  "California Department of Veterans Affairs",
+  "County of Los Angeles",
+  "City of Los Angeles",
+  "Los Angeles Department of Water and Power (LADWP)",
   "Long Beach Transit",
 ];
 
 export const NAICS_CODES = [
   { code: "541512", desc: "Computer Systems Design Services" },
   { code: "541513", desc: "Computer Facilities Management Services" },
-  { code: "541611", desc: "Administrative Management & General Management Consulting Services" },
+  {
+    code: "541611",
+    desc: "Administrative Management & General Management Consulting Services",
+  },
   { code: "541618", desc: "Other Management Consulting Services" },
   { code: "541690", desc: "Other Scientific & Technical Consulting Services" },
   { code: "541930", desc: "Translation & Interpretation Services" },
@@ -152,45 +370,141 @@ export const NAICS_CODES = [
   { code: "561612", desc: "Security Guards & Patrol Services" },
   { code: "561710", desc: "Exterminating & Pest Control Services" },
   { code: "561720", desc: "Janitorial Services" },
-  { code: "423430", desc: "Computer & Computer Peripheral Equipment & Software (Wholesale)" },
-  { code: "423450", desc: "Medical, Dental & Hospital Equipment & Supplies (Wholesale)" },
+  {
+    code: "423430",
+    desc: "Computer & Computer Peripheral Equipment & Software (Wholesale)",
+  },
+  {
+    code: "423450",
+    desc: "Medical, Dental & Hospital Equipment & Supplies (Wholesale)",
+  },
   { code: "517911", desc: "Telecommunications Resellers" },
   { code: "518111", desc: "Internet Service Providers" },
-  { code: "532412", desc: "Construction, Mining & Forestry Machinery & Equipment Rental & Leasing" },
-  { code: "532490", desc: "Other Commercial & Industrial Machinery & Equipment Rental & Leasing" },
-  { code: "621111", desc: "Offices of Physicians (except Mental Health Specialists)" },
-  { code: "621399", desc: "Offices of All Other Miscellaneous Health Practitioners" },
+  {
+    code: "532412",
+    desc: "Construction, Mining & Forestry Machinery & Equipment Rental & Leasing",
+  },
+  {
+    code: "532490",
+    desc: "Other Commercial & Industrial Machinery & Equipment Rental & Leasing",
+  },
+  {
+    code: "621111",
+    desc: "Offices of Physicians (except Mental Health Specialists)",
+  },
+  {
+    code: "621399",
+    desc: "Offices of All Other Miscellaneous Health Practitioners",
+  },
   { code: "621512", desc: "Diagnostic Imaging Centers" },
 ];
 
 export const CAP_STATEMENT_URL = "/assets/Lotus-USA-Capability-Statement.pdf";
 
-export const AWARD_CATEGORIES = ["Government Procurement", "Professional Services / Staffing", "Enterprise Technology", "Digital Solutions"];
+export const AWARD_CATEGORIES = [
+  "Government Procurement",
+  "Professional Services / Staffing",
+  "Enterprise Technology",
+  "Digital Solutions",
+];
 
 // V3-approved representative past performance (source: V3 Developer Brief / Capability Statement)
 export const PAST_PERFORMANCE = [
-  { agency: "NIST", project: "Whole Body Contamination Monitors", value: "$705,601.32", category: "Government Procurement", desc: "Procurement and delivery of specialized contamination monitoring equipment." },
-  { agency: "Department of Defense", project: "Motorola VESTA R7 Emergency System Upgrade", value: "$669,599.00", category: "Government Procurement", desc: "Emergency communications system upgrade and integration." },
-  { agency: "Defense Logistics Agency", project: "Defense-Related Hardware", value: "$1,100,789.41", category: "Government Procurement", desc: "Sourcing and delivery of defense-related hardware." },
-  { agency: "Department of Defense", project: "Transformers / Stainless Steel", value: "$507,683.23", category: "Government Procurement", desc: "Industrial electrical and material procurement." },
-  { agency: "NASA", project: "Rockwell Collins Radios 721S", value: "$137,457.00", category: "Government Procurement", desc: "Communications equipment procurement." },
-  { agency: "Social Security Administration — Richmond", project: "Medical Consultant Services", value: "$2,224,604.00", category: "Professional Services / Staffing", desc: "Medical consultant professional services." },
-  { agency: "Social Security Administration — Denver", project: "Regional Medical Consultant", value: "$1,280,562.00", category: "Professional Services / Staffing", desc: "Regional medical consultant services." },
-  { agency: "Department of the Army", project: "CYS Bus Services — Fort McCoy", value: "$512,249.04", category: "Professional Services / Staffing", desc: "Program and support services." },
-  { agency: "California Department of Veterans Affairs", project: "Skilled Nursing Administrator", value: "$228,758.40", category: "Professional Services / Staffing", desc: "Healthcare staffing / administration." },
-  { agency: "LA Metro / LADWP / LA City / LA County", project: "Hardware / Software / Services", value: "$1,815,221.20", category: "Enterprise Technology", desc: "Enterprise technology hardware, software, and services." },
-  { agency: "Other States / Counties / Cities", project: "Hardware / Software / Services", value: "$798,219.30", category: "Enterprise Technology", desc: "Enterprise technology hardware, software, and services." },
+  {
+    agency: "NIST",
+    project: "Whole Body Contamination Monitors",
+    value: "$705,601.32",
+    category: "Government Procurement",
+    desc: "Procurement and delivery of specialized contamination monitoring equipment.",
+  },
+  {
+    agency: "Department of Defense",
+    project: "Motorola VESTA R7 Emergency System Upgrade",
+    value: "$669,599.00",
+    category: "Government Procurement",
+    desc: "Emergency communications system upgrade and integration.",
+  },
+  {
+    agency: "Defense Logistics Agency",
+    project: "Defense-Related Hardware",
+    value: "$1,100,789.41",
+    category: "Government Procurement",
+    desc: "Sourcing and delivery of defense-related hardware.",
+  },
+  {
+    agency: "Department of Defense",
+    project: "Transformers / Stainless Steel",
+    value: "$507,683.23",
+    category: "Government Procurement",
+    desc: "Industrial electrical and material procurement.",
+  },
+  {
+    agency: "NASA",
+    project: "Rockwell Collins Radios 721S",
+    value: "$137,457.00",
+    category: "Government Procurement",
+    desc: "Communications equipment procurement.",
+  },
+  {
+    agency: "Social Security Administration â€” Richmond",
+    project: "Medical Consultant Services",
+    value: "$2,224,604.00",
+    category: "Professional Services / Staffing",
+    desc: "Medical consultant professional services.",
+  },
+  {
+    agency: "Social Security Administration â€” Denver",
+    project: "Regional Medical Consultant",
+    value: "$1,280,562.00",
+    category: "Professional Services / Staffing",
+    desc: "Regional medical consultant services.",
+  },
+  {
+    agency: "Department of the Army",
+    project: "CYS Bus Services â€” Fort McCoy",
+    value: "$512,249.04",
+    category: "Professional Services / Staffing",
+    desc: "Program and support services.",
+  },
+  {
+    agency: "California Department of Veterans Affairs",
+    project: "Skilled Nursing Administrator",
+    value: "$228,758.40",
+    category: "Professional Services / Staffing",
+    desc: "Healthcare staffing / administration.",
+  },
+  {
+    agency: "LA Metro / LADWP / LA City / LA County",
+    project: "Hardware / Software / Services",
+    value: "$1,815,221.20",
+    category: "Enterprise Technology",
+    desc: "Enterprise technology hardware, software, and services.",
+  },
+  {
+    agency: "Other States / Counties / Cities",
+    project: "Hardware / Software / Services",
+    value: "$798,219.30",
+    category: "Enterprise Technology",
+    desc: "Enterprise technology hardware, software, and services.",
+  },
 ];
 
 export const NAV = [
   { label: "Home", to: "/" },
   { label: "Procurement", to: "/services/government-procurement" },
   {
-    label: "Services", mega: true,
-    items: SERVICES.map((s) => ({ label: s.title, to: `/services/${s.slug}`, desc: s.short, icon: s.icon })),
+    label: "Services",
+    mega: true,
+    items: SERVICES.map((s) => ({
+      label: s.title,
+      to: `/services/${s.slug}`,
+      desc: s.short,
+      icon: s.icon,
+    })),
   },
   { label: "Contracts", to: "/contracts" },
   { label: "Industries", to: "/industries" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
+

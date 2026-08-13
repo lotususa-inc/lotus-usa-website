@@ -1,4 +1,4 @@
-import { useSEO } from "@/hooks/useSEO";
+﻿import { useSEO } from "@/hooks/useSEO";
 import { Reveal, Overline } from "@/components/common";
 import { useConsent } from "@/context/ConsentContext";
 import { COMPANY } from "@/data/site";
@@ -43,7 +43,7 @@ export default function CookiePolicy() {
           </Section>
 
           <Section title="How we use cookies">
-            <p>{COMPANY.name} uses a limited set of cookies. Strictly necessary cookies are always active because the site cannot function without them. All optional cookies — analytics and functional — remain disabled until you provide consent. We do not use advertising or marketing tracking, and we do not load optional scripts before you consent.</p>
+            <p>{COMPANY.name} uses a limited set of cookies. Strictly necessary cookies are always active because the site cannot function without them. All optional cookies â€” analytics and functional â€” remain disabled until you provide consent. We do not use advertising or marketing tracking, and we do not load optional scripts before you consent.</p>
           </Section>
 
           <Section title="Cookies we use">
@@ -84,3 +84,4 @@ export default function CookiePolicy() {
     </>
   );
 }
+

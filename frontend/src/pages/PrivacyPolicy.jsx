@@ -1,4 +1,4 @@
-import { useSEO } from "@/hooks/useSEO";
+﻿import { useSEO } from "@/hooks/useSEO";
 import { Reveal, Overline } from "@/components/common";
 import { useConsent } from "@/context/ConsentContext";
 import { COMPANY } from "@/data/site";
@@ -80,3 +80,4 @@ export default function PrivacyPolicy() {
     </>
   );
 }
+

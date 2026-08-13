@@ -1,273 +1,765 @@
-import { useState, useEffect } from "react";
+﻿import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Download, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { IMG, HERO, STATS, SERVICES, WHY, INDUSTRIES, CERTIFICATIONS, PARTNERS, COMPANY } from "@/data/site";
-import { Reveal, Overline, PrimaryButton, GhostButton, SectionHeading, Icon } from "@/components/common";
-import { CertMarquee, CTABanner, FeatureCard } from "@/components/sections";
-import { useCapability } from "@/context/CapabilityContext";
-import { api } from "@/lib/api";
+import { Reveal, Icon } from "@/components/common";
+import { FeatureCard } from "@/components/sections";
+
+/*
+|--------------------------------------------------------------------------
+| UNIVERSAL HOME-PAGE ASSET LOOKUP
+|--------------------------------------------------------------------------
+|
+| Searches:
+|   /assets/
+|   /assets/logos/
+|
+| Supported:
+|   .svg .png .jpg .jpeg .webp .gif
+|
+|--------------------------------------------------------------------------
+*/
+
+const ASSET_LOCATIONS = [
+  "/assets",
+  "/assets/logos",
+];
+
+const ASSET_EXTENSIONS = [
+  "svg",
+  "png",
+  "jpg",
+  "jpeg",
+  "webp",
+  "gif",
+];
+
+function buildAssetCandidates(name, aliases = []) {
+  const names = [name, ...aliases].filter(Boolean);
+  const candidates = [];
+
+  names.forEach((fileName) => {
+    ASSET_LOCATIONS.forEach((location) => {
+      ASSET_EXTENSIONS.forEach((extension) => {
+        candidates.push(
+          `${location}/${fileName}.${extension}`
+        );
+      });
+    });
+  });
+
+  return candidates;
+}
+
+function AssetImage({
+  name,
+  aliases = [],
+  alt = "",
+  className = "",
+  fallback = null,
+}) {
+  const candidates = buildAssetCandidates(
+    name,
+    aliases
+  );
+
+  const [index, setIndex] = useState(0);
+
+  if (
+    !candidates.length ||
+    index >= candidates.length
+  ) {
+    return fallback;
+  }
+
+  return (
+    <img
+      src={candidates[index]}
+      alt={alt}
+      className={className}
+      onError={() => {
+        setIndex((current) => current + 1);
+      }}
+    />
+  );
+}
+
+/*
+|--------------------------------------------------------------------------
+| HERO
+|--------------------------------------------------------------------------
+*/
+
+const HERO_IMAGE = "/assets/home-hero-banner.png";
+
+/*
+|--------------------------------------------------------------------------
+| CERTIFICATIONS
+|--------------------------------------------------------------------------
+| Original 4-column visual layout preserved.
+|--------------------------------------------------------------------------
+*/
+
+const CERTIFICATIONS = [
+  {
+    title: "HUBZone",
+    description: "HUBZone Certified",
+    asset: "HUBZone",
+    aliases: ["hubzone"],
+  },
+  {
+    title: "WOSB",
+    description: "Women-Owned Small Business",
+    asset: "wosb",
+    aliases: ["WOSB"],
+  },
+  {
+    title: "EDWOSB",
+    description: "Economically Disadvantaged WOSB",
+    asset: "edwosb",
+    aliases: ["EDWOSB"],
+  },
+  {
+    title: "Small Business",
+    description: "Small Business Certified",
+    asset: "Small Business",
+    aliases: [
+      "small-business",
+      "small_business",
+      "smallbusiness",
+    ],
+  },
+  {
+    title: "GSA MAS",
+    description: "GSA Multiple Award Schedule",
+    asset: "GSA",
+    aliases: ["gsa", "gsa-mas", "GSA-MAS"],
+  },
+  {
+    title: "CMAS",
+    description: "California Multiple Award Schedule",
+    asset: "cmas",
+    aliases: ["CMAS"],
+  },
+  {
+    title: "JCP",
+    description: "Joint Certification Program",
+    asset: "jcp",
+    aliases: ["JCP"],
+  },
+  {
+    title: "CMMC Level 2 Ready",
+    description: "CMMC Level 2 Audit Ready",
+    asset: "cmmc-l2",
+    aliases: [
+      "CMMC-L2",
+      "cmmc",
+      "CMMC",
+    ],
+  },
+];
+
+/*
+|--------------------------------------------------------------------------
+| SERVICES
+|--------------------------------------------------------------------------
+*/
+
+const SERVICES = [
+  {
+    slug: "government-procurement",
+    title: "Government Procurement",
+    icon: "PackageCheck",
+    short:
+      "IT hardware and software, medical equipment, industrial equipment, defense procurement, rentals, and systems integration.",
+  },
+  {
+    slug: "professional-services",
+    title: "Professional Services",
+    icon: "BriefcaseBusiness",
+    short:
+      "Management consulting, engineering, program management, technology consulting, and calibration services.",
+  },
+  {
+    slug: "staffing",
+    title: "IT & Healthcare Staffing",
+    icon: "Users",
+    short:
+      "IT and healthcare talent supporting approved government and commercial workforce requirements.",
+  },
+  {
+    slug: "cmmc-as-a-service",
+    title: "CMMC as a Service",
+    icon: "ShieldCheck",
+    short:
+      "CMMC Level 1 & 2, NIST SP 800-171, Microsoft GCC High, policies, assessments, and training.",
+  },
+  {
+    slug: "digital-solutions",
+    title: "Digital Solutions",
+    icon: "Code2",
+    short:
+      "Website design and revamp, custom web applications, mobile apps, AI solutions, workflow automation, and cloud applications.",
+  },
+];
+
+/*
+|--------------------------------------------------------------------------
+| WHY LOTUS
+|--------------------------------------------------------------------------
+*/
+
+const WHY_LOTUS = [
+  {
+    icon: "Award",
+    title: "2,300+ Contracts Executed",
+    desc:
+      "A proven delivery record across federal, state, local government, and commercial engagements since 2014.",
+  },
+  {
+    icon: "PackageCheck",
+    title: "Procurement & Integration",
+    desc:
+      "End-to-end procurement of IT, medical, industrial, and defense equipment with full systems integration.",
+  },
+  {
+    icon: "Server",
+    title: "Enterprise Technology",
+    desc:
+      "Cloud, networking, data center, and unified communications delivered at enterprise scale.",
+  },
+  {
+    icon: "Users",
+    title: "Specialized Staffing",
+    desc:
+      "IT and healthcare talent supporting approved government and commercial requirements.",
+  },
+  {
+    icon: "BadgeCheck",
+    title: "Diverse Small Business",
+    desc:
+      "HUBZone, WOSB/EDWOSB, GSA MAS, VA Schedule, and other qualifications supporting agency goals.",
+  },
+  {
+    icon: "Globe2",
+    title: "Nationwide Operations",
+    desc:
+      "Responsive delivery across the country for government and commercial clients.",
+  },
+];
+
+/*
+|--------------------------------------------------------------------------
+| PARTNERS
+|--------------------------------------------------------------------------
+|
+| Actual current assets:
+| /assets/aws.png
+| /assets/cisco.png
+| /assets/dell.png
+| /assets/hp.png
+| /assets/lenovo.png
+| /assets/oracle.png
+| /assets/SAP.png
+|
+|--------------------------------------------------------------------------
+*/
+
+const PARTNERS = [
+  {
+    name: "Amazon Web Services",
+    shortName: "AWS",
+    asset: "aws",
+    credential: "Technology Ecosystem",
+  },
+  {
+    name: "Cisco Systems",
+    shortName: "Cisco",
+    asset: "cisco",
+    credential: "Select Partner",
+  },
+  {
+    name: "Oracle",
+    shortName: "Oracle",
+    asset: "oracle",
+    credential: "Oracle Partner Network",
+  },
+  {
+    name: "SAP",
+    shortName: "SAP",
+    asset: "SAP",
+    aliases: ["sap"],
+    credential: "Certified Consultants",
+  },
+  {
+    name: "Dell",
+    shortName: "Dell",
+    asset: "dell",
+    credential: "Procurement Ecosystem",
+  },
+  {
+    name: "HP",
+    shortName: "HP",
+    asset: "hp",
+    aliases: ["HPE", "hpe"],
+    credential: "Procurement Ecosystem",
+  },
+  {
+    name: "Lenovo",
+    shortName: "Lenovo",
+    asset: "lenovo",
+    credential: "Procurement Ecosystem",
+  },
+];
+
+/*
+|--------------------------------------------------------------------------
+| HERO
+|--------------------------------------------------------------------------
+*/
 
 function Hero() {
-  const { pdf } = useCapability();
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-white to-slate-50 pt-[74px]" data-testid="hero">
-      <div className="absolute inset-0 grid-lines opacity-[0.5]" />
-      <div className="absolute -right-24 top-24 h-96 w-96 rounded-full bg-royal/10 blur-[120px]" />
-      <div className="absolute left-0 top-1/2 h-72 w-72 rounded-full bg-gold/10 blur-[120px]" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 py-16 lg:grid-cols-12 lg:px-8 lg:py-24">
-        <div className="lg:col-span-7">
-          <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-            className="font-mono text-[11px] uppercase tracking-[0.18em] leading-relaxed text-royal max-w-xl">
-            {HERO.eyebrow}
-          </motion.p>
-          <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.04] tracking-tight text-navy sm:text-5xl lg:text-[3.4rem]">
-            {HERO.headline.split(" ").map((w, i) => (
-              <span key={i} className="inline-block overflow-hidden align-bottom">
-                <motion.span className="inline-block pr-[0.28ch]" initial={{ y: "110%" }} animate={{ y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.1 + i * 0.035, ease: [0.22, 1, 0.36, 1] }}>
-                  {w === "Since" || w === "2014" ? <span className="text-royal">{w}</span> : w}
-                </motion.span>
-              </span>
-            ))}
-          </h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.7 }}
-            className="mt-7 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            {HERO.sub}
-          </motion.p>
-          <div className="mt-9 flex flex-wrap gap-4" data-testid="hero-cta-row">
-            <PrimaryButton to="/contact" data-testid="hero-quote">Request a Quote</PrimaryButton>
-            <GhostButton href={pdf} download data-testid="hero-capability">
-              <Download className="h-4 w-4" /> Download Capability Statement
-            </GhostButton>
-          </div>
-        </div>
-
-        <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4, duration: 0.8 }}
-          className="lg:col-span-5">
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 shadow-hover">
-            <img src={IMG.capitol} alt="Government and enterprise solutions" className="h-[380px] w-full object-cover lg:h-[440px]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 glass rounded-2xl p-5">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-display text-3xl font-extrabold text-navy">2,300+</p>
-                  <p className="text-xs text-slate-600">Government contracts executed</p>
-                </div>
-                <div className="h-10 w-1 rounded bg-gold" />
-                <div>
-                  <p className="font-display text-3xl font-extrabold text-navy">2014</p>
-                  <p className="text-xs text-slate-600">Serving since</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+    <section
+      className="relative overflow-hidden bg-[#071B33] pt-[74px]"
+      data-testid="hero"
+    >
+      <div className="flex w-full items-center justify-center overflow-hidden">
+        <img
+          src={HERO_IMAGE}
+          alt="Lotus USA, Inc."
+          className="
+            block
+            h-auto
+            w-full
+            max-h-[calc(100svh-74px)]
+            object-contain
+            object-center
+          "
+        />
       </div>
     </section>
   );
 }
 
-function Stats() {
-  return (
-    <section className="border-y border-slate-200 bg-white" data-testid="stats">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden px-5 py-12 sm:grid-cols-3 lg:grid-cols-5 lg:px-8">
-        {STATS.map((s, i) => (
-          <Reveal key={s.label} delay={i * 0.06} className="px-4 py-4 text-center sm:text-left">
-            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy/5 text-royal mx-auto sm:mx-0">
-              <Icon name={s.icon} className="h-5 w-5" />
-            </span>
-            <div className="mt-4 font-display text-xl font-extrabold text-navy lg:text-2xl">{s.big}</div>
-            <p className="mt-1 text-xs leading-snug text-slate-500">{s.label}</p>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
+/*
+|--------------------------------------------------------------------------
+| CERTIFICATIONS
+|--------------------------------------------------------------------------
+*/
 
-function Insights() {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => { api.get("/blog").then((r) => setPosts(r.data.slice(0, 3))).catch(() => {}); }, []);
-  if (!posts.length) return null;
+function CertificationsSection() {
   return (
-    <section className="bg-white py-24 lg:py-32">
+    <section
+      className="bg-white py-20 lg:py-24"
+      data-testid="certifications"
+    >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading overline="Insights" title="News & perspectives" />
-          <GhostButton to="/insights" data-testid="insights-all">View all insights</GhostButton>
+
+        <div className="mx-auto max-w-3xl text-center">
+
+          {/* Removed standalone "Certifications" eyebrow */}
+
+          <h2 className="font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
+            Certifications &amp; Authorizations
+          </h2>
+
+          <p className="mt-4 text-base leading-7 text-[#52667A]">
+            Lotus holds the certifications and schedules that support
+            government procurement requirements and socioeconomic goals.
+          </p>
+
         </div>
-        <div className="mt-14 grid gap-7 md:grid-cols-3">
-          {posts.map((p, i) => (
-            <Reveal key={p.id} delay={i * 0.08}>
-              <Link to={`/insights/${p.slug}`} className="group block overflow-hidden rounded-2xl border border-slate-200 bg-white transition-[transform,box-shadow] duration-400 hover:-translate-y-1 hover:shadow-hover" data-testid={`insight-card-${i}`}>
-                <div className="relative h-48 overflow-hidden">
-                  <img src={p.cover_image} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <span className="absolute left-4 top-4 rounded-full bg-navy/90 px-3 py-1 text-xs font-medium text-white backdrop-blur">{p.category}</span>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+          {CERTIFICATIONS.map((cert, i) => (
+            <Reveal
+              key={cert.title}
+              delay={(i % 4) * 0.05}
+            >
+              <div
+                className="
+                  group
+                  flex
+                  h-full
+                  min-h-[220px]
+                  flex-col
+                  overflow-hidden
+                  rounded-[24px]
+                  border
+                  border-[#D9E3EE]
+                  bg-[#F9FBFF]
+                  p-5
+                  transition
+                  duration-300
+                  hover:-translate-y-1
+                  hover:shadow-[0_20px_50px_rgba(7,27,51,0.10)]
+                "
+              >
+
+                <div
+                  className="
+                    flex
+                    h-[145px]
+                    items-center
+                    justify-center
+                    rounded-[20px]
+                    bg-white
+                    p-5
+                    shadow-sm
+                  "
+                >
+
+                  <AssetImage
+                    name={cert.asset}
+                    aliases={cert.aliases}
+                    alt={cert.title}
+                    className="
+                      max-h-[115px]
+                      max-w-[190px]
+                      object-contain
+                      transition
+                      duration-300
+                      group-hover:scale-105
+                    "
+                    fallback={
+                      <span
+                        className="
+                          text-center
+                          text-sm
+                          font-bold
+                          text-[#071B33]
+                        "
+                      >
+                        {cert.title}
+                      </span>
+                    }
+                  />
+
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-lg font-bold text-navy line-clamp-2 group-hover:text-royal transition-colors">{p.title}</h3>
-                  <p className="mt-3 text-sm text-slate-600 line-clamp-2">{p.excerpt}</p>
+
+                <div className="mt-5 text-center">
+
+                  <h3 className="text-sm font-bold text-[#071B33]">
+                    {cert.title}
+                  </h3>
+
+                  <p className="mt-2 text-xs leading-5 text-[#52667A]">
+                    {cert.description}
+                  </p>
+
                 </div>
+
+              </div>
+            </Reveal>
+          ))}
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/*
+|--------------------------------------------------------------------------
+| WHAT WE DO
+|--------------------------------------------------------------------------
+*/
+
+function WhatWeDoSection() {
+  return (
+    <section
+      className="bg-[#EAF4FC] py-20 lg:py-24"
+      data-testid="services"
+    >
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+        <div className="mx-auto max-w-3xl text-center">
+
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1769E0]">
+            What we do
+          </p>
+
+          <h2 className="mt-3 font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
+            Solutions Built for Government &amp; Enterprise
+          </h2>
+
+          <p className="mt-4 text-base leading-7 text-[#52667A]">
+            A diversified solutions partner across procurement, professional
+            services, staffing, compliance, and digital transformation.
+          </p>
+
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+          {SERVICES.map((service, i) => (
+            <Reveal
+              key={service.slug}
+              delay={(i % 3) * 0.06}
+            >
+              <Link
+                to={`/services/${service.slug}`}
+                className="
+                  group
+                  flex
+                  h-full
+                  flex-col
+                  rounded-[24px]
+                  border
+                  border-[#D9E3EE]
+                  bg-white
+                  p-8
+                  transition
+                  duration-300
+                  hover:-translate-y-1
+                  hover:shadow-[0_18px_40px_rgba(7,27,51,0.10)]
+                "
+                data-testid={`service-card-${service.slug}`}
+              >
+
+                <div
+                  className="
+                    flex
+                    h-14
+                    w-14
+                    items-center
+                    justify-center
+                    rounded-2xl
+                    bg-[#0B2A4A]
+                    text-white
+                    shadow-sm
+                    transition
+                    duration-300
+                    group-hover:bg-[#1769E0]
+                  "
+                >
+                  <Icon
+                    name={service.icon}
+                    className="h-6 w-6"
+                  />
+                </div>
+
+                <h3 className="mt-6 font-display text-xl font-semibold text-[#071B33]">
+                  {service.title}
+                </h3>
+
+                <p className="mt-4 flex-1 text-sm leading-7 text-[#52667A]">
+                  {service.short}
+                </p>
+
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#1769E0]">
+                  Learn more
+                  <ArrowRight
+                    className="
+                      h-4
+                      w-4
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                    "
+                  />
+                </span>
+
               </Link>
             </Reveal>
           ))}
+
         </div>
+
       </div>
     </section>
   );
 }
 
+/*
+|--------------------------------------------------------------------------
+| WHY LOTUS
+|--------------------------------------------------------------------------
+*/
+
+function WhyLotusSection() {
+  return (
+    <section
+      className="bg-white py-20 lg:py-24"
+      data-testid="why-lotus"
+    >
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+        <div className="mx-auto max-w-3xl text-center">
+
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1769E0]">
+            Why Lotus
+          </p>
+
+          <h2 className="mt-3 font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
+            Diversified Capability. Proven Delivery.
+          </h2>
+
+          <p className="mt-4 text-base leading-7 text-[#52667A]">
+            A proven delivery record across government and commercial
+            engagements backed by procurement, technology, staffing, and
+            professional-services capabilities.
+          </p>
+
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+          {WHY_LOTUS.map((item, i) => (
+            <Reveal
+              key={item.title}
+              delay={(i % 3) * 0.07}
+            >
+              <FeatureCard
+                icon={item.icon}
+                title={item.title}
+                desc={item.desc}
+              />
+            </Reveal>
+          ))}
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/*
+|--------------------------------------------------------------------------
+| PARTNERS
+|--------------------------------------------------------------------------
+*/
+
+function PartnershipsSection() {
+  return (
+    <section
+      className="bg-[#F7FAFD] py-20 lg:py-24"
+      data-testid="partnerships"
+    >
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+
+        <div className="mx-auto max-w-3xl text-center">
+
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1769E0]">
+            Partners
+          </p>
+
+          <h2 className="mt-3 font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
+            Technology &amp; Procurement Ecosystem
+          </h2>
+
+          <p className="mt-4 text-base leading-7 text-[#52667A]">
+            Technology and manufacturer relationships supporting Lotus USA
+            procurement and enterprise delivery capabilities.
+          </p>
+
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+
+          {PARTNERS.map((partner, i) => (
+            <Reveal
+              key={partner.name}
+              delay={(i % 4) * 0.05}
+            >
+              <div
+                className="
+                  group
+                  flex
+                  min-h-[155px]
+                  flex-col
+                  items-center
+                  justify-center
+                  rounded-[24px]
+                  border
+                  border-[#D9E3EE]
+                  bg-white
+                  px-6
+                  py-7
+                  shadow-sm
+                  transition
+                  duration-300
+                  hover:-translate-y-1
+                  hover:shadow-[0_18px_40px_rgba(7,27,51,0.08)]
+                "
+              >
+
+                <div className="flex h-16 w-full items-center justify-center">
+
+                  <AssetImage
+                    name={partner.asset}
+                    aliases={partner.aliases}
+                    alt={partner.name}
+                    className="
+                      max-h-12
+                      max-w-[170px]
+                      object-contain
+                      transition
+                      duration-300
+                      group-hover:scale-105
+                    "
+                    fallback={
+                      <span className="text-sm font-semibold text-[#071B33]">
+                        {partner.shortName}
+                      </span>
+                    }
+                  />
+
+                </div>
+
+                <p className="mt-5 text-sm font-semibold text-[#071B33]">
+                  {partner.shortName}
+                </p>
+
+                <p className="mt-1 text-center text-xs text-[#52667A]">
+                  {partner.credential}
+                </p>
+
+              </div>
+            </Reveal>
+          ))}
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/*
+|--------------------------------------------------------------------------
+| HOME
+|--------------------------------------------------------------------------
+*/
+
 export default function Home() {
-  const { registration, agencies, pdf } = useCapability();
-  useSEO({ title: "Government & Enterprise Solutions Partner Since 2014", description: "Lotus USA, Inc. delivers government procurement, enterprise technology, professional services, IT & healthcare staffing, CMMC compliance, and digital solutions for Federal, State, Local Government, and commercial organizations.", image: IMG.heroBuilding, path: "/" });
+  useSEO({
+    title:
+      "Government & Enterprise Solutions Partner",
+
+    description:
+      "Lotus USA, Inc. delivers government procurement, professional services, IT & healthcare staffing, CMMC compliance, digital solutions, enterprise technology, and systems integration for Federal, State, Local Government, and commercial organizations.",
+
+    image: HERO_IMAGE,
+
+    path: "/",
+  });
+
   return (
     <>
       <Hero />
-      <Stats />
 
-      {/* Certifications — prominent */}
-      <section className="bg-slate-50 py-24 lg:py-32" data-testid="certifications">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading center overline="Certifications & Designations" title="A trusted, diverse government contractor" sub="Lotus USA holds the certifications and schedules agencies rely on to award with confidence and meet socioeconomic goals." />
-          <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {CERTIFICATIONS.map((cert, i) => (
-              <Reveal key={cert.title} delay={(i % 4) * 0.04}>
-                <div className="group h-full overflow-hidden rounded-3xl border border-slate-200 bg-white transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-soft">
-                  <div className="flex h-28 items-center justify-center border-b border-slate-200 bg-slate-50 p-5">
-                    <img
-                      src={cert.logo}
-                      alt={cert.title}
-                      className="h-16 w-full object-contain"
-                      onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/assets/logos/placeholder.svg"; }}
-                    />
-                  </div>
-                  <div className="p-6 text-center">
-                    <h3 className="text-sm uppercase tracking-[0.18em] text-slate-500">{cert.title}</h3>
-                    <p className="mt-3 text-base font-display font-semibold text-navy">{cert.description}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CertificationsSection />
 
-      {/* Services */}
-      <section className="bg-white py-24 lg:py-32" data-testid="services">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading overline="What we do" title="Six ways we power government & enterprise" sub="A diversified solutions partner across procurement, enterprise technology, professional services, staffing, compliance, and digital." />
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((s, i) => (
-              <Reveal key={s.slug} delay={(i % 3) * 0.06}>
-                <Link to={`/services/${s.slug}`} className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 transition-[transform,box-shadow,border-color] duration-400 hover:-translate-y-1 hover:border-royal/30 hover:shadow-hover" data-testid={`service-card-${s.slug}`}>
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-navy text-white transition-colors duration-300 group-hover:bg-royal"><Icon name={s.icon} className="h-7 w-7" /></div>
-                  <h3 className="mt-6 font-display text-xl font-bold text-navy">{s.title}</h3>
-                  <p className="mt-3 flex-1 text-sm text-slate-600">{s.short}</p>
-                  <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-royal">Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhatWeDoSection />
 
-      {/* Why */}
-      <section className="bg-slate-50 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading overline="Why Lotus USA" title="Diversified capability. Proven delivery." />
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {WHY.map((w, i) => (<Reveal key={w.title} delay={(i % 3) * 0.07}><FeatureCard icon={w.icon} title={w.title} desc={w.desc} /></Reveal>))}
-          </div>
-        </div>
-      </section>
+      <WhyLotusSection />
 
-      {/* Industries */}
-      <section className="bg-white py-24 lg:py-32" data-testid="industries">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading overline="Industries Served" title="Trusted across the public and private sectors" />
-          <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {INDUSTRIES.map((ind, i) => (
-              <Reveal key={ind.name} delay={(i % 4) * 0.05}>
-                <div className="group flex h-full items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 transition-colors duration-300 hover:border-gold/50">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-navy text-white transition-colors group-hover:bg-royal"><Icon name={ind.icon} className="h-4 w-4" /></span>
-                  <span className="text-sm font-semibold text-navy">{ind.name}</span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.2}><div className="mt-10"><GhostButton to="/industries">All industries</GhostButton></div></Reveal>
-        </div>
-      </section>
-
-      {/* Past Performance + Registration */}
-      <section className="bg-slate-50 py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <SectionHeading overline="Contracts & Past Performance" title="A record government buyers can trust" sub="With 2,300+ government contracts executed since 2014, Lotus USA delivers across Federal, State, and Local government and commercial enterprises. Detailed past-performance references are available to contracting officers on request." />
-              <Reveal delay={0.15}><div className="mt-8 flex flex-wrap gap-4"><PrimaryButton to="/contracts" data-testid="past-performance-cta">View Past Performance</PrimaryButton><GhostButton href={pdf} download><Download className="h-4 w-4" />Capability Statement</GhostButton></div></Reveal>
-            </div>
-            <Reveal delay={0.1}>
-              <div className="rounded-3xl border border-slate-200 bg-navy p-8 text-white lg:p-10">
-                <span className="overline text-gold-light">Federal Registration</span>
-                <p className="mt-3 text-sm text-white/60">Everything a contracting officer needs to verify and award with confidence.</p>
-                <dl className="mt-7 grid grid-cols-2 gap-x-6 gap-y-5">
-                  {registration.map((r) => (
-                    <div key={r.label}>
-                      <dt className="font-mono text-xs uppercase tracking-widest text-white/40">{r.label}</dt>
-                      <dd className="mt-1 font-display text-base font-bold">{r.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Trusted By */}
-      <section className="bg-white py-24 lg:py-32" data-testid="trusted-by">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <SectionHeading center overline="Trusted By" title="Serving agencies at every level of government" sub="A selection of the organizations Lotus USA has supported. References available to contracting officers on request." />
-          <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {agencies.map((a, i) => (
-              <Reveal key={a} delay={(i % 4) * 0.04}>
-                <div className="flex h-full items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-colors duration-300 hover:border-royal/30 hover:bg-white">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-navy/5 text-royal"><Icon name="Building2" className="h-4 w-4" /></span>
-                  <span className="text-sm font-medium leading-tight text-navy">{a}</span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Partnerships */}
-      <section className="border-y border-slate-200 bg-slate-50 py-16" data-testid="partnerships">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
-            <div className="text-center lg:text-left">
-              <Overline>Partnerships & Alliances</Overline>
-              <p className="mt-3 max-w-md font-display text-lg font-bold text-navy">Certified across the platforms that power the enterprise</p>
-            </div>
-            <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-3 lg:w-auto">
-              {PARTNERS.map((p, i) => (
-                <Reveal key={p.name} delay={i * 0.06}>
-                  <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 transition-colors duration-300 hover:border-gold/40">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-navy text-white"><Icon name={p.icon} className="h-5 w-5" /></span>
-                    <div><div className="font-display text-sm font-bold text-navy">{p.name}</div><div className="text-xs text-slate-500">{p.credential}</div></div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Insights />
-      <CTABanner title="Let's build your next government or enterprise solution." sub="Request a quote and our team will respond within one business day." primary="Request a Quote" />
+      <PartnershipsSection />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { IMG } from "@/data/site";
+﻿import { IMG } from "@/data/site";
 
 const cap = (title) => ({ title });
 
@@ -6,14 +6,13 @@ export const SERVICE_PAGES = {
   "government-procurement": {
     icon: "PackageSearch",
     eyebrow: "Government Procurement",
-    title: "Reliable procurement for government and enterprise",
-    intro: "Lotus USA sources and delivers IT, medical, industrial, and defense equipment with full systems integration — backed by GSA MAS, VA Schedule, and a proven contract record.",
+    title: "Procurement",
+    intro: "Lotus  sources and delivers IT, medical, industrial, and mission-support equipment with full integration and reliable schedule compliance.",
     image: IMG.capitol,
     features: [
       { icon: "Cpu", title: "IT Hardware & Software", desc: "Sourcing and delivery of enterprise hardware, software, and licensing at competitive schedule pricing." },
       { icon: "HeartPulse", title: "Medical Equipment", desc: "Procurement of medical and diagnostic equipment for healthcare and public health programs." },
       { icon: "Factory", title: "Industrial Equipment", desc: "Industrial and operational equipment for infrastructure, utilities, and manufacturing." },
-      { icon: "Shield", title: "Defense Procurement", desc: "Defense-focused procurement aligned to mission requirements and compliance obligations." },
       { icon: "Network", title: "System Integration", desc: "End-to-end integration so procured technology works together and deploys smoothly." },
       { icon: "Boxes", title: "Rental Equipment", desc: "Flexible rental options for short-term, project-based, and surge equipment needs." },
     ],
@@ -25,7 +24,7 @@ export const SERVICE_PAGES = {
     ],
     faqs: [
       { q: "Which vehicles can we buy through?", a: "We support GSA MAS, VA Schedule, CMAS, and small-business set-asides across federal, state, and local acquisitions." },
-      { q: "Do you handle installation and integration?", a: "Yes — we provide full systems integration, delivery, and post-deployment support." },
+      { q: "Do you handle installation and integration?", a: "Yes â€” we provide full systems integration, delivery, and post-deployment support." },
     ],
   },
   "enterprise-solutions": {
@@ -50,7 +49,7 @@ export const SERVICE_PAGES = {
     ],
     faqs: [
       { q: "Do you support hybrid and multi-cloud?", a: "Yes. We design and operate across Azure, AWS, and on-premise environments." },
-      { q: "Can you manage operations after deployment?", a: "Absolutely — we offer managed services, monitoring, and help desk support." },
+      { q: "Can you manage operations after deployment?", a: "Absolutely â€” we offer managed services, monitoring, and help desk support." },
     ],
   },
   "professional-services": {
@@ -73,7 +72,7 @@ export const SERVICE_PAGES = {
       ["Sustain", "We transition knowledge and support continuous improvement."],
     ],
     faqs: [
-      { q: "Do you provide program management for federal programs?", a: "Yes — we lead PMOs and provide program, project, and technical management across sectors." },
+      { q: "Do you provide program management for federal programs?", a: "Yes â€” we lead PMOs and provide program, project, and technical management across sectors." },
       { q: "What is calibration services?", a: "We provide precision calibration supporting quality, compliance, and operational reliability." },
     ],
   },
@@ -136,7 +135,7 @@ export const SERVICE_PAGES = {
     ],
     faqs: [
       { q: "What roles do you staff?", a: "Primarily IT and healthcare, across contract, contract-to-hire, direct hire, and SOW models." },
-      { q: "Can you deliver outcome-based SOW work?", a: "Yes — we structure and deliver Statement of Work engagements with clear deliverables." },
+      { q: "Can you deliver outcome-based SOW work?", a: "Yes â€” we structure and deliver Statement of Work engagements with clear deliverables." },
     ],
   },
   "digital-solutions": {
@@ -160,8 +159,10 @@ export const SERVICE_PAGES = {
       ["Scale", "Managed operations, analytics, and continuous improvement."],
     ],
     faqs: [
-      { q: "Do you redesign existing websites?", a: "Yes — website design and revamp is a core offering, including accessibility and performance." },
-      { q: "Can you build custom applications and mobile apps?", a: "Absolutely — we build custom web and mobile applications and cloud-native solutions." },
+      { q: "Do you redesign existing websites?", a: "Yes â€” website design and revamp is a core offering, including accessibility and performance." },
+      { q: "Can you build custom applications and mobile apps?", a: "Absolutely â€” we build custom web and mobile applications and cloud-native solutions." },
     ],
   },
 };
+
+

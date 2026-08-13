@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, MessageSquare, X, Phone, Mail } from "lucide-react";
@@ -40,7 +40,7 @@ function FloatingWidgets() {
             </motion.button>
           )}
         </AnimatePresence>
-        <button onClick={() => setOpen((o) => !o)} className="flex h-14 w-14 items-center justify-center rounded-full bg-royal text-white shadow-[0_10px_30px_rgba(15,98,254,0.45)] hover:bg-navy transition-colors" data-testid="floating-contact-toggle" aria-label="Contact">
+        <button onClick={() => setOpen((o) => !o)} className="flex h-14 w-14 items-center justify-center rounded-full bg-royal text-white shadow-[0_10px_30px_rgba(21,94,239,0.35)] hover:bg-navy transition-colors" data-testid="floating-contact-toggle" aria-label="Contact">
           {open ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
         </button>
       </div>
@@ -52,7 +52,7 @@ export function Layout({ children }) {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       <main>{children}</main>
       <Footer />
@@ -61,3 +61,4 @@ export function Layout({ children }) {
     </div>
   );
 }
+

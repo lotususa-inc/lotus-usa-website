@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+﻿import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
 // Consent storage key. Bump the version if categories change.
 const KEY = "lotus_cookie_consent_v1";
@@ -20,7 +20,7 @@ function applyConsent(c) {
       ph.opt_out_capturing && ph.opt_out_capturing();
     }
   } catch (e) {
-    /* posthog not ready — safe to ignore, default is opted-out */
+    /* posthog not ready â€” safe to ignore, default is opted-out */
   }
 }
 
@@ -52,7 +52,7 @@ export function ConsentProvider({ children }) {
     try {
       localStorage.setItem(KEY, JSON.stringify(value));
     } catch (e) {
-      /* storage unavailable — consent will not persist */
+      /* storage unavailable â€” consent will not persist */
     }
     setConsent(value);
     applyConsent(value);
@@ -86,3 +86,4 @@ export function ConsentProvider({ children }) {
 }
 
 export const useConsent = () => useContext(ConsentContext);
+

@@ -1,12 +1,28 @@
-import "@/App.css";
+﻿import "@/App.css";
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+
 import { AuthProvider } from "@/context/AuthContext";
 import { CapabilityProvider } from "@/context/CapabilityContext";
 import { ConsentProvider } from "@/context/ConsentContext";
+
 import { Layout } from "@/components/Layout";
+
 import Home from "@/pages/Home";
 import ServicePage from "@/pages/ServicePage";
+
+import GovernmentProcurement from "@/pages/GovernmentProcurement";
+import ProfessionalServices from "@/pages/ProfessionalServices";
+import Staffing from "@/pages/Staffing";
+import Aviation from "@/pages/Aviation";
+
 import Industries from "@/pages/Industries";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
@@ -21,16 +37,18 @@ import NotFound from "@/pages/NotFound";
 
 const Site = ({ children }) => <Layout>{children}</Layout>;
 
-// Normalise legacy URLs that carry a trailing slash (e.g. old WordPress paths)
-// to their canonical, slash-free equivalent.
 function TrailingSlashNormalizer() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (pathname.length > 1 && pathname.endsWith("/")) {
-      navigate(pathname.replace(/\/+$/, ""), { replace: true });
+      navigate(pathname.replace(/\/+$/, ""), {
+        replace: true,
+      });
     }
   }, [pathname, navigate]);
+
   return null;
 }
 
@@ -42,32 +60,319 @@ function App() {
           <ConsentProvider>
             <BrowserRouter>
               <TrailingSlashNormalizer />
+
               <Routes>
-                <Route path="/" element={<Site><Home /></Site>} />
 
-                {/* Legacy URL redirects (old WordPress / prior slugs) */}
-                <Route path="/services" element={<Navigate to="/" replace />} />
-                <Route path="/procurement" element={<Navigate to="/services/government-procurement" replace />} />
-                <Route path="/services/government-contracting" element={<Navigate to="/services/government-procurement" replace />} />
-                <Route path="/services/staffing-solutions" element={<Navigate to="/services/staffing" replace />} />
-                <Route path="/services/compliance-as-a-service" element={<Navigate to="/services/cmmc-as-a-service" replace />} />
-                <Route path="/cmmc-compliance" element={<Navigate to="/services/cmmc-as-a-service" replace />} />
-                <Route path="/shop-all" element={<Navigate to="/" replace />} />
-                <Route path="/cmas" element={<Navigate to="/contracts" replace />} />
-                <Route path="/cookies-policy" element={<Navigate to="/cookie-policy" replace />} />
+                {/* =====================================================
+                    HOME
+                ===================================================== */}
 
-                <Route path="/services/:slug" element={<Site><ServicePage /></Site>} />
-                <Route path="/industries" element={<Site><Industries /></Site>} />
-                <Route path="/contracts" element={<Site><Contracts /></Site>} />
-                <Route path="/about" element={<Site><About /></Site>} />
-                <Route path="/contact" element={<Site><Contact /></Site>} />
-                <Route path="/insights" element={<Site><Insights /></Site>} />
-                <Route path="/insights/:slug" element={<Site><BlogPost /></Site>} />
-                <Route path="/privacy-policy" element={<Site><PrivacyPolicy /></Site>} />
-                <Route path="/cookie-policy" element={<Site><CookiePolicy /></Site>} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="*" element={<Site><NotFound /></Site>} />
+                <Route
+                  path="/"
+                  element={
+                    <Site>
+                      <Home />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    DEDICATED GOVERNMENT PROCUREMENT
+                ===================================================== */}
+
+                <Route
+                  path="/services/government-procurement"
+                  element={
+                    <Site>
+                      <GovernmentProcurement />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    DEDICATED PROFESSIONAL SERVICES
+                ===================================================== */}
+
+                <Route
+                  path="/services/professional-services"
+                  element={
+                    <Site>
+                      <ProfessionalServices />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    DEDICATED STAFFING
+                ===================================================== */}
+
+                <Route
+                  path="/services/staffing"
+                  element={
+                    <Site>
+                      <Staffing />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    GENERIC SERVICE SLUG FALLBACK
+                    Allows other existing service slugs to continue working
+                ===================================================== */}
+
+                <Route
+                  path="/services/:slug"
+                  element={
+                    <Site>
+                      <ServicePage />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    AVIATION
+                ===================================================== */}
+
+                <Route
+                  path="/aviation"
+                  element={
+                    <Site>
+                      <Aviation />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    LEGACY REDIRECTS
+                ===================================================== */}
+
+                <Route
+                  path="/services"
+                  element={
+                    <Navigate
+                      to="/"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/procurement"
+                  element={
+                    <Navigate
+                      to="/services/government-procurement"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/services/government-contracting"
+                  element={
+                    <Navigate
+                      to="/services/government-procurement"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/services/staffing-solutions"
+                  element={
+                    <Navigate
+                      to="/services/staffing"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/services/compliance-as-a-service"
+                  element={
+                    <Navigate
+                      to="/services/cmmc-as-a-service"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/cmmc-compliance"
+                  element={
+                    <Navigate
+                      to="/services/cmmc-as-a-service"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/industries"
+                  element={
+                    <Navigate
+                      to="/"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/services/enterprise-solutions"
+                  element={
+                    <Navigate
+                      to="/"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/shop-all"
+                  element={
+                    <Navigate
+                      to="/"
+                      replace
+                    />
+                  }
+                />
+
+                <Route
+                  path="/cmas"
+                  element={
+                    <Navigate
+                      to="/contracts"
+                      replace
+                    />
+                  }
+                />
+
+                {/* =====================================================
+                    CONTRACTS
+                ===================================================== */}
+
+                <Route
+                  path="/contracts"
+                  element={
+                    <Site>
+                      <Contracts />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    ABOUT
+                ===================================================== */}
+
+                <Route
+                  path="/about"
+                  element={
+                    <Site>
+                      <About />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    CONTACT
+                ===================================================== */}
+
+                <Route
+                  path="/contact"
+                  element={
+                    <Site>
+                      <Contact />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    INSIGHTS
+                ===================================================== */}
+
+                <Route
+                  path="/insights"
+                  element={
+                    <Site>
+                      <Insights />
+                    </Site>
+                  }
+                />
+
+                <Route
+                  path="/insights/:slug"
+                  element={
+                    <Site>
+                      <BlogPost />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    PRIVACY
+                ===================================================== */}
+
+                <Route
+                  path="/privacy-policy"
+                  element={
+                    <Site>
+                      <PrivacyPolicy />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    COOKIE POLICY
+                ===================================================== */}
+
+                <Route
+                  path="/cookie-policy"
+                  element={
+                    <Site>
+                      <CookiePolicy />
+                    </Site>
+                  }
+                />
+
+                <Route
+                  path="/cookies-policy"
+                  element={
+                    <Site>
+                      <CookiePolicy />
+                    </Site>
+                  }
+                />
+
+                {/* =====================================================
+                    LOGIN
+                ===================================================== */}
+
+                <Route
+                  path="/login"
+                  element={<Login />}
+                />
+
+                {/* =====================================================
+                    ADMIN
+                ===================================================== */}
+
+                <Route
+                  path="/admin"
+                  element={<Admin />}
+                />
+
+                {/* =====================================================
+                    404
+                ===================================================== */}
+
+                <Route
+                  path="*"
+                  element={
+                    <Site>
+                      <NotFound />
+                    </Site>
+                  }
+                />
+
               </Routes>
             </BrowserRouter>
           </ConsentProvider>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Search } from "lucide-react";
 import { useCapability } from "@/context/CapabilityContext";
 import { Reveal, Overline } from "@/components/common";
@@ -49,3 +49,4 @@ export function NaicsSearch() {
     </section>
   );
 }
+

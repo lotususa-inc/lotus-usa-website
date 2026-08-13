@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+﻿import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { LogOut, Users, Mail, FileText, Trash2, Plus, Pencil, X, Upload, FileCheck2 } from "lucide-react";
@@ -46,7 +46,7 @@ export default function Admin() {
       fd.append("file", file);
       const { data } = await api.post("/capability/upload", fd);
       await cap.refresh();
-      toast.success(`Capability updated — ${data.extracted.naics} NAICS codes extracted.`);
+      toast.success(`Capability updated â€” ${data.extracted.naics} NAICS codes extracted.`);
     } catch (err) {
       toast.error(formatApiError(err.response?.data?.detail));
     } finally { setUploading(false); }
@@ -61,7 +61,7 @@ export default function Admin() {
     } catch (err) { toast.error(formatApiError(err.response?.data?.detail)); }
   };
 
-  if (!user || !user.email) return <div className="pt-40 text-center text-slate-400">Loading…</div>;
+  if (!user || !user.email) return <div className="pt-40 text-center text-slate-400">Loadingâ€¦</div>;
   const stats = [["Total Leads", leads.length], ["Subscribers", subs.length], ["Published", posts.filter((p) => p.published).length], ["Drafts", posts.filter((p) => !p.published).length]];
   const field = "w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-royal";
 
@@ -94,7 +94,7 @@ export default function Admin() {
                     <div key={l.id} className="flex flex-col gap-2 p-5 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2"><span className="font-semibold text-navy">{l.name}</span>{l.service && <span className="rounded-full bg-royal/10 px-2.5 py-0.5 text-xs font-medium text-royal">{l.service}</span>}</div>
-                        <div className="mt-1 text-sm text-slate-500">{l.email}{l.phone ? ` · ${l.phone}` : ""}{l.company ? ` · ${l.company}` : ""}</div>
+                        <div className="mt-1 text-sm text-slate-500">{l.email}{l.phone ? ` Â· ${l.phone}` : ""}{l.company ? ` Â· ${l.company}` : ""}</div>
                         <p className="mt-2 text-sm text-slate-700">{l.message}</p>
                         <p className="mt-1 text-xs text-slate-400">{new Date(l.created_at).toLocaleString()}</p>
                       </div>
@@ -140,7 +140,7 @@ export default function Admin() {
                     <p className="mt-1 text-sm text-slate-500">Upload a new PDF to auto-refresh the site's NAICS codes and federal registration data. The download link stays the same.</p>
                   </div>
                   <label className={`inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-full bg-royal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-navy ${uploading ? "opacity-60 pointer-events-none" : ""}`} data-testid="capability-upload-label">
-                    <Upload className="h-4 w-4" />{uploading ? "Processing…" : "Upload PDF"}
+                    <Upload className="h-4 w-4" />{uploading ? "Processingâ€¦" : "Upload PDF"}
                     <input type="file" accept="application/pdf,.pdf" className="hidden" onChange={uploadCapability} data-testid="capability-upload-input" />
                   </label>
                 </div>
@@ -175,7 +175,7 @@ export default function Admin() {
                 <div><label className="overline text-slate-500">Category</label><input value={editing.category} onChange={(e) => setEditing({ ...editing, category: e.target.value })} className={`mt-1 ${field}`} /></div>
                 <div><label className="overline text-slate-500">Author</label><input value={editing.author} onChange={(e) => setEditing({ ...editing, author: e.target.value })} className={`mt-1 ${field}`} /></div>
               </div>
-              <div><label className="overline text-slate-500">Cover Image URL</label><input value={editing.cover_image} onChange={(e) => setEditing({ ...editing, cover_image: e.target.value })} className={`mt-1 ${field}`} placeholder="https://…" /></div>
+              <div><label className="overline text-slate-500">Cover Image URL</label><input value={editing.cover_image} onChange={(e) => setEditing({ ...editing, cover_image: e.target.value })} className={`mt-1 ${field}`} placeholder="https://â€¦" /></div>
               <div><label className="overline text-slate-500">Excerpt</label><textarea required rows={2} value={editing.excerpt} onChange={(e) => setEditing({ ...editing, excerpt: e.target.value })} className={`mt-1 ${field} resize-none`} data-testid="post-excerpt" /></div>
               <div><label className="overline text-slate-500">Content (double line-break = new paragraph)</label><textarea required rows={8} value={editing.content} onChange={(e) => setEditing({ ...editing, content: e.target.value })} className={`mt-1 ${field} resize-none`} data-testid="post-content" /></div>
               <label className="flex items-center gap-2 text-sm text-navy"><input type="checkbox" checked={editing.published} onChange={(e) => setEditing({ ...editing, published: e.target.checked })} className="h-4 w-4 accent-royal" />Published</label>
@@ -187,3 +187,4 @@ export default function Admin() {
     </div>
   );
 }
+

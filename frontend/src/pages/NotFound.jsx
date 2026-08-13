@@ -1,4 +1,4 @@
-import { useSEO } from "@/hooks/useSEO";
+﻿import { useSEO } from "@/hooks/useSEO";
 import { PrimaryButton } from "@/components/common";
 
 export default function NotFound() {
@@ -15,3 +15,4 @@ export default function NotFound() {
     </section>
   );
 }
+

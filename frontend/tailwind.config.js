@@ -11,18 +11,21 @@ module.exports = {
       },
       colors: {
         navy: {
-          DEFAULT: '#0B1F4D',
-          800: '#0d2456',
-          700: '#122c66',
-          600: '#1a3a80',
+          DEFAULT: '#0B1F3A',
+          800: '#081828',
+          700: '#0D2437',
+          600: '#123B63',
         },
         royal: {
-          DEFAULT: '#0F62FE',
-          light: '#4589FF',
+          DEFAULT: '#155EEF',
+          light: '#2F80C9',
+        },
+        steel: {
+          DEFAULT: '#425B72',
         },
         gold: {
-          DEFAULT: '#C4A24C',
-          light: '#E3C878',
+          DEFAULT: '#C9A227',
+          light: '#DDBB55',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
