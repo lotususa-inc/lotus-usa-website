@@ -28,9 +28,15 @@ export default function ServicePage() {
 }
 
 function GenericService({ service, slug }) {
+  const isDigitalSolutions = slug === "digital-solutions";
+
   useSEO({
-    title: service.eyebrow || service.title,
-    description: service.intro,
+    title: isDigitalSolutions
+      ? "Digital Solutions & Web Development"
+      : service.eyebrow || service.title,
+    description: isDigitalSolutions
+      ? "Lotus USA provides digital solutions including website development, custom web applications, mobile apps, AI solutions, workflow automation, and cloud applications."
+      : service.intro,
     image: service.image,
     path: `/services/${slug}`,
   });
@@ -70,18 +76,22 @@ function GenericService({ service, slug }) {
                 />
               </div>
 
-              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
-                {service.eyebrow}
+              <span className="font-display text-lg font-extrabold uppercase tracking-[0.14em] text-cyan-300 sm:text-xl">
+                {isDigitalSolutions ? "Digital Solutions" : service.eyebrow}
               </span>
 
             </div>
 
-            <h1 className="mt-7 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              {service.title}
+            <h1 className="mt-7 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] tracking-[-0.035em] sm:text-6xl lg:text-7xl">
+              {isDigitalSolutions
+                ? "Digital Solutions That Deliver"
+                : service.title}
             </h1>
 
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-blue-100 sm:text-xl">
-              {service.intro}
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-blue-100 sm:text-xl">
+              {isDigitalSolutions
+                ? "Lotus USA designs and builds modern websites, custom applications, mobile experiences, AI-driven solutions, workflow automation, and cloud applications that improve how organizations serve their users."
+                : service.intro}
             </p>
 
           </div>
@@ -97,17 +107,21 @@ function GenericService({ service, slug }) {
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="max-w-3xl">
+          <div className="max-w-3xl text-left">
 
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-              Capabilities
-            </p>
+            <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+              <span
+                aria-hidden="true"
+                className="h-1 w-12 rounded-full bg-[#1769E0]"
+              />
+              <span>CAPABILITIES</span>
+            </div>
 
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
               What we deliver
             </h2>
 
-            <p className="mt-5 text-lg leading-8 text-slate-600">
+            <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg">
               Digital solutions designed around practical requirements,
               measurable outcomes, security, reliability, and long-term
               support.
@@ -161,17 +175,21 @@ function GenericService({ service, slug }) {
 
           <div className="mx-auto max-w-7xl">
 
-            <div className="max-w-3xl">
+            <div className="max-w-3xl text-left">
 
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-                Delivery Approach
-              </p>
+              <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+                <span
+                  aria-hidden="true"
+                  className="h-1 w-12 rounded-full bg-[#1769E0]"
+                />
+                <span>DELIVERY APPROACH</span>
+              </div>
 
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+              <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
                 A clear path from requirement to delivery
               </h2>
 
-              <p className="mt-5 text-lg leading-8 text-slate-600">
+              <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg">
                 A structured approach designed to move from discovery through
                 implementation, deployment, and continuous improvement.
               </p>
@@ -218,18 +236,22 @@ function GenericService({ service, slug }) {
 
           <div className="mx-auto max-w-7xl">
 
-            <div className="max-w-3xl">
+            <div className="max-w-3xl text-left">
 
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-                {service.split.overline}
-              </p>
+              <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+                <span
+                  aria-hidden="true"
+                  className="h-1 w-12 rounded-full bg-[#1769E0]"
+                />
+                <span>{service.split.overline}</span>
+              </div>
 
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+              <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
                 {service.split.title}
               </h2>
 
               {service.split.sub && (
-                <p className="mt-5 text-lg leading-8 text-slate-600">
+                <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg">
                   {service.split.sub}
                 </p>
               )}
@@ -278,6 +300,36 @@ function GenericService({ service, slug }) {
 
 
       {/* =========================================================
+          WHY LOTUS — DIGITAL SOLUTIONS
+      ========================================================= */}
+      {isDigitalSolutions && (
+        <section className="px-6 py-20 sm:px-8 lg:px-12 lg:py-24">
+          <div className="mx-auto max-w-7xl">
+            <div className="max-w-3xl text-left">
+              <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+                <span
+                  aria-hidden="true"
+                  className="h-1 w-12 rounded-full bg-[#1769E0]"
+                />
+                <span>WHY LOTUS</span>
+              </div>
+
+              <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
+                Digital solutions built around practical requirements
+              </h2>
+
+              <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg">
+                We combine website development, application engineering,
+                automation, AI, and cloud capabilities to create digital
+                solutions focused on usability, performance, security,
+                reliability, and long-term support.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* =========================================================
           FAQ
       ========================================================= */}
       {service.faqs?.length > 0 && (
@@ -285,13 +337,17 @@ function GenericService({ service, slug }) {
 
           <div className="mx-auto max-w-4xl">
 
-            <div className="text-center">
+            <div className="max-w-3xl text-left">
 
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-                FAQ
-              </p>
+              <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+                <span
+                  aria-hidden="true"
+                  className="h-1 w-12 rounded-full bg-[#1769E0]"
+                />
+                <span>FAQ</span>
+              </div>
 
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+              <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
                 Frequently asked questions
               </h2>
 
