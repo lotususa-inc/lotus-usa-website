@@ -1,4 +1,4 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 
 const procurementAwards = [
   {
@@ -181,6 +181,8 @@ const agenciesServed = [
   "Department of the Air Force",
   "Space Base Delta",
   "DLA Land and Maritime",
+  "DLA Troop Support",
+  "DLA Aviation",
   "U.S. Army Engineer District, Detroit",
   "U.S. Army Sergeants Major Academy",
   "U.S. Army Soldier Support Institute (USASSI)",
@@ -203,17 +205,21 @@ const agenciesServed = [
 
 function SectionHeading({ eyebrow, title, description }) {
   return (
-    <div className="max-w-3xl">
-      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-        {eyebrow}
-      </p>
+    <div className="max-w-3xl text-left">
+      <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+        <span
+          aria-hidden="true"
+          className="h-1 w-12 rounded-full bg-[#1769E0]"
+        />
+        <span>{eyebrow}</span>
+      </div>
 
-      <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+      <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
         {title}
       </h2>
 
       {description && (
-        <p className="mt-5 text-lg leading-8 text-slate-600">
+        <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg">
           {description}
         </p>
       )}
@@ -222,51 +228,83 @@ function SectionHeading({ eyebrow, title, description }) {
 }
 
 function AwardTable({ awards }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const visibleAwards = expanded ? awards : awards.slice(0, 5);
+  const hasMore = awards.length > 5;
+
   return (
-    <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[900px] border-collapse text-left">
-          <thead className="bg-[#062b5c] text-white">
-            <tr>
-              <th className="px-6 py-4 text-sm font-semibold">
-                Agency
-              </th>
+    <div className="mt-10">
+      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[900px] border-collapse text-left">
+            <thead className="bg-[#062b5c] text-white">
+              <tr>
+                <th className="px-6 py-4 text-sm font-semibold">
+                  Agency
+                </th>
 
-              <th className="px-6 py-4 text-sm font-semibold">
-                Contract / Requirement
-              </th>
+                <th className="px-6 py-4 text-sm font-semibold">
+                  Contract / Requirement
+                </th>
 
-              <th className="px-6 py-4 text-right text-sm font-semibold">
-                Contract Value
-              </th>
-            </tr>
-          </thead>
-
-          <tbody className="divide-y divide-slate-200">
-            {awards.map((award, index) => (
-              <tr
-                key={`${award.agency}-${index}`}
-                className="transition-colors hover:bg-slate-50"
-              >
-                <td className="px-6 py-5 align-top text-sm font-semibold text-[#062b5c]">
-                  {award.agency}
-                </td>
-
-                <td className="px-6 py-5 align-top text-sm leading-6 text-slate-600">
-                  {award.title}
-                </td>
-
-                <td className="whitespace-nowrap px-6 py-5 text-right align-top text-sm font-bold text-[#062b5c]">
-                  {award.value}
-                </td>
+                <th className="px-6 py-4 text-right text-sm font-semibold">
+                  Contract Value
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody className="divide-y divide-slate-200">
+              {visibleAwards.map((award, index) => (
+                <tr
+                  key={`${award.agency}-${index}`}
+                  className="transition-colors hover:bg-slate-50"
+                >
+                  <td className="px-6 py-5 align-top text-sm font-semibold text-[#062b5c]">
+                    {award.agency}
+                  </td>
+
+                  <td className="px-6 py-5 align-top text-sm leading-6 text-slate-600">
+                    {award.title}
+                  </td>
+
+                  <td className="whitespace-nowrap px-6 py-5 text-right align-top text-sm font-bold text-[#062b5c]">
+                    {award.value}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+
+      {hasMore && (
+        <div className="mt-6 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setExpanded((current) => !current)}
+            aria-expanded={expanded}
+            className="inline-flex items-center gap-2 rounded-full border border-[#1769E0]/25 bg-white px-6 py-3 text-sm font-bold text-[#1769E0] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1769E0] hover:text-white hover:shadow-md"
+          >
+            <span>
+              {expanded ? "Show Less" : "Show More Contracts"}
+            </span>
+
+            <span
+              aria-hidden="true"
+              className={`text-lg leading-none transition-transform duration-300 ${
+                expanded ? "rotate-180" : ""
+              }`}
+            >
+              ↓
+            </span>
+          </button>
+        </div>
+      )}
     </div>
   );
 }
+
 
 function AgencyCard({ agency, index }) {
   return (
@@ -298,11 +336,11 @@ export default function Contracts() {
         <div className="relative mx-auto max-w-7xl">
           <div className="max-w-4xl">
 
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
-              Contracts & Past Performance
+            <p className="font-display text-lg font-extrabold uppercase tracking-[0.14em] text-cyan-300 sm:text-xl">
+              Contracts &amp; Past Performance
             </p>
 
-            <h1 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
               Proven Government
               <br />
               Contracting Experience
@@ -559,16 +597,20 @@ export default function Contracts() {
       <section className="bg-slate-50 px-6 py-20 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
 
-          <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-              Contracting Snapshot
-            </p>
+          <div className="max-w-3xl text-left">
+            <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+              <span
+                aria-hidden="true"
+                className="h-1 w-12 rounded-full bg-[#1769E0]"
+              />
+              <span>CONTRACTING SNAPSHOT</span>
+            </div>
 
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
               Government Contracting at a Glance
             </h2>
 
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+            <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
               A snapshot of Lotus USA's documented government contracting
               experience, agency reach, and representative award value.
             </p>
@@ -594,7 +636,7 @@ export default function Contracts() {
             {/* Agencies Served */}
             <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md">
               <div className="text-4xl font-bold tracking-tight text-[#062b5c] sm:text-5xl">
-                25+
+                200+
               </div>
 
               <div className="mt-3 text-lg font-semibold text-slate-800">
@@ -756,12 +798,16 @@ export default function Contracts() {
       >
         <div className="mx-auto max-w-7xl">
 
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
-              Contracting Capabilities
-            </p>
+          <div className="max-w-3xl text-left">
+            <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-cyan-300 sm:text-xl">
+              <span
+                aria-hidden="true"
+                className="h-1 w-12 rounded-full bg-cyan-300"
+              />
+              <span>CONTRACTING CAPABILITIES</span>
+            </div>
 
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl">
               Built for government requirements
             </h2>
 
@@ -828,11 +874,15 @@ export default function Contracts() {
       <section className="px-6 py-20 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-5xl rounded-3xl bg-slate-50 px-8 py-12 text-center sm:px-12">
 
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-            Government & Enterprise
-          </p>
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>GOVERNMENT &amp; ENTERPRISE</span>
+          </div>
 
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+          <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
             Ready to work with Lotus USA?
           </h2>
 

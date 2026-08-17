@@ -356,12 +356,18 @@ function CertificationsSection() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-3xl text-left">
 
-          {/* Removed standalone "Certifications" eyebrow */}
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>CERTIFICATIONS</span>
+          </div>
 
-          <h2 className="font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
-            Certifications &amp; Authorizations
+          <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+            Government-Ready Qualifications
           </h2>
 
           <p className="mt-4 text-base leading-7 text-[#52667A]">
@@ -476,11 +482,15 @@ function WhatWeDoSection() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-3xl text-left">
 
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1769E0]">
-            What we do
-          </p>
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>WHAT WE DO</span>
+          </div>
 
           <h2 className="mt-3 font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
             Solutions Built for Government &amp; Enterprise
@@ -588,11 +598,15 @@ function WhyLotusSection() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-3xl text-left">
 
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1769E0]">
-            Why Lotus
-          </p>
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>WHY LOTUS</span>
+          </div>
 
           <h2 className="mt-3 font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
             Diversified Capability. Proven Delivery.
@@ -642,11 +656,15 @@ function PartnershipsSection() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-3xl text-left">
 
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1769E0]">
-            Partners
-          </p>
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>PARTNERS</span>
+          </div>
 
           <h2 className="mt-3 font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
             Technology &amp; Procurement Ecosystem

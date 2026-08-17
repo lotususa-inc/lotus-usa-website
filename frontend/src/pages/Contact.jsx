@@ -80,21 +80,22 @@ export default function Contact() {
 
         <div className="absolute -left-20 top-10 h-96 w-96 rounded-full bg-royal/25 blur-[130px]" />
 
-        <div className="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+        <div className="relative mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
           <Reveal>
-            <Overline light>
+            <p className="inline-flex items-center gap-4 font-display text-base font-extrabold uppercase tracking-[0.14em] text-cyan-300 sm:text-lg">
+              <span className="h-1 w-12 rounded-full bg-cyan-300" aria-hidden="true" />
               Get in touch
-            </Overline>
+            </p>
           </Reveal>
 
           <Reveal delay={0.06}>
-            <h1 className="mt-6 max-w-3xl font-display text-4xl font-extrabold leading-[1.03] tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] tracking-[-0.035em] sm:text-6xl lg:text-7xl">
               Thank you for visiting us
             </h1>
           </Reveal>
 
           <Reveal delay={0.12}>
-            <p className="mt-6 max-w-2xl text-lg text-white/70">
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-blue-100 sm:text-xl">
               Request a consultation and our team will respond within one
               business day.
             </p>
@@ -106,8 +107,8 @@ export default function Contact() {
           CONTACT CONTENT
       ========================================================= */}
 
-      <section className="bg-white py-20 lg:py-28">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-12 lg:px-8">
+      <section className="bg-white px-5 py-24 lg:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12">
 
           {/* =====================================================
               CONTACT FORM
@@ -117,7 +118,7 @@ export default function Contact() {
             <Reveal>
               <form
                 onSubmit={submit}
-                className="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft lg:p-10"
+                className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm lg:p-10"
                 data-testid="contact-form"
               >
 
@@ -126,7 +127,7 @@ export default function Contact() {
                   {/* Full Name */}
 
                   <div>
-                    <label className="overline text-slate-500">
+                    <label className="font-display text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                       Full Name *
                     </label>
 
@@ -143,7 +144,7 @@ export default function Contact() {
                   {/* Email */}
 
                   <div>
-                    <label className="overline text-slate-500">
+                    <label className="font-display text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                       Email *
                     </label>
 
@@ -161,7 +162,7 @@ export default function Contact() {
                   {/* Phone */}
 
                   <div>
-                    <label className="overline text-slate-500">
+                    <label className="font-display text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                       Phone
                     </label>
 
@@ -177,7 +178,7 @@ export default function Contact() {
                   {/* Organization */}
 
                   <div>
-                    <label className="overline text-slate-500">
+                    <label className="font-display text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                       Organization
                     </label>
 
@@ -194,7 +195,7 @@ export default function Contact() {
                 {/* Area of Interest */}
 
                 <div className="mt-5">
-                  <label className="overline text-slate-500">
+                  <label className="font-display text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                     Area of Interest
                   </label>
 
@@ -226,7 +227,7 @@ export default function Contact() {
                 {/* Message */}
 
                 <div className="mt-5">
-                  <label className="overline text-slate-500">
+                  <label className="font-display text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                     How can we help? *
                   </label>
 
@@ -245,7 +246,7 @@ export default function Contact() {
 
                 <button
                   disabled={busy}
-                  className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-royal px-7 py-4 text-sm font-semibold text-white transition-colors hover:bg-navy disabled:opacity-60 sm:w-auto"
+                  className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-royal px-8 py-4 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy hover:shadow-md disabled:opacity-60 sm:w-auto"
                   data-testid="contact-submit"
                 >
                   {busy
@@ -283,7 +284,7 @@ export default function Contact() {
 
               <div className="rounded-3xl bg-navy p-8 text-white lg:p-10">
 
-                <h3 className="font-display text-2xl font-bold">
+                <h3 className="font-display text-3xl font-bold tracking-tight">
                   Contact details
                 </h3>
 
@@ -406,11 +407,11 @@ export default function Contact() {
               ================================================= */}
 
               <div
-                className="mt-6 rounded-3xl border border-slate-200 bg-slate-50 p-6"
+                className="mt-6 rounded-3xl border border-slate-200 bg-slate-50 p-7 shadow-sm"
                 data-testid="contact-registration"
               >
 
-                <span className="overline text-slate-500">
+                <span className="font-display text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
                   Federal Registration
                 </span>
 

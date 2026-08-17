@@ -1,7 +1,7 @@
 ﻿import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
-import { Reveal, Overline, SectionHeading, Icon } from "@/components/common";
+import { Reveal, Overline, Icon } from "@/components/common";
 
 const IT_ROLES = [
   "Developers",
@@ -95,10 +95,6 @@ function StaffingHero() {
                   className="h-6 w-6"
                 />
               </div>
-
-              <Overline light>
-                Staffing
-              </Overline>
             </div>
           </Reveal>
 
@@ -130,11 +126,22 @@ function StaffingTracks() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <SectionHeading
-          overline="Staffing Capabilities"
-          title="Two focused staffing tracks"
-          sub="Technology and healthcare organizations have different workforce requirements. Lotus USA presents each staffing capability separately."
-        />
+        <div className="max-w-3xl text-left">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span aria-hidden="true" className="h-1 w-12 rounded-full bg-[#1769E0]" />
+            <span>Staffing Capabilities</span>
+          </div>
+          <Reveal delay={0.05}>
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+              Two focused staffing tracks
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-5 text-base leading-7 text-[#52667A] sm:text-lg">
+              Technology and healthcare organizations have different workforce requirements. Lotus USA presents each staffing capability separately.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
 
@@ -267,11 +274,22 @@ function StaffingModels() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <SectionHeading
-          overline="Engagement Models"
-          title="Flexible staffing models"
-          sub="Choose the workforce model that best matches your organization's requirements."
-        />
+        <div className="max-w-3xl text-left">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span aria-hidden="true" className="h-1 w-12 rounded-full bg-[#1769E0]" />
+            <span>Engagement Models</span>
+          </div>
+          <Reveal delay={0.05}>
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+              Flexible staffing models
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-5 text-base leading-7 text-[#52667A] sm:text-lg">
+              Choose the workforce model that best matches your organization's requirements.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
 
@@ -315,11 +333,22 @@ function StaffingProcess() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <SectionHeading
-          overline="How We Engage"
-          title="A structured staffing process"
-          sub="A clear process helps align workforce requirements with the appropriate staffing solution."
-        />
+        <div className="max-w-3xl text-left">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span aria-hidden="true" className="h-1 w-12 rounded-full bg-[#1769E0]" />
+            <span>How We Engage</span>
+          </div>
+          <Reveal delay={0.05}>
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+              A structured staffing process
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-5 text-base leading-7 text-[#52667A] sm:text-lg">
+              A clear process helps align workforce requirements with the appropriate staffing solution.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
 
@@ -362,11 +391,12 @@ function WhyLotus() {
 
         <div className="max-w-3xl">
 
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#62C7D9]">
-            Why Lotus USA
-          </p>
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#62C7D9] sm:text-xl">
+            <span aria-hidden="true" className="h-1 w-12 rounded-full bg-[#62C7D9]" />
+            <span>WHY LOTUS</span>
+          </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
             Workforce support across technology and healthcare.
           </h2>
 

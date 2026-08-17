@@ -1,7 +1,7 @@
-﻿import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
-import { Reveal, Overline, SectionHeading, Icon } from "@/components/common";
+import { Reveal, Icon } from "@/components/common";
 
 const PROFESSIONAL_SERVICES = [
   {
@@ -127,10 +127,21 @@ function ProfessionalServicesCapabilities() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <SectionHeading
-          title="Consulting, Engineering & Program Support"
-          sub="Professional services capabilities supporting government and commercial organizations across management, engineering, technology, program execution, and calibration requirements."
-        />
+        <div className="max-w-3xl text-left">
+
+
+          <Reveal delay={0.05}>
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+              Consulting, Engineering & Program Support
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <p className="mt-5 text-base leading-7 text-[#52667A] sm:text-lg">
+              Professional services capabilities supporting government and commercial organizations across management, engineering, technology, program execution, and calibration requirements.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
@@ -177,11 +188,27 @@ function EngagementSection() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
 
           <div>
-            <SectionHeading
-              overline="Service Scope"
-              title="Professional support aligned to the requirement"
-              sub="Our professional services offering covers five core capability areas supporting government and commercial requirements."
+            <div className="max-w-3xl text-left">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
             />
+            <span>Service Scope</span>
+          </div>
+
+          <Reveal delay={0.05}>
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+              Professional support aligned to the requirement
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <p className="mt-5 text-base leading-7 text-[#52667A] sm:text-lg">
+              Our professional services offering covers five core capability areas supporting government and commercial requirements.
+            </p>
+          </Reveal>
+        </div>
           </div>
 
           <div className="rounded-[28px] border border-[#D4E1EC] bg-white p-8 lg:p-10">
@@ -219,11 +246,27 @@ function DeliveryProcess() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <SectionHeading
-          overline="How We Engage"
-          title="A structured approach to service delivery"
-          sub="A straightforward engagement model keeps scope, execution, and delivery aligned."
-        />
+        <div className="max-w-3xl text-left">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>How We Engage</span>
+          </div>
+
+          <Reveal delay={0.05}>
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+              A structured approach to service delivery
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <p className="mt-5 text-base leading-7 text-[#52667A] sm:text-lg">
+              A straightforward engagement model keeps scope, execution, and delivery aligned.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
 
@@ -266,11 +309,15 @@ function WhyLotus() {
 
         <div className="max-w-3xl">
 
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#62C7D9]">
-            Why Lotus
-          </p>
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#62C7D9] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#62C7D9]"
+            />
+            <span>WHY LOTUS</span>
+          </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
             Professional services as part of a broader delivery capability.
           </h2>
 

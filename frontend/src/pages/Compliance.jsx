@@ -73,9 +73,9 @@ const LIFECYCLE = [
 
 export default function Compliance() {
   useSEO({
-    title: "CMMC as a Service",
+    title: "CMMC Compliance & Audit Readiness Services",
     description:
-      "CMMC compliance support including CMMC Level 1 and Level 2, NIST SP 800-171, Microsoft GCC High, policies, assessments, training, remediation, and ongoing compliance support.",
+      "Lotus USA helps organizations become CMMC audit-ready with CMMC Level 1 and Level 2 support, NIST SP 800-171 implementation, documentation, evidence preparation, remediation, training, and Microsoft GCC High support.",
     image: IMG.cmmcShield,
     path: "/services/cmmc-as-a-service",
   });
@@ -102,19 +102,23 @@ export default function Compliance() {
 
           <div className="max-w-4xl">
 
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
-              CMMC as a Service
+            <p className="inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-cyan-300 sm:text-xl">
+              <span
+                aria-hidden="true"
+                className="h-1 w-12 rounded-full bg-cyan-300"
+              />
+              CMMC Compliance &amp; Audit Readiness
             </p>
 
-            <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              CMMC Compliance Support Built Around Your Environment
+            <h1 className="mt-5 max-w-4xl font-display text-5xl font-extrabold leading-[1.02] tracking-[-0.035em] sm:text-6xl lg:text-7xl">
+              CMMC Compliance &amp; Audit Readiness
             </h1>
 
             <p className="mt-7 max-w-3xl text-lg leading-8 text-blue-100 sm:text-xl">
-              Lotus provides CMMC compliance support covering CMMC Level 1
-              and Level 2, NIST SP 800-171, Microsoft GCC High, policies,
-              assessments, training, remediation, and ongoing compliance
-              support.
+              Lotus helps organizations prepare for CMMC assessments through
+              structured compliance implementation, documentation, evidence
+              preparation, remediation, training, and ongoing support across
+              CMMC Level 1 and Level 2 environments.
             </p>
 
           </div>
@@ -133,15 +137,19 @@ export default function Compliance() {
           {/* LEFT */}
           <div>
 
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-              Compliance Support
-            </p>
+            <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+              <span
+                aria-hidden="true"
+                className="h-1 w-12 rounded-full bg-[#1769E0]"
+              />
+              <span>COMPLIANCE SUPPORT</span>
+            </div>
 
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
               From gap assessment to sustained readiness
             </h2>
 
-            <p className="mt-6 text-lg leading-8 text-slate-600">
+            <p className="mt-6 text-base leading-7 text-slate-600 sm:text-lg">
               CMMC preparation requires more than purchasing software or
               changing a few settings. Organizations need defined scope,
               implemented controls, documentation, evidence, operational
@@ -200,17 +208,21 @@ export default function Compliance() {
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="max-w-3xl">
+          <div className="max-w-3xl text-left">
 
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-              Service Scope
-            </p>
+            <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+              <span
+                aria-hidden="true"
+                className="h-1 w-12 rounded-full bg-[#1769E0]"
+              />
+              <span>SERVICE SCOPE</span>
+            </div>
 
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
               Core CMMC capabilities
             </h2>
 
-            <p className="mt-5 text-lg leading-8 text-slate-600">
+            <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg">
               Support across the compliance activities needed to establish,
               document, operate, and maintain a security program.
             </p>
@@ -255,17 +267,21 @@ export default function Compliance() {
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="max-w-3xl">
+          <div className="max-w-3xl text-left">
 
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700">
-              Compliance Lifecycle
-            </p>
+            <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+              <span
+                aria-hidden="true"
+                className="h-1 w-12 rounded-full bg-[#1769E0]"
+              />
+              <span>COMPLIANCE LIFECYCLE</span>
+            </div>
 
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#062b5c] sm:text-4xl">
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#062b5c] sm:text-5xl">
               A structured path to audit readiness
             </h2>
 
-            <p className="mt-5 text-lg leading-8 text-slate-600">
+            <p className="mt-5 text-base leading-7 text-slate-600 sm:text-lg">
               A practical lifecycle that takes an organization from current
               posture assessment through remediation, evidence preparation,
               monitoring, and managed compliance.

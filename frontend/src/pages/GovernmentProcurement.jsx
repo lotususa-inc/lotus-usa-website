@@ -1,7 +1,7 @@
 ﻿import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
-import { Reveal, Overline, SectionHeading, Icon } from "@/components/common";
+import { Reveal, Icon } from "@/components/common";
 
 /*
 |--------------------------------------------------------------------------
@@ -257,11 +257,27 @@ function ProcurementCapabilities() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <SectionHeading
-          overline="Procurement Capabilities"
-          title="Equipment & Procurement Solutions"
-          sub="Procurement capabilities organized around the equipment and support requirements government and commercial buyers need to fulfill."
-        />
+        <div className="max-w-3xl">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>Procurement Capabilities</span>
+          </div>
+
+          <Reveal delay={0.05}>
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+              Equipment & Procurement Solutions
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <p className="mt-5 text-base leading-7 text-[#52667A] sm:text-lg">
+              Procurement capabilities organized around the equipment and support requirements government and commercial buyers need to fulfill.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
@@ -311,11 +327,27 @@ function DeliveryProcess() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <SectionHeading
-          overline="How We Deliver"
-          title="From Requirement to Delivery"
-          sub="A structured procurement process designed to keep requirements, sourcing, fulfillment, and delivery aligned."
-        />
+        <div className="max-w-3xl">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>How We Deliver</span>
+          </div>
+
+          <Reveal delay={0.05}>
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+              From Requirement to Delivery
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <p className="mt-5 text-base leading-7 text-[#52667A] sm:text-lg">
+              A structured procurement process designed to keep requirements, sourcing, fulfillment, and delivery aligned.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
 
@@ -370,11 +402,27 @@ function ProcurementAwards() {
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
 
-        <SectionHeading
-          overline="Representative Experience"
-          title="Procurement Awards"
-          sub="Selected examples of procurement work represented in Lotus USA capability materials."
-        />
+        <div className="max-w-3xl">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>Representative Experience</span>
+          </div>
+
+          <Reveal delay={0.05}>
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
+              Procurement Awards
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <p className="mt-5 text-base leading-7 text-[#52667A] sm:text-lg">
+              Selected examples of procurement work represented in Lotus USA capability materials.
+            </p>
+          </Reveal>
+        </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
@@ -442,11 +490,15 @@ function WhyLotusProcurement() {
 
         <div className="max-w-3xl">
 
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#62C7D9]">
-            Why Lotus
-          </p>
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#62C7D9] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#62C7D9]"
+            />
+            <span>WHY LOTUS</span>
+          </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
             Procurement backed by proven delivery.
           </h2>
 

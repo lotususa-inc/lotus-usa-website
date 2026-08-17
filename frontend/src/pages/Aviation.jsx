@@ -193,8 +193,8 @@ export default function Aviation() {
 
         <div className="relative mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
           <div className="max-w-4xl">
-            <div className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#5BC7E8]">
-              <Plane className="h-5 w-5" />
+            <div className="flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#5BC7E8] sm:text-xl">
+              <Plane className="h-5 w-5 shrink-0" />
               Aviation Infrastructure Solutions
             </div>
 
@@ -218,11 +218,7 @@ export default function Aviation() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1769E0]">
-                Lotus USA
-              </p>
-
-              <h2 className="mt-4 font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
+              <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
                 Aviation Procurement &amp; Integration
               </h2>
 
@@ -282,12 +278,16 @@ export default function Aviation() {
       ========================================================== */}
       <section className="bg-[#EAF4FC] py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1769E0]">
-              Aviation Products
-            </p>
+          <div className="mx-auto max-w-3xl text-left">
+            <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+              <span
+                aria-hidden="true"
+                className="h-1 w-12 rounded-full bg-[#1769E0]"
+              />
+              <span>AVIATION PRODUCTS</span>
+            </div>
 
-            <h2 className="mt-4 font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
+            <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
               Aviation Infrastructure Equipment
             </h2>
 
@@ -313,12 +313,16 @@ export default function Aviation() {
           STANDARDS
       ========================================================== */}
       <section className="bg-white py-20 lg:py-24">
-        <div className="mx-auto max-w-5xl px-5 text-center lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1769E0]">
-            Standards &amp; Applications
-          </p>
+        <div className="mx-auto max-w-5xl px-5 text-left lg:px-8">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#1769E0] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#1769E0]"
+            />
+            <span>STANDARDS &amp; APPLICATIONS</span>
+          </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold text-[#071B33] sm:text-4xl">
+          <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-[#071B33] sm:text-5xl">
             Aviation Standards &amp; Applications
           </h2>
 
@@ -328,7 +332,7 @@ export default function Aviation() {
             guidance, approach systems, and aviation signaling.
           </p>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <div className="mt-10 flex flex-wrap justify-start gap-4">
             {["ICAO", "FAA", "IEC"].map((standard) => (
               <div
                 key={standard}
@@ -345,12 +349,16 @@ export default function Aviation() {
           SINGLE CTA
       ========================================================== */}
       <section className="bg-[#071B33] py-20 lg:py-24">
-        <div className="mx-auto max-w-4xl px-5 text-center lg:px-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#5BC7E8]">
-            Aviation Requirements
-          </p>
+        <div className="mx-auto max-w-4xl px-5 text-left lg:px-8">
+          <div className="mb-6 inline-flex items-center gap-4 font-display text-lg font-extrabold uppercase tracking-[0.14em] text-[#5BC7E8] sm:text-xl">
+            <span
+              aria-hidden="true"
+              className="h-1 w-12 rounded-full bg-[#5BC7E8]"
+            />
+            <span>AVIATION REQUIREMENTS</span>
+          </div>
 
-          <h2 className="mt-4 font-display text-3xl font-bold text-white sm:text-4xl">
+          <h2 className="font-display text-4xl font-extrabold tracking-[-0.03em] text-white sm:text-5xl">
             Discuss an Aviation Requirement
           </h2>
 
